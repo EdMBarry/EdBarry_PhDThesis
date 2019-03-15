@@ -175,10 +175,13 @@ When samples were measured to be outside of the range of calibration for a given
 where $\Theta$ is the set of parameters that must be found such that the squared distance between the experimental data points $y_i$ and the hypothesised model $\hat{y}_i$ is minimised. For multiple parameter optimisation, the value of J was set to a critical J value (J\textsubscript{crit}) based on the F statistic determined by the number of parameters of interest, the number of data points and the significance threshold (here 95\%). \cite{Batstone2003}. Uncertainty in parameters was determined from their standard error and a two-tailed Student t-test (5\% threshold). All determined parameters are expressed in terms of 95\% confidence intervals. The error bars in experimental data represent 95\% confidence intervals in mean based on a two-tailed t-test. The uncertainty of the slope when determining specific phototrophic activities was done using the Microsoft Excel 2013 Regression tool and was rechecked using the Scipy Stats package \cite{Scipy2001}. Unless otherwise stated, all statistical analyses were done with a 5\% significance threshold.
 
 \subsection{Simulations of PAM-1}
-All simulations in this study were done in excess light conditions in order to highlight the effects of soluble substrate concentration on the behaviour of the system.
 
 \subsubsection{Simulation of a phototrophic batch system}
-The model was tested to explore different scenarios in order to understand the limits of the process and to highlight the possible adaptations of he model by biomass shifts on metabolism. The model was implemented using SciPy \cite{SciPy2001} and NumPy \cite{NumPy2011} for numerical functionality, and Matplotlib \cite{Hunter2007a} for visualisation of results.
+The model was tested to explore different scenarios in order to understand the limits of the process and to highlight the possible adaptations of he model by biomass shifts on metabolism. The model was implemented using SciPy \cite{SciPy2001} and NumPy \cite{NumPy2011} for numerical functionality, and Matplotlib \cite{Hunter2007a} for visualisation of results. A series of three simulations were done on a PAnMBR system.
+
+The first simulations were designed to assess the effects of limiting substrate concentrations on the uptake of other substrates. A range of inorganic nitrogen initial concentrations (0 gN m\textsuperscript{-3} to 50 gN m\textsuperscript{-3}) and SCOD (S\textsubscript{S} + S\textsubscript{AC}) ranging from 0 gCOD m\textsuperscript{-3} to 800 gCOD m\textsuperscript{-3} (equally divided) were simulated with all other substrates in excess. The same simulation was done for inorganic phosphorus where the range of initial concentrations was from 0 gP m\textsuperscript{-3} to 12 gP m\textsuperscript{-3} and the same initial concentrations for SCOD. 
+
+The second simulations were designed to examine the effect of dark/light cycles on PPB metabolism under low and high rates of chemoheterotrophic activity (k\textsubscript{M,ch} = 0.074 and 0.7 d\textsuperscript{-1} respectively). The light/dark cycling were toggled for a duration of 12 hours at a time over a simulated period of two days. 
 
 
 
@@ -190,7 +193,20 @@ lab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations
 300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 (calculated in the Jupyter notebook) based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}.
 
 
-\section{Results}
+\section{Results and discussion}
+\subsection{Growth processes}
+
+\subsection{Batch simulation}
+
+
+
+
+\subsection{Continuous simulation}
+
+
+
+
+\section{Conclusions}
 
 %\begin{instructional}
 %Add your text here. Use \verb|\cite| to add citation labels. Reference sections, tables, and figures using \verb|\ref|. Use %\verb|\eqref| for equations. The `section' symbol $\S$ is obtained using \verb|$\S$|. Figures and other floats are added using their %respective environments. Use \verb|\longtable| to split tables over page.
