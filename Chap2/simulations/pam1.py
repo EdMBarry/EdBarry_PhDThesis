@@ -1,5 +1,7 @@
 # Define the PAM solver for the ODE systems
 
+import numpy as np
+
 def monod(S, KS):
     """
     Returns limiting term for substrate S
