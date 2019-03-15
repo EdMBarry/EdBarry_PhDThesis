@@ -1,0 +1,122 @@
+\documentclass[instructions]{uqthesis}	%Use this option to include template instructions in the output.
+%\documentclass[final]{uqthesis}				%Use this option to suppress the template instructions in the output.
+%This is the UQ thesis template.
+%See README for version.
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{float}
+\usepackage[]{siunitx}
+\usepackage{caption}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.25}
+
+%You must have the memoir class installed.
+%
+%Be sure to observe the content of comments within the source code.
+%Most important instructions have been CAPITALISED.
+%
+%Please see the README for more information!
+
+%This file loads the necessary packages, sets the page styles, and defines a bunch of macros.
+%Edit this if you are comfortable with LaTeX.
+%Other tweaks can be made in uqthesis.cls, but monkey with these at your own risk!
+\input{style.tex}
+
+% ***************************************************
+% You should specify the contents of title page here
+% ***************************************************
+%Add your thesis title here. USE SENTENCE CASE (capitalise only the first word and proper nouns).
+\title{Distributed parameter modelling of phototrophic systems}
+
+%YOUR NAME.
+%Do not include initials or middle names. Do not include your supervisor(s)' name(s).
+\author{Edward Barry}
+%YOUR CURRENT DEGREES.
+%Use abbreviations. Do not include the date or location of your degree. Do not include the degree for which this thesis is being submitted.
+\currentdegrees{B.Eng. (Hons)}
+
+%YEAR OF SUBMISSION.
+\date{2018}
+%TYPE OF DEGREE you are submitting for.
+\submittedfor{Doctor}
+
+%ADD YOUR SCHOOL.
+%Use title case (capitalise every word which is not a conjunction or preposition).
+%See http://blog.apastyle.org/apastyle/2012/03/title-case-and-sentence-case-capitalization-in-apa-style.html for help.
+\school{School of Chemical Engineering}
+
+\begin{document}
+
+\frontmatter
+% *************** Assemble title page ***************
+\maketitle
+\clearpage
+
+% ***************************************************
+\section{Abstract}
+\normalfont
+%OPEN ABSTRACT.TEX TO EDIT.
+\input{./Abstract/abstract.tex}
+
+\clearpage
+% ***************************************************
+\section*{Declaration by author}
+%DO NOT EDIT.
+\input{copyrightstatement.tex}
+
+\clearpage
+%YOU MUST EDIT THIS DOCUMENT.
+\input{front.tex}
+
+% ********* Main matter begins ***************
+\mainmatter
+
+%Each chapter is a separate .tex file. Use \input to load them here.
+%I recommend keeping each in a separate subfolder, along with its accompanying figures, etc. This is how the file is currently structured.
+%
+%If you wish to divide your thesis into parts (each containing multiple chapters), us the \part{} command.
+
+
+
+% *************** CHAPTER 1 ***************
+\input{./Chap1/introduction.tex}
+
+% *************** CHAPTER 2 ***************
+\input{./Chap2/chapter2.tex}
+
+% *************** CHAPTER 3 ***************
+\input{./Chap3/chapter3.tex}
+
+% *************** CHAPTER 4 ***************
+\input{./Chap4/chapter4.tex}
+% *************** END ********************* 
+\input{./Conclusion/conclusion.tex}
+\cleartooddpage
+
+% *************** Bibliography ***************
+%CHOOSE YOUR BIB STYLE AND FILE.
+%We recommend abbrv-unsrt.bst (included in the .zip).
+\bibliographystyle{abbrv-unsrt.bst}
+\bibliography{References/main_library}
+%When you have finished your thesis we recommend that you
+%manually fix any errors in your bibliography. To do this, compile,
+%then copy the .bbl into a new .tex file and include this here after
+%commenting out the other bibliography commands. Make corrections in
+%that .tex file.
+
+%UNCOMMENT THIS SECTION IF YOU ARE USING APPENDICES.
+%Simply adapt the same formatting used for other chapters.
+%% ***************APPENDIX***************
+%\appendix
+%\input{./Appendix/Appendices.tex}
+
+% *************** Back matter ***************
+%COMMENT OUT IF YOU DO NOT WISH TO INCLUDE BACK MATTER.
+\input{back.tex}
+
+\end{document}

@@ -1,0 +1,61 @@
+% *************** Document style definitions ***************
+
+% ******************************************************************
+% This file defines the document design.
+% Usually it is not necessary to edit this file, but you can use it to change aspects of the design if you want.
+% ******************************************************************
+
+%------------------------------------------------------------------------------%
+%----------------------------LOAD PACKAGES-------------------------------------%
+%------------------------------------------------------------------------------%
+
+% Feel free to alter/add to these packages as you need.
+% ******************* Load packages *******************
+%Miscellaneous.
+\usepackage{cite}									%Allows abbreviated numerical citations.
+\usepackage[figuresright]{rotating}	%Allows large tables to be rotated to landscape.
+\usepackage{pdfpages}							%Allows you to include full-page pdfs.
+\usepackage{wrapfig}							%Lets you wrap text around figures.
+%Maths stuff.
+\usepackage{bm} 									%Bolded maths characters.
+\usepackage{upgreek}							%Upright Greek characters.
+\usepackage{dsfont}								%Double-struck fonts.
+%\usepackage{simplewick}						%For typesetting Wick contractions.
+\usepackage{mathtools}						%Can be used to fine-tune the maths presentation.	
+%Text packages.
+\usepackage{framed}								%For boxed text.
+\usepackage{microtype}						%pdfLaTeX will fix your kerning.
+\usepackage{marvosym}							%Include symbols (like the Euro symbol, etc.).
+%Figures.
+	\usepackage{color}							%Nice for scalable pdf graphics using InkScape.
+	\usepackage{transparent}				%Nice for scalable pdf graphics using InkScape.
+\usepackage{placeins}							%Lets you put in a \FloatBarrier to stop figures floating past this command.
+%Lists.
+\usepackage{mdframed,mdwlist} 		%Use these for nice lists (less white space).
+
+%------------------------------------------------------------------------------%
+%---------------------MACROS-----THE-BLACK-------------------------------------%
+%------------------------------------------------------------------------------%
+
+%Define a bunch of macros that implement Latin abbreviations.
+%COMMENT OUT OR DELETE IF UNDESIRED.
+\newcommand{\via}{\textit{via}} %Italicised via.
+\newcommand{\ie}{\textit{i.e.}} %Literally.
+\newcommand{\eg}{\textit{e.g.}} %For example.
+\newcommand{\etc}{\textit{etc.}} %So on...
+\newcommand{\vv}{\textit{vice versa}} %And the other way around.
+\newcommand{\viz}{\textit{viz}.} %Resulting in.
+\newcommand{\cf}{\textit{cf}.} %See, or 'consistent with'.
+\newcommand{\apr}{\textit{a priori}} %Before the fact.
+\newcommand{\apo}{\textit{a posteriori}} %After the fact.
+\newcommand{\vivo}{\textit{in vivo}} %In the flesh.
+\newcommand{\situ}{\textit{in situ}} %On location.
+\newcommand{\silico}{\textit{in silico}} %Simulation.
+\newcommand{\vitro}{\textit{in vitro}} %In glass.
+\newcommand{\vs}{\textit{versus}} %James \vs{} Pete.
+\newcommand{\ala}{\textit{\`{a} la}} %In the manner of...
+\newcommand{\apriori}{\textit{a priori}} %Before hand.
+\newcommand{\etal}{\textit{et al.}} %And others, with correct punctuation.
+\newcommand{\naive}{na\"\i{}ve} %Queen Amidala is young and \naive{}.
+
+% *************** End of document style definition ***************

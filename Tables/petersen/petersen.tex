@@ -1,0 +1,245 @@
+%% Copyright 2009 Ivan Griffin
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Ivan Griffin
+%
+% This work consists of the files periodic_table.tex
+
+%Description
+%-----------
+%periodic_table.tex - an example file illustrating the Periodic
+%                     Table of Chemical Elements using TikZ
+
+%Created 2009-12-08 by Ivan Griffin.  Last updated: 2010-01-11
+%
+%Thanks to Jerome
+%-------------------------------------------------------------
+
+\documentclass[]{article}
+%
+%
+\usepackage{tikz}
+%\usepackage{lscape}
+\usepackage[active,tightpage]{preview}
+\usetikzlibrary{shapes,calc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath}
+\usepackage{eufrak}
+%
+\begin{document}
+\begin{preview}
+%\begin{landscape}
+\begin{tikzpicture}[scale=0.45, transform shape]
+
+%% Fill Color Styles
+  \tikzstyle{fill} = [fill=blue!20]
+
+%% Element Styles
+  \tikzstyle{box} = [draw=black, draw opacity=0.3,
+    minimum width=3cm, minimum height=3cm, node distance=3cm,align=left, font=\Large]
+  \tikzstyle{textBox} = [box, font=\LARGE, minimum width=9cm, node distance =6cm,draw opacity=1]
+  \tikzstyle{rateBox} = [box, font=\LARGE, minimum width=15cm,draw opacity=1, node distance =9cm,align=center]
+  \tikzstyle{halfBox} = [box, font=\LARGE, minimum height=1.5cm,draw opacity=1,node distance=2.25cm]
+  \tikzstyle{bigBox} = [draw=white, font=\LARGE,
+    minimum width=9cm, minimum height=9cm, node distance=9cm,align=left]
+  \tikzstyle{colorBox} = [box, fill]
+  \tikzstyle{numLabel} = [font={\LARGE}, node distance=6cm]
+  \tikzstyle{processLabel} = [font={\LARGE}, node distance=2cm]
+  \tikzstyle{GroupLabel} = [font={\LARGE}, minimum width=3cm, node distance=2.0cm]
+  \tikzstyle{TitleLabel} = [font={\Huge\bfseries}]
+  
+
+
+%% Group 1: SS
+  \node[name=0101, box] {$f_{SS,XS}$};
+  \node[name=0102, below of=0101, box] {$0$};
+  \node[name=0103, below of=0102, box] {$-1$};
+  \node[name=0104, below of=0103, box] {$-1$};
+  \node[name=0105, below of=0104, box] {$0$};
+  \node[name=0106, below of=0105, box] {$0$};
+
+  
+%% Processes 
+  \node[name=1,left of=0101,textBox]{Hydrolysis, Fermentation};
+  \node[name=2,left of=0102,textBox]{Acetate uptake}; 
+  \node[name=3,left of=0103,textBox]{Photoheterotrophic uptake}; 
+  \node[name=4,left of=0104,textBox]{Chemoheterotrophic uptake}; 
+  \node[name=5,left of=0105,textBox]{Photoautotrophic uptake}; 
+  \node[name=6,left of=0106,textBox]{Decay of PPB};
+
+ 
+  
+%% Group 2: SAC
+
+  \node[name=0201, right of=0101, box] {$f_{SAC,XS}$};
+  \node[name=0202, below of=0201, box] {$-1$};
+  \node[name=0203, below of=0202, box] {$0$};
+  \node[name=0204, below of=0203, box] {$(1-Y_{PB,ch})$\\$f_{SAC,ch}$};
+  \node[name=0205, below of=0204, box] {$0$};
+  \node[name=0206, below of=0205, box] {$0$};
+
+
+%% Group 3: SIC
+
+  \node[name=0301, right of=0201, box] {$f_{SIC,XS}$};
+  \node[name=0302, below of=0301, box] {$f_{SIC,PH,SAC}$};
+  \node[name=0303, below of=0302, box] {$-f_{SIC,PH,SS}$};
+  \node[name=0304, below of=0303, box] {$0$};
+  \node[name=0305, below of=0304, box] {$-f_{SIC,au}$};
+  \node[name=0306, below of=0305, box] {$f_SIC_dec$};
+
+
+%% Group 4: SH2
+
+  \node[name=0401, right of=0301, box] {$f_{SH2,XS}$};
+  \node[name=0402, below of=0401, box] {$0$};
+  \node[name=0403, below of=0402, box] {$0$};
+  \node[name=0404, below of=0403, box] {$(1-Y_{PB,ch})$\\$f_{SH2,ch}$};
+  \node[name=0405, below of=0404, box] {$-f_{SH2,au}$};
+  \node[name=0406, below of=0405, box] {$0$};
+
+  
+%% Group 5: SIN
+
+  \node[name=0501, right of=0401, box] {$f_{SIN,XS}$};
+  \node[name=0502, below of=0501, box] {$-Y_{PB,ph}N_{bac}$};
+  \node[name=0503, below of=0502, box] {$-Y_{PB,ph}N_{bac}$};
+  \node[name=0504, below of=0503, box] {$-Y_{PB,ch}N_{bac}$};
+  \node[name=0505, below of=0504, box] {$-Y_{PB,au}N_{bac}$};
+  \node[name=0506, below of=0505, box] {$-f_{SIN,dec}$};
+
+  
+%% Group 6: SIP
+
+  \node[name=0601, right of=0501, box] {$f_{SIP,XS}$};
+  \node[name=0602, below of=0601, box] {$-Y_{PB,ph}P_{bac}$};
+  \node[name=0603, below of=0602, box] {$-Y_{PB,ph}P_{bac}$};
+  \node[name=0604, below of=0603, box] {$-Y_{PB,ch}P_{bac}$};
+  \node[name=0605, below of=0604, box] {$-Y_{PB,au}P_{bac}$};
+  \node[name=0606, below of=0605, box] {$-f_{SIP,dec}$};
+
+  
+%% Group 7: SI
+
+  \node[name=0701, right of=0601, box] {$f_{SI,XS}$};
+  \node[name=0702, below of=0701, box] {$0$};
+  \node[name=0703, below of=0702, box] {$0$};
+  \node[name=0704, below of=0703, box] {$0$};
+  \node[name=0705, below of=0704, box] {$0$};
+  \node[name=0706, below of=0705, box] {$0$};
+
+  
+
+%% Group 8: XPB
+
+  \node[name=0801, right of=0701, box] {$0$};
+  \node[name=0802, below of=0801, box] {$Y_{PB,ph}$};
+  \node[name=0803, below of=0802, box] {$Y_{PB,ph}$};
+  \node[name=0804, below of=0803, box] {$Y_{PB,ch}$};
+  \node[name=0805, below of=0804, box] {$Y_{PB,au}$};
+  \node[name=0806, below of=0805, box] {$-1$};
+
+  
+%% Group 15 XS
+
+  \node[name=0901, right of=0801, box] {$-1$};
+  \node[name=0902, below of=0901, box] {$0$};
+  \node[name=0903, below of=0902, box] {$0$};
+  \node[name=0904, below of=0903, box] {$0$};
+  \node[name=0905, below of=0904, box] {$0$};
+  \node[name=0906, below of=0905, box] {$1$};
+
+  
+%% Group 16: XI
+
+  \node[name=1001, right of=0901, box] {$f_{XI,XS}$};
+  \node[name=1002, below of=1001, box] {$0$};
+  \node[name=1003, below of=1002, box] {$0$};
+  \node[name=1004, below of=1003, box] {$0$};
+  \node[name=1005, below of=1004, box] {$0$};
+  \node[name=1006, below of=1005, box] {$0$};
+
+  
+%% Components
+  \node[name=SS,above of=0101,halfBox]{$\mathrm{S_S}$};
+  \node[name=SAC,above of=0201,halfBox]{$\mathrm{S_{AC}}$}; 
+  \node[name=SIC,above of=0301,halfBox]{$\mathrm{S_{IC}}$}; 
+  \node[name=SH2,above of=0401,halfBox]{$\mathrm{S_{H2}}$}; 
+  \node[name=SIN,above of=0501,halfBox]{$\mathrm{S_{IN}}$}; 
+  \node[name=SIP,above of=0601,halfBox]{$\mathrm{S_{IP}}$};
+  \node[name=SI,above of=0701,halfBox]{$\mathrm{S_I}$};
+  \node[name=XPB,above of=0801,halfBox]{$\mathrm{X_{PB}}$}; 
+  \node[name=XS,above of=0901,halfBox]{$\mathrm{X_S}$};
+  \node[name=XI,above of=1001,halfBox]{$\mathrm{X_I}$}; 
+  \node[name=rate,right of=XI,halfBox,minimum width=15cm, node distance=9cm]{Rate $\mathfrak{R}_j$};   
+  
+%% Process number
+  \node[name=Period1, left of=1, numLabel] {1};
+  \node[name=Period2, left of=2, numLabel] {2};
+  \node[name=Period3, left of=3, numLabel] {3}; 
+  \node[name=Period4, left of=4, numLabel] {4}; 
+  \node[name=Period5, left of=5, numLabel] {5};
+  \node[name=Period6, left of=6, numLabel] {6};
+  \node[name=labelProcess, above of=Period1, processLabel, align=left] {Process \\ $j \downarrow$};
+%
+%% Group
+  \node[name=Group1, above of=SS, GroupLabel] {1};
+  \node[name=Group2, above of=SAC, GroupLabel] {2};
+  \node[name=Group3, above of=SIC, GroupLabel] {3};
+  \node[name=Group4, above of=SH2, GroupLabel] {4};
+  \node[name=Group5, above of=SIN, GroupLabel] {5};
+  \node[name=Group6, above of=SIP, GroupLabel] {6};
+  \node[name=Group7, above of=SI, GroupLabel] {7};
+  \node[name=Group8, above of=XPB, GroupLabel] {8};
+  \node[name=Group9, above of=XS, GroupLabel] {9};
+  \node[name=Group10, above of=XI, GroupLabel] {10};
+
+  \node[name=labelComponent, left of=Group1, GroupLabel, align=left] {Component \\ $i \rightarrow$};
+  
+% Rates
+ \node[name=rho1,right of=1001,rateBox]{$k_{hyd}XS$};
+ \node[name=rho2,right of=1002,rateBox]{$k_{m,ac}\frac{S_{AC}}{S_{AC}+K_{S,S{AC}}}X_{PB} I_{FA}I_{IN}I_{IP}I_E C_{ph}$};
+ \node[name=rho3,right of=1003,rateBox]{$k_{m,ph}\frac{S_S}{S_S+K_{S,SS}}X_{PB} I_{FA}I_{IN}I_{IP}I_E C_{ac}$};
+ \node[name=rho4,right of=1004,rateBox]{$k_{m,ch}\frac{S_S}{S_S+K_{S,S_S}}X_{PB} I_{FA}I_{IN}I_{IP}$};
+ \node[name=rho5,right of=1005,rateBox]{$k_{m,au}\frac{S_{IC}}{S_{IC}+K_{S,S_{IC}}}X_{PB} I_{FA}I_{IN}I_{IP}I_E$};
+ \node[name=rho6,right of=1006,rateBox]{$k_{dec}X_{PB}$};
+
+ \node[name=legend,below of=rho6,bigBox]{Competitive inhibition photohet: $C_{ph}=\frac{S_{AC}}{S_S + S_{AC}}$ \\
+ 											\\
+ 										  Competitive inhibition acetate: $C_{ac}=\frac{S_S}{S_S + S_{AC}}$ \\
+ 										  	\\
+ 										  Inhibition free ammonia: $I_{FA}=\frac{K_{I_{FA}}}{S_{IN}+K_{I_{FA}}}$\\
+ 										  \\
+ 										  Limitation inorganic nitrogen: $I_{IN}=\frac{S_{IN}}{S_{IN}+K_{S,S_{IN}}}$\\
+ 										  \\
+ 										  Limitation inoranic phosphorus: $I_{IP}=\frac{S_{IP}}{S_{IP}+K_{S,S_{IP}}}$
+ 										   \\
+ 										   Limitation radiation: $I_{E_{850}}=\frac{E_{850}}{E_{850}+K_{E_{850}}}$};
+ 
+ 
+%Descriptions
+ \node[name=des1,below of=0106,rateBox,rotate=270]{Soluble substrates\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des2,below of=0206,rateBox,rotate=270]{Soluble acetate\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des3,below of=0306,rateBox,rotate=270]{Soluble inorganic carbon\\$mol C m^{-3}$};
+ \node[name=des4,below of=0406,rateBox,rotate=270]{Soluble hydrogen\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des5,below of=0506,rateBox,rotate=270]{Soluble inorganic nitrogen\\$\mathrm{g NH_4^+-N m^{-3}}$};
+ \node[name=des6,below of=0606,rateBox,rotate=270]{Soluble inorganic phosphorus\\$\mathrm{g PO_4^{3-}-P m^{-4}}$};
+ \node[name=des7,below of=0706,rateBox,rotate=270]{Soluble inerts\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des8,below of=0806,rateBox,rotate=270]{Purple phototrophic bacteria\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des9,below of=0906,rateBox,rotate=270]{Biodegradable particulates\\$\mathrm{g COD m^{-3}}$};
+ \node[name=des10,below of=1006,rateBox,rotate=270]{Inert particulates\\$\mathrm{g COD m^{-3}}$};
+
+\end{tikzpicture}
+%\end{landscape}
+\end{preview}
+\end{document}
