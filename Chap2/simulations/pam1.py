@@ -58,8 +58,8 @@ def pam_batch(y, t, u):
     kDEC = 9.00e-2       # d-1
     kMAC = 2.375         # d-1
     kMPH = 1.435         # d-1
-    kMCH = 7.386e-2      # d-1
-    #kMCH = 7.386e-1      # d-1
+    #kMCH = 7.386e-2      # d-1
+    kMCH = 7.386e-1      # d-1
     kMIC = 6.0e-6        # mol HCO3-C/mgCOD/d
 
     KSS = 0.524235146324262     # mg COD/L
