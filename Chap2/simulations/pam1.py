@@ -15,7 +15,7 @@ def monod(S, KS):
     return S / (KS + S)
 
 
-def pam_batch(y, t, u):
+def pam_batch(y, t, G850_, kMIC_):
     """ Definition of the system of differential equations to integrate."""
     
     # Unpack the states
@@ -37,10 +37,10 @@ def pam_batch(y, t, u):
     fSAXS = 1.166839250294608E-01
     fICXS = 1.3039707398869100E-06
     fH2XS = 8.4424680871970500E-02
-    fINXS = 0.011622
-    fIPXS = 0.002835
-    fSIXS = 0.1518209
-    fXIXS = 0.4330922
+    fINXS = 1.1622464400041300E-02
+    fIPXS = 2.0754400714359400E-03
+    fSIXS = 1.5182085409209700E-01
+    fXIXS = 4.3309113162071400E-01
 
     fICPHAC = 6.44841269841271e-6    # molHCO3-C/mgCOD
     fICPHSS = -1.242761443579e-6     # molHCO3-C/mgCOD
@@ -58,9 +58,10 @@ def pam_batch(y, t, u):
     kDEC = 9.00e-2       # d-1
     kMAC = 2.375         # d-1
     kMPH = 1.435         # d-1
-    #kMCH = 7.386e-2      # d-1
-    kMCH = 7.386e-1      # d-1
-    kMIC = 6.0e-6        # mol HCO3-C/mgCOD/d
+    kMCH = 7.386e-2      # d-1
+    kMIC = kMIC_        # mol HCO3-C/mgCOD/d
+    #kMCH = 7.386e-1      # d-1
+    #kMIC = 3.410e-6        # mol HCO3-C/mgCOD/d
 
     KSS = 0.524235146324262     # mg COD/L
     KSAC = 20.222562           # mg COD/L
@@ -75,7 +76,7 @@ def pam_batch(y, t, u):
     YPBAU = 40320.00           # mgCOD/molHCO3-C
 
     KSE = 8.76                 # W/m2
-    SE = u                     # W/m2
+    SE = G850_                     # W/m2
     fICDEC = -1.98412698412703E-07 # mol C-HCO3 / mgCOD
     fINDEC = 0.058                 # mgNH3-N / mgCOD
     fIPDEC = 0.01                  # mgPO4-P / mgCOD
@@ -92,10 +93,10 @@ def pam_batch(y, t, u):
     ICAC = SS / (SS + SAC)     # PHT inhibition due to SAC
 
     
-    rACT = kMAC * XPB * IFA * IIN * IIP * IE * (SAC/(KSAC + SAC)) * ICS
-    rPHT = kMPH * XPB * IFA * IIN * IIP * IE * (SS/(KSAC + SAC)) * ICAC
-    rCHE = kMCH * XPB * IFA * IIN * IIP * SS/(KSS + SS)
-    rAUT = kMIC * XPB * IFA * IIN * IIP * IE * SIC/(SIC + KSIC)*SH2/(SH2 + KSH2);
+    rACT = kMAC*XPB*IFA*IIN*IIP*IE*(SAC/(KSAC + SAC))*ICS
+    rPHT = kMPH*XPB*IFA*IIN*IIP*IE*(SS/(KSAC + SAC))*ICAC
+    rCHE = kMCH*XPB*IFA*IIN*IIP*SS/(KSS + SS)
+    rAUT = kMIC*XPB*IFA*IIN*IIP*IE*SIC/(SIC + KSIC)*SH2/(SH2 + KSH2);
     
     
     n = len(y)      # 10: number of states
