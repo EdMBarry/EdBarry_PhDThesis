@@ -177,38 +177,82 @@ where $\Theta$ is the set of parameters that must be found such that the squared
 \subsection{Simulations of PAM-1}
 
 \subsubsection{Simulation of a phototrophic batch system}
-The model was tested to explore different scenarios in order to understand the limits of the process and to highlight the possible adaptations of he model by biomass shifts on metabolism. The model was implemented using SciPy \cite{SciPy2001} and NumPy \cite{NumPy2011} for numerical functionality, and Matplotlib \cite{Hunter2007a} for visualisation of results. A series of three simulations were done on a PAnMBR system.
+The model was tested to explore different scenarios in order to understand the limits of the process and to highlight the possible adaptations of he model by biomass shifts on metabolism. The model was implemented using SciPy \cite{Scipy2001} and NumPy \cite{NumPy2011} for numerical functionality, and Matplotlib \cite{Hunter2007a} for visualisation of results. A series of three simulations were done on a PAnMBR system.
 
-The first simulations were designed to assess the effects of limiting substrate concentrations on the uptake of other substrates. A range of inorganic nitrogen initial concentrations (0 gN m\textsuperscript{-3} to 50 gN m\textsuperscript{-3}) and SCOD (S\textsubscript{S} + S\textsubscript{AC}) ranging from 0 gCOD m\textsuperscript{-3} to 800 gCOD m\textsuperscript{-3} (equally divided) were simulated with all other substrates in excess. The same simulation was done for inorganic phosphorus where the range of initial concentrations was from 0 gP m\textsuperscript{-3} to 12 gP m\textsuperscript{-3} and the same initial concentrations for SCOD. 
+The first simulations were designed to assess the effects of limiting substrate concentrations on the uptake of other substrates. A range of inorganic nitrogen initial concentrations (0 gN m\textsuperscript{-3} to 60 gN m\textsuperscript{-3}) and SCOD (S\textsubscript{S} + S\textsubscript{AC}) ranging from 0 gCOD m\textsuperscript{-3} to 600 gCOD m\textsuperscript{-3} (equally divided) were simulated with all other substrates in excess. The same simulation was done for inorganic phosphorus where the range of initial concentrations was from 0 gP m\textsuperscript{-3} to 125 gP m\textsuperscript{-3} and the same initial concentrations for SCOD. 
 
 The second simulations were designed to examine the effect of dark/light cycles on PPB metabolism under low and high rates of chemoheterotrophic activity (k\textsubscript{M,ch} = 0.074 and 0.7 d\textsuperscript{-1} respectively). The light/dark cycling were toggled for a duration of 12 hours at a time over a simulated period of two days. 
+
+The third simulation looked at the differences in specific photoautotrophic activities between the results in this study, and the values found in literature.
 
 
 
 
 
 \subsubsection{Simulation of a phototrophic continuous system}
-The resulting kinetic expressions were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in medium strength wastewater was insufficient for the system to achieve TN and TP discharge limits \cite{Hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{Gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{Hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. An ideal primary clarifier was included, with a solids removal efficiency of 60\% $\pm$ 3\% \cite{Tchobanoglous}. The generation of realistic influent was done in Simulation and subsequent data processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations and data processing were done using SciPy, NumPy and Matplotlib in Python 3 \cite{Scipy2001, NumPy2011, Hunter2007a}. The \texttt{odeint} subroutine was sufficient for solving the stiff system of differential equations. The case was simulated for 609 days with 3 stages of differing SCOD concentrations. The dynamic influent after settling was applied directly during Stage I until day
+The kinetic expressions developed in this study were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in medium strength wastewater was insufficient for the system to achieve TN and TP discharge limits \cite{Hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{Gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{Hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. An ideal primary clarifier was included, with a solids removal efficiency of 60\% $\pm$ 3\% \cite{Tchobanoglous}. The generation of realistic influent was done in Simulation and subsequent data processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations and data processing were done using SciPy, NumPy and Matplotlib in Python 3 \cite{Scipy2001, NumPy2011, Hunter2007a}. The \texttt{odeint} subroutine was sufficient for solving the stiff system of differential equations. The case was simulated for 609 days with 3 stages of differing SCOD concentrations. The dynamic influent after settling was applied directly during Stage I until day
 300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 (calculated in the Jupyter notebook) based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}.
 
 \section{Results and discussion}
 Inoculum for all experiments cam from a lab-scale photo-anaerobic membrane bioreactor. Most organisms are related with $\alpha$\textit{-proteobacteria}, PPB accounting for greater than 70\% of gene copies detected by pyrosequencing. \textit{Rhodobacter sphaeroides} accounts for more than 60\% of the microbiota \cite{Hulsen2016}. Other photosynthetic organisms accounted for less than 1\% of the total gene copies, meaning that photosynthetic or phototrophic biomass was mostly PPB. 
 
 \subsection{Growth processes}
+\textbf{Implant here the results from determination of parameters}
+
+
+\begin{table}[tp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.4}
+    \caption{Batch conditions for metabolic tests}
+    \tabcolsep=0.11cm
+    \begin{tabular}{@{}p{3cm} p{1.4cm} p{1.5cm} p{1.7cm} p{1.4cm} p{1.4cm} p{1.4cm} p{1.4cm} p{1.4cm}@{}} \toprule
+        Mechanism & Medium & Buffer system & COD:N:P\textsuperscript{**} & C source & Electron donor & Electron acceptor & Positive control & Negative control\\
+        \hline
+        Photoheterotrophy & Ormerod& HEPES & 100:10:2 & Acetate (130), propionate, butyrate, ethanol (100) & Organic & CO\textsubscript{2}&  $\mathrm{1\, g}$ NaHCO\textsubscript{3} added&  -- \\
+        
+        Nitrogen limitation & Ormerod&  HEPES & 100:1.4:2& Acetate (130) & Organic & CO\textsubscript{2}& No limitation & -- \\
+        
+        Phosphorus limitation & Ormerod & HEPES & 100:10:0.15 & Acetate (130) & Organic & CO\textsubscript{2}& No limitation & -- \\
+        
+        Photoautotrophy & Ormerod & Phosphate & 100:20:$\infty$ & NaHCO\textsubscript{3} (140\textsuperscript{*}) & Na\textsubscript{2}S (300)& CO\textsubscript{2}& -- & No Na\textsubscript{2}S \\
+        
+        Chemoheterotrophy & Ormerod & HEPES &100:10:2 & Ethanol (60), Acetate (130) & Organic& Acetate& + light& -- \\
+        
+        Inhibition of $\mathrm{H_2}$ production & 
+        Ormerod & Phosphate & 100:15:$\infty$&Acetate (600) & Organic & CO\textsubscript{2} & --  & N limitation (1/10) \\
+        ---\texttt{"}---& DWW & -- & 100:12:4 &DWW (278) & Organic & CO\textsubscript{2}&-- &Acetate (600) \\
+        \bottomrule
+    \end{tabular}
+    \footnotesize
+    \begin{tabular}{@{}p{4cm} p{10cm}}
+        \textsuperscript{*}Units are gC m\textsuperscript{-3} & \textsuperscript{**} $\infty$ means excessive concentration due to buffer \\
+    \end{tabular}
+    \label{tab:bioparams}
+\end{table}
+
 
 \subsection{Batch simulations}
 
 \subsubsection{Limiting N, P and SCOD}
+In this scenario, the main metabolic pathway analysed was photoheterotrophy. Since one of the major the major of PPB biotechnology is complete assimilation of COD, N and P, it is necessary to explore the limits of the process for optimum COD:N:P ratios. These simulations were done for a domestic wastewater context.
+
+Fig. \ref{fig:ch2_cnp} shows the results of the simulations. The x-axis represents the concentrations of SCOD for each simulation. The y-axis in a) shows the range of concentrations of s\textsubscript{IN} and the y-axis in b) shows the varying concentrations of S\textsubscript{IP}. For both simulations, the optimal operating line for initial concentrations is shown (COD:N = 100:8.6 and 100:1.5 for figures a) and b) respectively). There are three possible regions outside the optimum according to the results shown in Fig. \ref{fig:ch2_cnp}: (i) now nutrient concentration where there is a net accumulation of SCOD in the system, (ii) high nutrient concentration where all SCOD is consumed but the effluent still contains nutrients, and (iii) insufficient COD for the maintenance of biomass growth despite the nutrients concentration and \textit{vice-versa}. Region (iii) is the only one which can not be sustained in a long-term growth process due to biomass decay. Region (i) (below the solid line), is not possible in a domestic wastewater context, where nutrients are always in excess. The most typical case is region (ii) (above the solid line), where the addition of external SCOD is necessary for the system to assimilate nutrients. This study could serve as a guide for estimating requirements in real industrial cases.  
+
+
+
 \begin{figure}[tp]
-    \centering
-    \includegraphics[width=1\linewidth]{./Chap2/simulations/ch2_sin_cod.pdf}
+    \hspace*{-2cm} 
+    \includegraphics[width=1.25\linewidth]{./Chap2/simulations/ch2_sin_cod.pdf}
     \caption{Normalised removal efficiencies of SCOD and $\mathrm{NH_4\mbox{-}N}$ (a) and $\mathrm{PO_4\mbox{-}P}$ (b). All initial conditions were maintained constant and the initial conditions of SCOD and the respective nutrients were varied between low (close to zero) and high values (600 gCOD m\textsuperscript{-3} for SCOD, 60 gNH\textsubscript{4}-N m\textsuperscript{-3} for S\textsubscript{IN} and 15 gPO\textsubscript{4}-P m\textsuperscript{-3} for S\textsubscript{IP}).}
-    \label{fig:ch2_kmch}
+    \label{fig:ch2_cnp}
 \end{figure}
 
 
+\subsubsection{Light-dark cycling}
+The parameters calculated in this work are a condition of the origin of the biomass. The PAnMBR was operated with irradiance in excess and no light-dark cycling (outside of the hydrodynamics). Although this is operation is normal for indoor photobioreactors, other configurations using solar radiation as a direct light source need consideration of the effects of light-dark cycling on biomass growth. During the night, phototrophic biomass in outdoor photobioreactors need to make use of an energy source other than radiation. Therefore it is clear that the metabolism would shift to chemoheterotrophic growth. Several authors have found that PPB are able to follow chemoheterotrophic metabolism achieving substrate uptake rates at least one order of magnitude higher than those calculated in this work (see Table \ref{tab:bioparams}). It is therefore necessary to explore how the system behaves under a promoted chemoheterotrophy during light/dark cycles.
 
-\subsubsection{Light/dark cycling}
+A set of two simulations were performed by including light/dark cycles (12 hours light, 12 hours dark for at total of 2 days) for a typical batch scenario where all the conditions were fixed but the chemoheterotrophic uptake rate was modified using two different values (k\textsubscript{M,ch} = 0.074 and 0.7 d\textsuperscript{-1}). The results of the simulations can be seen in Fig. \ref{fig:ch2_kmch}.  When the biomass has a high chemoheterotrophic activity, soluble substrate is consumed giving rise to acetate accumulation that is eventually consumed during the irradiated phase of the cycle. A net production of hydrogen happens due to fermentation or anaerobic oxidation processes which can be used for promoting autotrophic growth. There can also be connotations on the possible biomass shift to autotrophic metabolism. Since the biomass yield is lower during chemoheterotrophic metabolism, there is a lower net increase of biomass. 
 
 \begin{figure}[tp]
     \centering
@@ -218,15 +262,19 @@ Inoculum for all experiments cam from a lab-scale photo-anaerobic membrane biore
 \end{figure}
 
 \subsubsection{Sensitivity of specific photoautotrophic uptake activity}
+In this scenario the promotion of autotrophy is discussed and the autotrophic metabolism is analysed. The DWW used for the batch experiments and continuous PAnMBR operation came from collection wells in Brisbane, Australia. Water in this location can be considered as moderately hard (hardness = 148 $\pm$ 7 mg CaCO\textsubscript{3} L\textsuperscript{-1}, n=19, which corresponds to 53 mgC L\textsuperscript{-1}). Therefore, there is a clear potential to enrich PPB in autotrophic conditions. However, this is only possible if there is an electron donor such as Fe\textsuperscript{2+}, S\textsuperscript{2-}, H\textsubscript{2} or reduced organics \cite{McKinlay2011}. The promotion of reductive processes such as fermentation or anaerobic oxidation (including sulfate reduction) could give rise to the reduced components for CO\textsubscript{2} fixation to be feasible. This analysis is focused on the results after the appearance of reduced conditions, and the discussion on how these conditions are possible is out of the study's scope. 
+
+The initial conditions of this simulation have been fixed and only the concentration of H\textsubscript{2} has been increased to 175 gCOD m\textsuperscript{-3} to cope with the stoichiometric requirements of autotrophic carbon dioxide fixation. The simulations were performed using the autotrophic uptake rate calculated here (k\textsubscript{M,ic} = $\mathrm{3.4\times10^{-6}}$ molC gCOD\textsuperscript{-1}d\textsuperscript{-1}) and a Gaussian-random set of 1000 simulations using the average literature value and 95\% confidence intervals for k\textsubscript{M,ic} (shown in Table \ref{tab:bioparams}). The simulation conditions and code is included in \textbf{Abstract 2}. The results are depicted in Fig. \ref{fig:ch2_auto}. As can be seen, the autotrophic process using calculated values seems to be residual compared to photoheterotrophic metabolism, however, photoautotrophy can be a considerable component of PPB growth. By using the mean value of k\textsubscript{M,ic} from Table \ref{tab:bioparams}, the biomass is able to fix 1 g L\textsuperscript{-1} of total inorganic carbon at the same time as they assimilate 1.76 gC L\textsuperscript{-1} through photoheterotrophic metabolism. Therefore, carbon dioxide fixation  could become a major process, which could potentially account for around 36\% of N and P removal. 
+
+
 \begin{figure}[tp]
     \centering
     \includegraphics[width=1\linewidth]{./Chap2/simulations/ch2_auto.pdf}
-    \caption{Metabolic behaviour promoted by photoautotrophy. The dashed line represents the mean literature value found for photoautotrophic uptake ($\mathrm{2.5 \times 10^{-2}}$ molC gCOD\textsuperscript{-1}). The two solid lines represent the minimum and maximum values used for the simulations from the Gaussian-random set of parameter values ($\mathrm{8.1 \times 10^{-3}}$ molC gCOD\textsuperscript{-1} and $\mathrm{4.2 \times 10^{-1}}$ molC gCOD\textsuperscript{-1}respectively). The determined value from the batch experiments was $\mathrm{3.4 \times 10^{-3}}$ molC gCOD\textsuperscript{-1} (dot-dashed line).}
-    \label{fig:ch2_kmch}
+    \caption{Metabolic behaviour promoted by photoautotrophy. The dashed line represents the mean literature value found for photoautotrophic uptake ($\mathrm{2.5 \times 10^{-2}}$ molC gCOD\textsuperscript{-1}d\textsuperscript{-1}). The two solid lines represent the minimum and maximum values used for the simulations from the Gaussian-random set of parameter values ($\mathrm{8.1 \times 10^{-3}}$ molC gCOD\textsuperscript{-1}d\textsuperscript{-1} and $\mathrm{4.2 \times 10^{-1}}$ molC gCOD\textsuperscript{-1}d\textsuperscript{-1} respectively). The determined value from the batch experiments was $\mathrm{3.4 \times 10^{-3}}$ molC gCOD\textsuperscript{-1}d\textsuperscript{-1} (dot-dashed line).}
+    \label{fig:ch2_auto}
 \end{figure}
 
 \subsection{Continuous simulations}
-
 
 
 
