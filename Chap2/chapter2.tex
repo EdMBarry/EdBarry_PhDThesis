@@ -191,14 +191,7 @@ The third simulation looked at the differences in specific photoautotrophic acti
 
 \subsubsection{Simulation of a phototrophic continuous system}
 The kinetic expressions developed in this study were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in medium strength wastewater was insufficient for the system to achieve TN and TP discharge limits \cite{Hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{Gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{Hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. An ideal primary clarifier was included, with a solids removal efficiency of 60\% $\pm$ 3\% \cite{Tchobanoglous}. The generation of realistic influent was done in Simulation and subsequent data processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations and data processing were done using SciPy, NumPy and Matplotlib in Python 3 \cite{Scipy2001, NumPy2011, Hunter2007a}. The \texttt{odeint} subroutine was sufficient for solving the stiff system of differential equations. The case was simulated for 609 days with 3 stages of differing SCOD concentrations (Table \ref{tab:cont}). The dynamic influent after settling was applied directly during Stage I until day
-300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}. For the continuous simulations, the balance equations Eq. \eqref{eq:cont} were modified to include flows, and it was assumed that a membrane would retain all particulate matter such that the solids retention time (SRT) was fixed.
-
-\begin{align}
-    V \frac{dS_i}{dt} \, &= \, Q_f (S_{fi} - S_i) + V \mathfrak{R}_i  \nonumber \\
-    V \frac{dX_i}{dt}\, &= \, Q_f (X_{fi} - X_i) + Q_o X_i + V \mathfrak{R}_i
-    \label{eq:cont}
-\end{align}
-
+300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}. For the continuous simulations, the balance equations Eq. \eqref{eq:cont} were modified to include flows, and it was assumed that a membrane would retain all particulate matter such that the solids retention time (SRT) was fixed. The explanation of variables used are summarised in Table \ref{tab:cont_op_conditions}. 
 
 \begin{table}[tp]
     \centering
@@ -217,6 +210,38 @@ The kinetic expressions developed in this study were used in the development of 
     \label{tab:cont}
 \end{table}
 
+\begin{align}
+    V \frac{dS_i}{dt} \, &= \, Q_f (S_{fi} - S_i) + V \mathfrak{R}_i  \nonumber \\
+    V \frac{dX_i}{dt}\, &= \, Q_f (X_{fi} - X_i) + Q_o X_i + V \mathfrak{R}_i
+    \label{eq:cont}
+\end{align}
+
+\begin{table}[tp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.4}
+    \caption{Continuous operating periods for the PAnMBR}
+    \tabcolsep=0.11cm
+    \begin{tabular}{@{}p{7cm} p{4cm} p{5cm}@{}} \toprule
+        Variable  & Value & Unit \\ 
+        \hline
+        V: reactor volume & $\mathrm{70}$ & $ \mathrm{m^{-3}}$ \\
+        S\textsubscript{i}: concentration of soluble species i & Dynamic data & 383 $\mathrm{gCOD\, m^{-3}}$ \\
+        X\textsubscript{i}: concentration of particulate species i & Dynamic data & 260 $\mathrm{gCOD\, m^{-3}}$ \\
+        Q\textsubscript{f}: feed flow rate  & 14.110 $\pm$ 0.44 & $\mathrm{m^3\, d^{-1}}$\\
+        S\textsubscript{fi}: feed concentration of soluble species i & Dynamic data & \{gCOD, gN, gP, mol C\} m\textsuperscript{-3}\\
+        X\textsubscript{fi}: feed concentration of particulate species i & Dynamic data & gCOD m\textsuperscript{-3}: \\
+        Q\textsubscript{o}: liquid flow rate out & Dynamic data&  $\mathrm{m^3\, d^{-1}}$\\
+        $\mathfrak{R}$\textsubscript{i}: rate of reaction of species i & [-] & \{g COD, gN, gP, mol C\} m\textsuperscript{-3} d\textsuperscript{-1} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:cont_op_conditions}
+\end{table}
+
+
+
+
+\newpage
 \section{Results and discussion}
 Inoculum for all experiments cam from a lab-scale photo-anaerobic membrane bioreactor. Most organisms are related with $\alpha$\textit{-proteobacteria}, PPB accounting for greater than 70\% of gene copies detected by pyrosequencing. \textit{Rhodobacter sphaeroides} accounts for more than 60\% of the microbiota \cite{Hulsen2016}. Other photosynthetic organisms accounted for less than 1\% of the total gene copies, meaning that photosynthetic or phototrophic biomass was mostly PPB. 
 
@@ -302,8 +327,11 @@ The initial conditions of this simulation have been fixed and only the concentra
 \subsubsection{Fate of C, N and P}
 The model indicates different SCOD removal efficiencies for particular periods of operation (Fig. \ref{fig:ch2_dyn_sol} and \ref{fig:ch2_dyn_bio}). In general, adaptation to seasonal periods of variable wastewater composition is rapid, as can be shown in input values from Figs. 5 and 6. For periods (I) and (III), which correspond to no additional acetate in the system (average inlet SCOD of 293.1 ± 0.8 gCOD L\textsuperscript{-3}), the mean SCOD removal efficiency is 81\% (Fig. 5a) The remaining SCOD in the system can be mainly attributed to the presence of non-biodegradable SCOD, accounting for 71\% of the effluent SCOD. During period (II), acetate was added to align with the COD:N:P ratio required for full nutrient and organic uptake. Average SCOD removal efficiency slightly increased to 85\% due to the optimised feed conditions. As in period (I), the major part of remaining SCOD was soluble inerts (S\textsubscript{I}). The model, however, is unable to reproduce the PPB behaviour under a high excess of inlet SCOD concentrations since it is based on assimilative mechanisms only and accumulation processes are not included. PPB biomass is able to accumulate compounds such as glycogen or polyhydroxyalkanoates \cite{Melnicki2009}, so the SCOD removal efficiencies are expected to be higher and less dependent on nutrients in real cases \cite{Hulsen2016,Hulsen2016a}. An upgraded model including accumulative mechanisms is therefore needed for feed streams with high COD:N ratios. This model is nonetheless suitable for domestic wastewater treatment operation where N and P are usually in excess. 
 
+Nutrient assimilation was directly linked with biomass growth. The optimum assimilative COD/N/P relationship has been calculated to be 100/7.1/1.8 from batch experiments. Therefore, periods with non-optimal ratios are expected to have higher effluent nutrient concentrations. Under normal situation (periods (I) and (III)), with no additional acetate, nutrients were not completely removed and ammonium and phosphate efficiencies were 45\% and 56\%, respectively (Fig. 5b and c, respectively), averaging effluent concentrations of 23 gN m \textsuperscript{-1} and 2.5 gP m\textsuperscript{-3}, respectively. This justifies the need for extra SCOD addition, as has been previously described experimentally \cite{Hulsen2016}. Phosphorus was almost completely removed during C and N sufficiency during period (II), with removal efficiencies of 89\% (effluent concentrations of 0.5 gP m\textsuperscript{-3}). However, depletion of P prevented a high N removal due to nutrient imbalance, and so N removal efficiencies during these periods averaged 70\%, averaging effluent concentrations of 11 gN m\textsuperscript{-3}. Again, accumulative mechanisms may have a key role here, as PPB are able to accumulate poly-P (Liang et al., 2010). This mechanism is quite complex and has not been properly defined, particularly in mixed cultures and on wastewater sources.
 
+Production of biomass was related to PPB growth as well as input solids. Biomass fractionation (XPB, XS and XI) along the simulation period is depicted in Fig. 6. When acetate was not added, PPB biomass was produced at 26.9\% of the total biomass in the outlet (sludge line). Adding acetate increased this value up to 34.9\% of total biomass. Accumulation of XS within the reactor is a direct consequence of low hydrolysis coefficient in combination with short SRT. Additional substrate increased biomass concentration due to assimilation of the remaining N and P. This also boosted the SRT, and decay was more prominent, increasing XS concentrations up to values above 1000 gCOD m\textsuperscript{-3} (see stage (II) in Fig. 6). However the fraction of inerts, was always below 32\% of the total particulates concentration, probably due to the slow hydrolysis rate. These results have an important effect on energy distribution in the PRR platform since all energy balances are directly related with the biomass management through anaerobic digestion, and the relative amount of PPB will influence potential anaerobic degradability and biomass consistency. An important aspect identified by this continuous analysis is that the biomass fraction XPB is always relatively small, even when applying a settler (compared with activated sludge streams predicted by the ASM1). This is because the hydrolysis coefficient is very low (<0.1 d−1) compared with the levels of >2 d−1 typically applied in the ASM1, ASM2 and ASM2d \cite{Henze1987} (Henze et al., 2000). This means that while growth rates are comparable to activated sludge, hydrolysis rates are far lower, and hence metabolic activity is dominated by available soluble substrate (and possibly N and P) rather than electron acceptor availability. In any case, there will always be a large proportion of non-degraded particulates, due to the slow hydrolysis coefficient, and in a stable, solids dominated system, PPB sludge should be more analogous to primary sludge rather than activated sludge, with both negative and positive consequences.
 
+Simulation of biomass behavior has implications on biomass production upon main line biological treatment. There is a net increment of biomass production yield compared to typical activated sludge processes. This could have an impact in energy recovery (through biogas) but also in sludge waste disposal expenses, which can be partially counteracted by downstream production of high value-added bioresources as proteins, prebiotics and probiotics \cite{Matassa2015} or bioplastics (Padovani et al., 2016), as well as energetic resources as third generation liquid biofuels \cite{Castro2017}(Castro et al., 2016).
 
 
 \begin{figure}[tp]
@@ -321,7 +349,7 @@ The model indicates different SCOD removal efficiencies for particular periods o
 \end{figure}
 
 \section{Conclusions}
-
+Anaerobic phototrophic growth in domestic wastewater treatment is fast when  comparing specific uptake rates in activated sludge processes. 
 %\begin{instructional}
 %Add your text here. Use \verb|\cite| to add citation labels. Reference sections, tables, and figures using \verb|\ref|. Use %\verb|\eqref| for equations. The `section' symbol $\S$ is obtained using \verb|$\S$|. Figures and other floats are added using their %respective environments. Use \verb|\longtable| to split tables over page.
 %\end{instructional}
