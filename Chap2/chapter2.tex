@@ -190,8 +190,32 @@ The third simulation looked at the differences in specific photoautotrophic acti
 
 
 \subsubsection{Simulation of a phototrophic continuous system}
-The kinetic expressions developed in this study were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in medium strength wastewater was insufficient for the system to achieve TN and TP discharge limits \cite{Hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{Gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{Hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. An ideal primary clarifier was included, with a solids removal efficiency of 60\% $\pm$ 3\% \cite{Tchobanoglous}. The generation of realistic influent was done in Simulation and subsequent data processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations and data processing were done using SciPy, NumPy and Matplotlib in Python 3 \cite{Scipy2001, NumPy2011, Hunter2007a}. The \texttt{odeint} subroutine was sufficient for solving the stiff system of differential equations. The case was simulated for 609 days with 3 stages of differing SCOD concentrations. The dynamic influent after settling was applied directly during Stage I until day
-300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 (calculated in the Jupyter notebook) based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}.
+The kinetic expressions developed in this study were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in medium strength wastewater was insufficient for the system to achieve TN and TP discharge limits \cite{Hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{Gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{Hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. An ideal primary clarifier was included, with a solids removal efficiency of 60\% $\pm$ 3\% \cite{Tchobanoglous}. The generation of realistic influent was done in Simulation and subsequent data processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the simulations and data processing were done using SciPy, NumPy and Matplotlib in Python 3 \cite{Scipy2001, NumPy2011, Hunter2007a}. The \texttt{odeint} subroutine was sufficient for solving the stiff system of differential equations. The case was simulated for 609 days with 3 stages of differing SCOD concentrations (Table \ref{tab:cont}). The dynamic influent after settling was applied directly during Stage I until day
+300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. The simulation has been packaged into a Jupyter notebook at \textbf{Gitlab Release for PAM notebook}. For the continuous simulations, the balance equations Eq. \eqref{eq:cont} were modified to include flows, and it was assumed that a membrane would retain all particulate matter such that the solids retention time (SRT) was fixed.
+
+\begin{align}
+    V \frac{dS_i}{dt} \, &= \, Q_f (S_{fi} - S_i) + V \mathfrak{R}_i  \nonumber \\
+    V \frac{dX_i}{dt}\, &= \, Q_f (X_{fi} - X_i) + Q_o X_i + V \mathfrak{R}_i
+    \label{eq:cont}
+\end{align}
+
+
+\begin{table}[tp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.4}
+    \caption{Continuous operating periods for the PAnMBR}
+    \tabcolsep=0.11cm
+    \begin{tabular}{@{}p{2cm} p{4cm} p{5cm} p{2cm}@{}} \toprule
+        Phase & Condition & Value & Time (d) \\ 
+        \hline
+        I & DWW & 273 $\mathrm{\pm 1 \times 10^{-3}\, gCOD\, m^{-3}}$ & [150;300)\\
+        II & Acetate addition & 383 $\mathrm{\pm 2 \times 10^{-3}\, gCOD\, m^{-3}}$ & [300;450)\\
+        III & DWW & 260 $\mathrm{\pm 1 \times 10^{-3}\, gCOD\, m^{-3}}$ & [450;609]\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:cont}
+\end{table}
 
 \section{Results and discussion}
 Inoculum for all experiments cam from a lab-scale photo-anaerobic membrane bioreactor. Most organisms are related with $\alpha$\textit{-proteobacteria}, PPB accounting for greater than 70\% of gene copies detected by pyrosequencing. \textit{Rhodobacter sphaeroides} accounts for more than 60\% of the microbiota \cite{Hulsen2016}. Other photosynthetic organisms accounted for less than 1\% of the total gene copies, meaning that photosynthetic or phototrophic biomass was mostly PPB. 
@@ -275,8 +299,26 @@ The initial conditions of this simulation have been fixed and only the concentra
 \end{figure}
 
 \subsection{Continuous simulations}
+\subsubsection{Fate of C, N and P}
+The model indicates different SCOD removal efficiencies for particular periods of operation (Fig. \ref{fig:ch2_dyn_sol} and \ref{fig:ch2_dyn_bio}). In general, adaptation to seasonal periods of variable wastewater composition is rapid, as can be shown in input values from Figs. 5 and 6. For periods (I) and (III), which correspond to no additional acetate in the system (average inlet SCOD of 293.1 ± 0.8 gCOD L\textsuperscript{-3}), the mean SCOD removal efficiency is 81\% (Fig. 5a) The remaining SCOD in the system can be mainly attributed to the presence of non-biodegradable SCOD, accounting for 71\% of the effluent SCOD. During period (II), acetate was added to align with the COD:N:P ratio required for full nutrient and organic uptake. Average SCOD removal efficiency slightly increased to 85\% due to the optimised feed conditions. As in period (I), the major part of remaining SCOD was soluble inerts (S\textsubscript{I}). The model, however, is unable to reproduce the PPB behaviour under a high excess of inlet SCOD concentrations since it is based on assimilative mechanisms only and accumulation processes are not included. PPB biomass is able to accumulate compounds such as glycogen or polyhydroxyalkanoates \cite{Melnicki2009}, so the SCOD removal efficiencies are expected to be higher and less dependent on nutrients in real cases \cite{Hulsen2016,Hulsen2016a}. An upgraded model including accumulative mechanisms is therefore needed for feed streams with high COD:N ratios. This model is nonetheless suitable for domestic wastewater treatment operation where N and P are usually in excess. 
 
 
+
+
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{./Chap2/simulations/dynamic_output.jpg}
+    \caption{}
+    \label{fig:ch2_dyn_sol}
+\end{figure}
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{./Chap2/simulations/dynamic_biomass.jpg}
+    \caption{}
+    \label{fig:ch2_dyn_bio}
+\end{figure}
 
 \section{Conclusions}
 
