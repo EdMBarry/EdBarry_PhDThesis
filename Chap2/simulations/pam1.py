@@ -15,7 +15,7 @@ def monod(S, KS):
     return S / (KS + S)
 
 
-def pam_batch(y, t, G850_, kMIC_):
+def pam_batch(y, t, u):
     """ Definition of the system of differential equations to integrate."""
     
     # Unpack the states
@@ -59,7 +59,7 @@ def pam_batch(y, t, G850_, kMIC_):
     kMAC = 2.375         # d-1
     kMPH = 1.435         # d-1
     kMCH = 7.386e-2      # d-1
-    kMIC = kMIC_        # mol HCO3-C/mgCOD/d
+    kMIC = u[0]        # mol HCO3-C/mgCOD/d
     #kMCH = 7.386e-1      # d-1
     #kMIC = 3.410e-6        # mol HCO3-C/mgCOD/d
 
@@ -76,7 +76,7 @@ def pam_batch(y, t, G850_, kMIC_):
     YPBAU = 40320.00           # mgCOD/molHCO3-C
 
     KSE = 8.76                 # W/m2
-    SE = G850_                     # W/m2
+    SE = u[1]                    # W/m2
     fICDEC = -1.98412698412703E-07 # mol C-HCO3 / mgCOD
     fINDEC = 0.058                 # mgNH3-N / mgCOD
     fIPDEC = 0.01                  # mgPO4-P / mgCOD
