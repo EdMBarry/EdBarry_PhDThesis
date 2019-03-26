@@ -15,7 +15,7 @@
 \captionsetup{justification=raggedright,singlelinecheck=false}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.25}
-
+\newcommand*{\skippingparagraph}{\par\vspace{\baselineskip}\noindent}
 
 %You must have the memoir class installed.
 %
@@ -76,6 +76,7 @@
 \input{front.tex}
 
 % ********* Main matter begins ***************
+\raggedbottom
 \mainmatter
 
 %Each chapter is a separate .tex file. Use \input to load them here.
