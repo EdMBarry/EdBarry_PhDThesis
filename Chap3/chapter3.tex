@@ -67,13 +67,13 @@ Modelling phototrophic systems is important for design, prediction and optimisat
 \label{sec:ch3_intro}	%CREATE YOUR OWN LABEL.
 
 There has been an increase in interest in photobioreactor (PBR) systems in recent years as they have proven to be effective in waste treatment and resource recovery \cite{Hulsen2016a, Hulsen2016} and renewable energy generation \cite{Adessi2014}. However, PBRs have not achieved major penetration in this sector, mainly due to high capital and operating costs, with effective light delivery being a major issue in both artificial and natural light systems. To offset these costs, research has shifted to the creation of valuable products instead of solely recovering nutrients. For example, complex organics, including pigments in algae \cite{Borowitzka2013} and purple phototrophic bacteria (PPB) have value, and they can be used to produce fertilisers and animal feeds as microbial protein \cite{Matassa2016, Matassa2015}. Due to promise in multiple product lines, as well as the ability to treat wastewater purely through assimilation, PBRs will have an increased potential role in future resource recovery facilities.
-
+\skippingparagraph
 One of the critical barriers to practical implementation of PBRs is that of size scaling \cite{AcienFernandez1999}, with light delivery at larger scale being a particular issue. This is due to the complex interactions between different physical processes occurring in PBRs. These include fluid hydrodynamics, radiation delivery, and biomass growth. A method to address this is by scaling prototype reactors. This approach is important, however effective modelling can accelerate development and lead to better reactor performance \cite{Perez-Castro2016}. 
-
+\skippingparagraph
 Several approaches to PBR modelling have been explored, with the majority of cases considering biokinetics as the controlling mechanism for process design and optimisation, generally implemented in a lumped parameter (\textit{i.e.} completely stirred tank or plug flow) model \cite{Bechet2013, Puyol2017}. Distributed parameter modelling (\textit{i.e.} the consideration of both spatial and temporal variations) have been considered in limited cases \cite{Bitog2011}. This means that the coupling between fluid flow, biokinetics and radiative transfer can be explored in more detail, and operational non-uniformities can be detected for given reactor designs without the need for physical prototyping \cite{Bitog2011}. Distributed parameter models have been successfully used to screen for problems in the scale-up of chemical process reactors \cite{Santoro2017}. Modelling is particularly useful when combined with computational fluid dynamics (CFD), generally implemented using a finite volume method (FVM) \cite{Versteeg1995}. The FVM is generally favoured due to its ability to implement non-uniform grid discretisation and because states are inherently conserved. As such, the use of the FVM for PBR modelling has seen a substantial increase over recent years \cite{Bitog2011}. Publications related to this explore the coupling of the physics to varying degrees. Most of the available works are exercises in fluid flow description, only qualitatively (not explicitly) assessing the effect of the flow field on the biomass activity \cite{Kayahan2016, Ali2015, Wang2014}. More rigorous studies exist, where the links between fluid flow, radiation, and biokinetics are explicitly simulated in the CFD framework. For example, previous work has looked at a multiphase hydrodynamic model integrating radiative transfer and algal biokinetics into both Eulerian and Lagrangian flow field specifications \cite{Gao2016, Gao2017}. The model could effectively represent experimental results, and demonstrated the useful nature of a multiphysics approach to PBR modelling. All studies considered to date have dealt with microalgal PBRs, and none have considered PPB (\textit{i.e.} IR-driven systems) when developing PBR models. 
-
+\skippingparagraph
 Due to the spatially varying nature of the radiative field, it is likely that lumped parameter modelling approaches do not effectively describe the behaviour of PBRs. In cases where a complete-mixed assumption is made, and the modelling results are validated against pilot or large scale data. Growth and uptake parameters are aggregate and system-specific, rather than generalisable properties (\textit{i.e.}, uptake or growth rate may depend on assumed intensity). Specifically, the exponentially decaying nature of the radiative field along a length dimension into the domain means that the acquired parameters are highly dependent on geometry, and may not be inherently related to biokinetics. 
-
+\skippingparagraph
 Despite potential improvements in PBR understanding due to CFD modelling, a disadvantage of this approach is the computational time and resources required. There is also limited description of generalisable approaches and code in the literature. This study attempts to address these limitations by developing a generalised reactive CFD approach to photobioreactor systems, and applying it in single and multiphase configurations. The CFD model describes the fluid hydrodynamics, radiative transfer and process biokinetics. As a lumped parameter model is commonly applied to PBR assessment, this is particularly assessed, to identify whether variations on lumped parameter modelling approaches can effectively represent the coupled multiphysics description provided by CFD simulations.
 %The first lumped parameter system includes the assumption that the nominal incident irradiance is uniform throughout the solution domain (\textit{i.e.} an unambiguous CSTR), and the second approach uses the Beer-Lambert relationship. This is an approximation which considers a uniform irradiance value halfway into a 1-dimensional domain (\textit{i.e.} the region where each particle in a well mixed system would spend the majority of its time).
 \newpage
@@ -142,7 +142,7 @@ The RANS equations for the steady-state conservation of momentum is expressed as
 \end{align}
 % 
 where $\nu$ is the kinematic viscosity and $\rho$ is the density of the fluid, which remain fixed for the cases considered in this study. The turbulent (eddy) viscosity, $\nu_T$ results from the velocity fluctuations and represents the increased diffusivity due to turbulent mixing. Most often, two-equation turbulence models are used to determine the eddy viscosity, since they give a reasonable balance between accuracy and computational cost \cite{Versteeg1995}.
-
+\skippingparagraph
 The eddy viscosity is defined through the Boussinesq hypothesis, given as 
 
 \begin{align}
@@ -151,9 +151,9 @@ The eddy viscosity is defined through the Boussinesq hypothesis, given as
 \end{align}
 
 where the overbar represents a time-average, $k$ is the turbulent kinetic energy, and $\delta_{ij}$ is the Kronecker delta function. In practice, the eddy viscosity is defined by the solution of turbulence model equations. Most often, two-equation turbulence models are used, which give a reasonable balance between accuracy and computational cost \cite{Versteeg1995}. 
-
+\skippingparagraph
 In this work, the $k-\omega$ SST model of \cite{Menter1994} is used. This model implements a blending between a $k-\omega$ formulation in the near-wall region and a $k-\epsilon$ formulation in the free-stream region. This avoids the need for damping functions near the wall that are required for $k-\epsilon$ models and avoids problems with sensitivity to free-stream conditions that occur with standard $k-\omega$ models.
-
+\skippingparagraph
 The governing equation for the turbulent kinetic energy, $k$, is as follows \cite{Menter1994}
 
 \begin{align}
@@ -170,7 +170,7 @@ where $\beta^*$ and $\sigma_k$ are constants, $\tilde{P_k}$ is the production ra
 \end{align}
 %
 where $\alpha$, $\beta$, $\sigma_\omega$, and $\sigma_{\omega 2}$ are constants, $S$ is the invariant of the strain rate tensor, and $F_1$ is a blending function.
-
+\skippingparagraph
 With the solutions of Eqs.\ \ref{eq:k} and \ref{eq:omega}, the eddy viscosity is then calculated according to
 
 \begin{align}
@@ -178,7 +178,7 @@ With the solutions of Eqs.\ \ref{eq:k} and \ref{eq:omega}, the eddy viscosity is
 \end{align}
 %
 where $a_1$ is a constant and $F_2$ is a blending function \cite{Menter1994}. Values of all constants and auxiliary functions can be found in the work of Menter, 1994 \cite{Menter1994}.
-
+\skippingparagraph
 The RANS equations also require wall functions to specify the near wall velocity when the viscous sublayer is not fully resolved by the mesh. The wall functions here implement a blending of viscous and log-law profiles, such that they are robust to mesh refinement, which is an important factor in separating discretisation and modelling errors \cite{Menter2003}.
 
 \subsubsection{Hydrodynamic boundary and initial conditions}
@@ -195,20 +195,20 @@ Radiation delivery remains one of the major process bottlenecks to the design an
 \input{Equations/rte}
 
 \noindent where $I_\lambda$ is the spectral radiation intensity for wavelength $\lambda$, $\mathbf{r}$ is the position vector, $d\Omega$ is a differential solid angle that is centred along the vector $\mathbf{s}$, $s$ is the distance along $\mathbf{s}$, $\kappa_\lambda$ is the spectral absorption coefficient, and $\sigma_{\lambda,s}$ is the spectral scattering coefficient. The first term on the right accounts for black-body radiation. As we are accounting for either solar or artificial optical radiation, and relatively low temperatures of operation ranging between 4 \degree C and 40 \degree C, this term has been omitted from the solution. The second term on the right hand side accounts for absorption and scattering,  which combine to create the extinction term. For each participating species within the liquid phase, we can include an extinction term, which sum to that shown in Eq.\ \ref{eq:RTE}. The third term accounts for in-scattering through the phase function $\Phi_\lambda$. 
-
+\skippingparagraph
 There are several phase functions which have proven useful for photosynthetic media conditions: Henyey-Greenstein (HG) \cite{Kong2014}, truncated phase function (TPF) \cite{Berberoglu2007}, and the Schlick model (SM) \cite{Jarosz2008}. \cite{Jarosz2008} found that in the field of computer graphics and animations, the Schlick model was less computationally expensive but was still able to approximate the effects of anisotropic scatterings to the same standard as the HG model. The Schlick model is defined as;
 
 \input{Equations/schlick}
 %
-where $k \, \in [-1;1]$ and $\theta \, \in [0;\pi]$. The parameter $k$ implies an average cosine of scattered angles with a positive value giving preference to forward-scattering, a negative value giving rise to back-scattering, and a null value denoting isotropic scattering. The angle $\theta$ is the scattering angle of a ray.\\
-
+where $k \, \in [-1;1]$ and $\theta \, \in [0;\pi]$. The parameter $k$ implies an average cosine of scattered angles with a positive value giving preference to forward-scattering, a negative value giving rise to back-scattering, and a null value denoting isotropic scattering. The angle $\theta$ is the scattering angle of a ray.
+\skippingparagraph
 
 The implementation of the RTE in the form of Eq.\ \ref{eq:RTE} does not translate readily to photobioreactors, where multiple multiple participating species may exist, with different extinction coefficients. The expression has therefore been modified to include the participating species within a photosynthetic medium along with their specific absorption and scattering coefficients, which have been combined into a global spectral extinction coefficient ($E_j$) associated with each participating species $X_j$. The modified RTE, with the black-body radiation term omitted, is given as
 
 \input{Equations/rteSimplified}
 
 Custom software libraries, given the name \texttt{photoBio}, were written in order to extend or replace parts of the existing radiation libraries in OpenFOAM to suit the purpose of this study. As an example, in the standard OpenFOAM implementation, the radiative field is specified by temperature boundary conditions, while the irradiance can be specified directly in the customised solver.  Another novelty in the custom \texttt{photoBio} library was that models needed to accept all participating media as input. The absorption and scattering expressions were therefore extended to allow for any number of species in a mixed-culture multiband system as shown in Eq.\ \ref{eq:rteSimplified}. Finally, the scope for the inclusion of phase scattering functions was adapted from previously built libraries of \cite{Kong2014}. The Schlick model was added to this list of functionality, and was used for the cases shown in this study.
-
+\skippingparagraph
 The particular method used for the resolution of the radiative field was the finite volume discrete ordinates method (fvDOM), renamed to \texttt{photoBioDOM} in the custom libraries that were written. The fvDOM is the conservative formulation of the discrete ordinates method \cite{Raithby1990}, which allows the solution method to be implemented within the same finite volume framework as the flow and biokinetics models.
 
 
@@ -243,7 +243,7 @@ Biokinetics were taken from a lumped parameter model \cite{Puyol2017}. This cons
 \end{align}
 
 \noindent where $\mathbf{U}$ is the frozen velocity field of the fluid phase, $\mathcal{D}_{\phi}$ is the diffusivity coefficient of scalar $\phi$ in water, and $r_{\phi}$ represents the generation or consumption terms, as previously defined in \cite{Puyol2017}. The diffusivity of the solid species was set to $10^{-11} \mathrm{m^2 s^{-1}}$ for stability purposes.
-
+\skippingparagraph
 The term $r_\phi$ for each state variables includes a Monod term ($\zeta_I$) with respect to irradiance (I) at any point in space (Eq. \eqref{eq:monodG850}). This means that the radiative field, and the biokinetic expressions have an interdependence which must be considered in the solution procedure.
 
 \begin{align}
@@ -266,7 +266,7 @@ The solution procedure shows the order in which the governing equations are solv
 \end{figure}
 
 The flow field is solved first. The assumption that the solid species do not participate in the flow field can be made for PBRs which have relatively low total suspended solids concentrations compared with other activated sludge processes \cite{Bitog2011}. The solver then enters a coupled radiation-biokinetics loop in which the radiative field is updated every 15 minutes of simulated time. A solution procedure that updated the radiative field at every time step was tested, but was prohibitively slow, and it was found to be unnecessary to update at such high frequency. Since the change in radiative properties due to biomass growth occur over an extended time frame, the update interval was found to not substantially influence the results.
-
+\skippingparagraph
 
 The solver used for these simulations is the \texttt{pamFoam} solver: a multiphase, multiphysics implementation of a finite volume hydrodynamics, radiation, and biokinetics solver, which is built upon version 5.0 of the OpenFOAM framework, a collection of C++ libraries for solving continuum mechanics problems \cite{of50}. The solver and run-time dictionaries have been released under the AGPL-3 license, and can be accessed online (https://gitlab.com/leboucher/pamFoam/tags/v5.1.0). The solver incorporates a custom radiation transport library built upon the finite volume discrete ordinates method \cite{Raithby1990}, but adapted for use with phototrophic models. Its source code can also be found online (https://gitlab.com/leboucher/photoBio/tags/v5.1.0). The solid and soluble species were implemented as passive scalar transport equations.
 
@@ -292,6 +292,7 @@ Findings from other studies \cite{Kong2014} have shown that volumes within a rea
 \subsection{Short-term particle radiation dynamics}
 \label{ssec:strf}
 The short term particle radiation dynamics result from the fluid field moving biomass particles within the heterogeneous radiative field as shown in Fig. \ref{fig:G850_short}. The first column (a,c) corresponds to the particle radiation dynamics of the FPR, with the same data being represented as a dynamic plot (a) and a frequency histogram (c). The second shows the parallel results for the CR. This demonstrates that biomass in both reactors is subject to on-off irradiance cycles on the order of 3-5 s, with an amplitude of 20 $\mathrm{W m^{-2}}$. However, the dynamics are quite different, with particles in the FPR being irradiated for longer, and with a higher base-line (5 $\mathrm{W m^{-2}}$ in the FPR compared with 0 $\mathrm{W m^{-2}}$ in the CR). This indicates that in the FPR, particles are effectively always irradiated at a minimum level, whereas in the CR,  there is complete on-off cycling. 
+
 \begin{figure}[tp]
 \centering
 %\hspace*{-2cm} 
@@ -314,11 +315,11 @@ Four comparative simulations were done to assess the full Eulerian solution (as 
 \end{enumerate}
 
 In the first two cases, no CFD is required, while in the latter two cases, CFD is required to identify the particle radiation exposure pattern, and for the integrated model respectively. The first two cases were explored because certain studies have taken modelling approaches using lumped parameters based on single values of uniform irradiance, with little information as to the spatial distribution of the radiative intensity field. This has been applied using either the surface incident exposure \cite{Uyar2007, Zhou2014}, or volume averaged irradiance \cite{Molina-Grima1996, Bordel2009}. This can lead to an over-prediction when reporting growth rates.
-
+\skippingparagraph
 The biomass concentrations (in mgCOD/L) are shown for the various modelling approaches for both systems (Fig. \ref{fig:growth_evol}(a, b)). These demonstrate light-limited, fairly uniform growth rates towards the substrate depletion point where the growth stops (\textit{i.e.} a batch system). The uniform irradiance approaches generally over-predicted growth rates, particularly in the cylindrical reactor (where irradiation was fundamentally less efficient). The dynamic exposure approach was generally effective in representing biomass profiles, but with a clear deviation with respect to the full CFD approach. Specifically, there were slightly slower growth rates for ODE3 vs CFD. This is somewhat surprising since the final attenuation is higher in the full CFD approach when compared with ODE3 (due to biomass growth), but could be explained by the fact that this attenuation is due to biomass exposure rather than water attenuation. Therefore the light is not "lost", but rather used during attenuation.
-
+\skippingparagraph
 Fig. \ref{fig:growth_evol}(c-f) shows the uptake concentration of soluble substrates of the same simulations. Again, the hybrid approach (ODE3) is most effective compared with CFD, but there are substantial deviations for all three ODE approaches. The large deviations for substrate $\mathrm{S_{AC}}$ (Fig. \ref{fig:growth_evol}(c, e)) and $\mathrm{S_S}$ (Fig. \ref{fig:growth_evol}(d, f)) are most likely caused by inhibition of each respective uptake process (photoheterotrophic uptake for acetic acid, and for other organics) caused by the presence of the other soluble compound class. This, combined with the difference in uptake rates for acetate uptake ($\mathrm{2.4\, d^{-1}}$) and photoheterotrophic uptake ($\mathrm{1.4\, d^{-1}}$) \cite{Puyol2017} mean that based on the amount of light available in the system, different behaviour can occur.  
-
+\skippingparagraph
 The full ODE approach (ODE1, ODE2), as stated above, is the most common approach, taking either surface irradiation \cite{Uyar2007, Zhou2014}, or an approximated reduced average irradiance \cite{Lee1987, Molina-Grima1996, Bordel2009}. This provided unsatisfactory results, particularly in the simplified CR. With respect to growth rates, and in an actual system, these variations would be absorbed by biochemical parameters, making them non-transferable to other systems. A system can only be effectively approximated with a lumped parameter modelling approach if the reactor is not only well mixed, but also well serviced with a uniform irradiance which can be measured effectively. This would likely not be an effective photobioreactor field design, but these factors also mean that some care must be taken even in laboratory systems when determining biological parameters, since the surface measured irradiance will almost certainly not be the \textit{in situ} irradiance. This would have an impact on biomass growth parameters. 
 
 \begin{figure}[tp]
@@ -335,12 +336,12 @@ The dynamic irradiance approach (ODE3) was far more effective in biological simu
 \subsubsection{CFD considerations}
 There are three main limitations of the study with respect to the CFD implementation. Firstly, while gas and liquid phases have been modelled and biochemical state variables have been segregated in the liquid phase, the effect of biological activity on the gas field have not been incorporated. The mass transfer between phases was also not considered in this case. Including mass transfer models is important for photoautotrophic (gas fed) or photosynthetic ($\mathrm{CO_2}$) growth. Any mass transfer model is dependent on how the dispersed gas field is solved. Here, a uniform bubble Eulerian approach was taken, but an alternative that considers bubble size distribution such as population balance modelling could lead to an improvement in prediction of mass transfer. A better represented bubble size distribution would also allow analysis of its dynamic effects on the radiative field.  
 This model considers planktonic biomass modelled as passive scalars. The momentum coupling would not substantially change interaction with the radiative field. However, an important possible extension is the inclusion of a spatially explicit biofilm. The current model lends itself well to include a continuum based biofilm model as a module in a broader continuum-based phototrophic growth model. 
-
+\skippingparagraph
 As the biomass has been implemented as passive scalars, the effects of changes in biomass concentration on the flow fields have not been quantified (\textit{i.e.}, does not affect rheology, density or momentum). This could be incorporated through an upgrade of the biomass from scalar to dispersed phase. Modelling the solid system in a Lagrangian framework can also link the particulate species with a set of physical information, such as particle density and diameter. The particulate species as they are currently modelled could also be linked to a particulate density, which would then have an effect on the flow field. 
 
 \subsubsection{Biochemical system limitations}
 This system differs from photosynthetic algae or cyanobacteria, where photosynthetic organisms may be in multiple states (excited, photoinhibited or resting) \cite{Bechet2013}. The state depends on the radiative intensity and the light history of the organisms. In addition, nitrogen storage becomes an important factor \cite{Bernard2011}. The short-term particle radiation dynamics as observed here are even more important in photosynthetic systems, where the transition in biological state adds another system dynamic which is on the same speed order as the cycling speed. Therefore, consideration of photo-dynamics is even more important when simulating white light systems, since, as discussed above, enzyme response is extremely fast (and photo-dynamics do not interact with this), while a change in photo-state is far slower. Photo-inhibition is another important factor not considered in the current model. The current system was irradiated with 30 $\mathrm{W m^{-2}}$, and photo-inhibition has been reported to start occurring closer to 900 $\mathrm{W m^{-2}}$ \cite{Miyake1999}. Updating the model to include photo-inhibition terms would increase the range of applicability of the model to outdoor PBR systems, and is an important factor for white light systems as discussed above. The time constant for recovery from photo-inhibition may make this a more complex response function, and increase the importance of considering photo-dynamics. 
-
+\skippingparagraph
 This model was simulated looking at a single radiation band at 850 nm. In reality, the growth of PPB depends on other wavelength bands, including 375 nm and 590 nm (facultative carotenoids) and the near infrared band ranges from 830 nm to 900 nm \cite{Overmann2006}. Upgrading the biochemical model to include the growth on several different wavelengths would lead to resolution of important aspects, including increased and differential attenuation of higher energy radiation. However, assigning fixed behaviour to organisms which can adapt to different environmental conditions, such as the growth or loss of chromaphores due to low or high intensity radiative fields, means that there will always be a level of uncertainty which cannot be described by the model. 
 
 %%%% Conclusions
@@ -349,12 +350,12 @@ This study has looked at two different reactor setups; a flat plate reactor (FPR
 \begin{enumerate}
     \item ODE1: An ODE system taking a uniform radiative field equal to that of the incident irradiance.
     \item ODE2: An ODE system taking a uniform radiative field equal to its value halfway into the domain as solved by the radiative transfer equation here, or alternatively by a Beer-Lambert relationship.
-    \item ODE3: An ODE system taking as input a dynamic irradiance experienced by a particle as it is carried by the velocity %field in the reactors.
-    \item CFD: A full Eulerian CFD approach accounting for fluid flows, radiative transfer, and the system of biochemical %equations for purple phototrophic bacteria.
+    \item ODE3: An ODE system taking as input a dynamic irradiance experienced by a particle as it is carried by the velocity field in the reactors.
+    \item CFD: A full Eulerian CFD approach accounting for fluid flows, radiative transfer, and the system of biochemical equations for purple phototrophic bacteria.
 \end{enumerate}
 
 The first two approaches tended to over-predict growth rates, meaning that the spatial variations within PBRs are important to consider, and local effects can have an impact on the overall solution. The results for ODE3 were similar to those for the full Eulerian CFD solution, irrespective of reactor geometry. This approach presents an appropriate compromise when computational resources are scarce, however the full Eulerian approach provides the complete interpretation for the PBR systems, with scope to expand on this model with more physical processes. 
-
+\skippingparagraph
 Several limitations to the study were identified, and were classed in two categories; CFD limitations and biochemical modelling limitations. The CFD limitations were that mass transfer in multiphase systems was not solved, and the model was developed as a planktonic model with passive scalars, limiting the description of physical processes such as biofilm development and effects on the flow field due to changes in density. The biochemical limitations extended on previous work to highlight the adaptive changes of pigment production in response to the radiative field, and the effects of photoinhibition on uptake rates.
 %CFD including photo-attenuation identified that particles were subject to both short and long-term irradiative dynamics, the former due to cycling through light-dark regions, and the latter due to overall biomass growth. A biologically coupled CFD solution versus uniform irradiance ODE approaches (as commonly applied) found the latter could not effectively predict dynamics of growth in batch. A compromise (which identified particle irradiation dynamics from non-coupled CFD) was effective, but the computational effort approached the full CFD method.
 
