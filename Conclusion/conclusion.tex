@@ -64,7 +64,9 @@ The CFD model presented in chapter \ref{chap:chap3} essentially described the be
 
 
 \subsection{A study into data-driven design of photobioreactors}
-
+For photobioreactors to graduate from lab and pilot-scale installations to full scale installations, optimisation routines must be performed. Data driven optimisation through machine learning algorithms can be employed by training on operational data, learning from how differences in the operation leads to an array of outputs, and building a corresponding black box model. The resulting model is calibrated and validated on unique operational data \textbf{Cite machine learning 101}. There is a range of approaches to data driven design, including Bayesian network learning \cite{Hu2018}, convoluted neural networks \cite{RioChanona2019}, or deep neural networks \cite{Deepa2018}. Many software companies have released the source code of their statistical learning software libraries so that users can develop models at a high level of abstraction, while achieving near bare metal performance.
+\skippingparagraph
+A limitation of applying statistical learning methods for photobioreactor design is that large volumes of data are required before models can make any meaningful sense. With the lack of full scale photobioreactor installations, the modelling framework developed in this thesis could provide full scale installation training and testing data sets, although more laboratory work is required for model calibration and validation. There has been a recent attempt at training a convoluted neural network model on pilot-scale photobioreactor data generated from CFD simulations \cite{RioChanona2019}. This study concluded that for different outcomes (maximised biomass growth or maximised biofuel production), different operating conditions were required. In a broader context, the findings concluded that the coupling of hydrodynamics, radiation, and biokinetics was highly important to the operation of the pilot-scaled photobioreactor, as confirmed in the statistical model. 
 
 
 \subsection{Numerical improvements to the models}
