@@ -45,13 +45,14 @@ This general CFD framework for phototrophic and photosynthetic organisms has bee
 
 
 \section{Outlook and future work}
-\subsection{Quantification of the effects of radiation intensity on PPB growth}
-
-
-
-
-
-\subsection{Quantification of the effects of optical wavelength on PPB growth}
+\subsection{Quantification of the effects of radiation intensity and frequency on PPB growth}
+Monod kinetics were assumed for phototrophic growth throughout this study. The half saturation parameter (K\textsubscript{S,E} = 8.76 W m\textsuperscript{-2}) for irradiance was taken from the literature as wild-type \textit{Rb. sphaeroides} based on an average wavelength of 850 nm \cite{Eltsova2016}. Comparisons were made with a LHII deficient strain which concluded similar results for growth on acetate and lactate. This work would benefit from a study into photoinhibition from an excess of photons. Some studies have observed that photoinhibition starts to occur at solar irradiances of around 1000 W m\textsuperscript{-2}, a common irradiance solar irradiance during midday at about the 42\textsuperscript{nd} parallel (Rome, Madrid, Boston, Wellington \etc) \cite{Adessi2014a,Miyake1999}. 
+\skippingparagraph
+Different radiative intensities could be desired for different biotechnological applications. For example, if the main goal of a PBR is to treat wastewater to discharge limits, then irradiances which foster a high growth rate would be preferred. There would be a maximum concentration of biomass, above which the performance of the reactor would be limited due to self shading. A completely different radiative intensity might be desired if the goal of the PBR is to produce a certain quantity of pigments or other proteins for use as a basis for high value products.
+\skippingparagraph
+In order to determine these operating limits, a high throughput batch processing method needs to be developed. As concluded in this thesis, the presence of a radiative intensity field means that spatial variations influence the operation of PBRs. It follows that the determination of biokinetic parameters should be revised by carrying out batch tests on small volumes where the radiative field is as uniform as possible. This has been implemented for high throughput algae batch processing \cite{VanWagenen2014}, however as this system is predominantly anaerobic, logistical questions remain as to how to eliminate oxygen throughout growth and measurement cycles.
+\skippingparagraph
+Similarly to radiative intensity, different wavelengths can lead to different product outcomes, and an assessment is required to understand how wavelengths can influence phototrophic growth in a mixed culture system. Studies have been carried out to assess the growth and pigment production of PPB in pure cultures, however these results can not be reproduced on mixed culture systems \cite{Kuo2012}. This is due to the influent containing organisms other than PPB, which can dominate the population when solely white light is used \cite{Hulsen2015}. The previous studies don't assess the implications of combining infrared and selected visible wavelength bands. These considerations could be important for different applications using mixed culture PPB. 
 
 
 \subsection{Consideration of mass transfer between gas and other phases}
@@ -69,7 +70,7 @@ The radiation models can also be upgraded to account for the effects of scatteri
 \end{enumerate}
 This solution approach would allow us to describe the behaviour of the radiative field when dynamic bubbles are present, without having to resolve the RTE at each time step of the simulation.
 \skippingparagraph
-
+Using CFD to simulate photon transport has been important to gauge performance for UV disinfection simulations \cite{Crapulli2010}. It has been shown that the effects of differing refractive indices can have a significant effect on the outcome of simulations \cite{Ho2009}. Along with bubble dynamics, this is another reason why the model is currently being upgraded to include radiation transport through media with different refractive indices.
 
 
 \subsection{Description of a suspended phototrophic solid phase}
@@ -85,6 +86,10 @@ A limitation of applying statistical learning methods for photobioreactor design
 
 
 \subsection{Numerical improvements to the models}
+There are a number of improvements which can be made to the solver for general usability, and for improvements in computational efficiency. This model is based on 10 biokinetic scalar equations. The encoding of these equations is cumbersome, especially in a CFD context where one has to define both time and space varying terms. In more chemically complex systems, such as advanced oxidation processes, there could be hundreds of state variables in the system, and the encoding of these terms would almost certainly produce software bugs through manual errors. By designing the code so that the user can upload a Petersen matrix and the scalar equations are subsequently generated, many encoding errors could be avoided. Work has previously been done for CFD anaerobic digestion models where balance equations are defined at run time \cite{Gaden2013}, however this work could be extended to compile with updated versions of OpenFOAM and to work with uploaded Petersen matrices.
+\skippingparagraph
+The performance of the radiation solve could be improved for efficiency. The fvDOM is memory intensive, storing all intensity fields. A dynamic allocation/reallocation could be used depending on the physical memory of the computational system. If a system has low memory capacity, fields could be written to disk when not in use. A balance would have to be found between file input/output operations and memory management. At the time of writing, OpenFOAM has high overhead associated with read/write operations, however improvements have been made to I/O handling for parallel simulations such that a single file is written per field per timestep, rather than N I/O operations for N processors \cite{openfoam_foundation_ltd_openfoam_2017}. 
+
 
 \section{Concluding statement}
 
