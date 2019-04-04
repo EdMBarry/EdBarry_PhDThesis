@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Change filename and pattern to suit your needs
+# Pattern currently captures the following sequence of letters
+    # use A as the example of the capital letter
+
+    #    A + {A or 9 or . or & or +} + A + anything
+    # caught acronyms: WWF, T&C, N.S.W, N+P, rbCOD
+
+# Options used
+#     -o   print only the offending characters
+#     -n   print the line number
+#  You can concatenate the options: -on == -no == -o -n
+
+FILENAME=masterfile.pdf
+PATTERN="([A-Z][a-zA-Z0-9+\.\&]*[A-Z0-9])\W"
+pdfgrep -on $PATTERN $FILENAME | awk '!a[$0]++' > abbrevs.csv
+
+
+# Do the same thing for the non ascii characters
+# This prints the line number and the character.
+
+# Change filename and pattern to suit your needs
+
+FILENAME=masterfile.pdf
+PATTERN="[^[:ascii:]]"
+
+pdfgrep -onP $PATTERN $FILENAME | awk '!a[$0]++' > nonAscii.csv
+
