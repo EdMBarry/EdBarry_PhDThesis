@@ -148,7 +148,19 @@ Soluble substrates exist in both the volume of liquid, and the biofilm volume. T
 \frac{\partial S_i}{\partial t} = \mathcal{D}_i\nabla^2 S_i + r_{i}
 \end{equation}
 
-where $S_i$ is the soluble species $i$, $\mathcal{D}_i$ is the diffusion coefficient of species $i$, and $r_i$ is the corresponding consumption/release equation \cite{Puyol2017}. 
+where $S_i$ is the soluble species $i$, $\mathcal{D}_i$ is the diffusion coefficient of species $i$, and $r_i$ is the corresponding consumption/release equation \cite{Puyol2017}.
+
+The transport equations for the soluble and particulate species may be written as follows,
+\begin{equation}
+\label{eq:solublesD}
+\frac{\partial S_{\Phi}}{\partial t} + \nabla (\phi S_{\Phi}) - \nabla \cdot (D_{\Phi} \nabla S_{\Phi}) = \Gamma_{\Phi}, 
+\end{equation}
+\begin{equation}
+\label{eq:particulate}
+\frac{\partial X_{\Phi}}{\partial t} + \nabla (\phi X_{\Phi}) - \nabla \cdot (D_{\Phi} \nabla X_{\Phi}) = \Gamma_{\Phi}, 
+\end{equation}
+where, S is the soluble species and $\mathrm{\Phi}$ = SI, SH$\mathrm{_2}$, SIC, SAC, SIN, SIP and SS; X is the particulate species and $\mathrm{\Phi}$ = XPB, XS and XI; $\mathrm{D_{\Phi}}$, and $\mathrm{\Gamma_{\Phi}}$ are the diffusivity, and growth rate of species $\mathrm{\Phi}$, respectively.  
+
 
 \subsection{Growth of particulate matter}
 The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulates}) have been previously defined \cite{Puyol2017}.
@@ -161,14 +173,49 @@ The growth of particulate matter forms the biofilm structure and influences the 
 
 where 
 
-
-\subsection{Pressure term}
-The pressure term drives the advection of the biofilm front. It depends on the growth or decay of the solid species. All terms in this equation (Eq.~\ref{eq:pressure}) have already been defined. 
+\subsection{Hydrodynamics}
+\label{Hydro}
+The multiphase flow may be calculated employing the mixture mass, momentum and continuity equations as follows,
 
 \begin{equation}
-    \label{eq:pressure}
-    -\nabla^2p = \sum_{i=1}^{N_{\theta_i}} \frac{g_i}{\rho^*}
+    \label{eq:continuity}
+    \nabla \cdot U = \Gamma,
 \end{equation}
+
+\begin{equation}
+    \label{eq:mass}
+    \frac{\partial \alpha}{\partial t} + \nabla\cdot (\phi \alpha) = \Dot{m},
+\end{equation}
+
+\begin{equation}
+    \label{eq:momentum}
+    \frac{\partial (\rho U)}{\partial t} + \nabla\cdot (\rho U U) = -\nabla P + \rho g+\nabla \cdot (\tau+\tau_t)+f_{\sigma},
+\end{equation}
+where, U is the velocity, $\mathrm{\Gamma}$ is the growth term, $\mathrm{\alpha}$ is the phase fraction, $\mathrm{\phi}$ is the mass flux, $\mathrm{\Dot{m}}$ is the mass transfer, $\mathrm{\rho}$ is the density, g is the gravitational acceleration, P is the pressure, $\mathrm{\tau}$ is the viscous stress, $\mathrm{\tau_t}$ is the turbulent stress, and $\mathrm{f_{\sigma}}$ is the surface tension force. As the mixture method, the density $\mathrm{\rho}$ is expressed as the mixture density as,  
+
+\begin{equation}
+    \label{eq:mixtureDensity}
+    \rho = \rho_1 \alpha + \rho_2 (1-\alpha),
+\end{equation}
+where, $\mathrm{\rho_1}$ and $\mathrm{\rho_2}$ are the densities of the phase one and phase two, respectively. The surface tension force $\mathrm{f_{\sigma}}$ may be calculated as follows,
+\begin{equation}
+    \label{eq:surfaceTension}
+    f_{\sigma} = \sigma k \nabla\alpha.
+\end{equation}
+Here, $\mathrm{\sigma}$, and $k$ are the surface tension coefficient, and curvature, respectively. The curvature $k$ may be written as, 
+
+\begin{equation}
+    \label{eq:curvature}
+    k = -\nabla n = -\nabla \Bigg(\frac{\nabla \alpha}{\big| \nabla \alpha\big|} \Bigg),
+\end{equation}
+where, n is the outward unit normal vector at the interfaces.
+%\subsection{Pressure term}
+%The pressure term drives the advection of the biofilm front. It depends on the growth or decay of the solid species. All terms in this equation (Eq.~\ref{eq:pressure}) have already been defined. 
+
+%\begin{equation}
+%    \label{eq:pressure}
+%    -\nabla^2p = \sum_{i=1}^{N_{\theta_i}} \frac{g_i}{\rho^*}
+%\end{equation}
 
 
 \subsection{Boundary and initial conditions}
@@ -178,6 +225,7 @@ The pressure term drives the advection of the biofilm front. It depends on the g
 
 
 \subsection{Operating parameters}
+
 
 \begin{table}[tp]
     \centering
@@ -216,10 +264,16 @@ State Variable & Initial conditions & Biofilm diffusivity (m\textsuperscript{2}s
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%% DISCUSSION
 \section{Discussion}
 
-
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[scale=0.5]{Images/Chap4/prob_diagram_below.pdf}
+    \caption{Two-dimensional representation of the simulation domain for the case of a bottom-irradiated biofilm. Boundaries \si{\Gamma_4} and \si{\Gamma_5} are out of, and into the page respectively, and take the same boundary conditions as boundaries \si{\Gamma_1} and \si{\Gamma_2}. The irradiance source (\si{h \nu}) is in fact uniform and diffuse across the whole boundary. Subscripts relating to \si{\alpha}, namely \textbf{l} and \textbf{B} correspond to liquid phase fraction, and biofilm phase fraction respectively.} 
+    \label{fig:2d_above}
+\end{figure}
 
 
 
