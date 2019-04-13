@@ -112,6 +112,8 @@ The modelling approach is concerned with the description of a phototrophic biofi
 % \end{itemize}
 
 
+
+
 \begin{figure}[htpb]
     \centering
     \includegraphics[scale=0.5]{Images/Chap4/prob_diagram_below.pdf}
@@ -206,42 +208,62 @@ Here, $\mathrm{\sigma}$, and $k$ are the surface tension coefficient, and curvat
 
 \begin{equation}
     \label{eq:curvature}
-    k = -\nabla n = -\nabla \Bigg(\frac{\nabla \alpha}{\big| \nabla \alpha\big|} \Bigg),
+    k = -\nabla \mathbf{n} = -\nabla \Bigg(\frac{\nabla \alpha}{\big| \nabla \alpha\big|} \Bigg),
 \end{equation}
-where, n is the outward unit normal vector at the interfaces.
-%\subsection{Pressure term}
-%The pressure term drives the advection of the biofilm front. It depends on the growth or decay of the solid species. All terms in this equation (Eq.~\ref{eq:pressure}) have already been defined. 
+where, \textbf{n} is the outward unit normal vector at the interface.
 
-%\begin{equation}
-%    \label{eq:pressure}
-%    -\nabla^2p = \sum_{i=1}^{N_{\theta_i}} \frac{g_i}{\rho^*}
-%\end{equation}
 
 
 \subsection{Boundary and initial conditions}
+A series of six operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery and readily biodegradable soluble organics were the major limitations to reactor performance in a suspended growth context \cite{Hulsen2016, Hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. In addition to the limiting concentrations and intensities of acetate and radiation, different configurations were explored. Firstly, the baseline experiment with both radiative intensity and acetate in sufficient quantities was repeated with the radiation source from above the biofilm. Finally, the above/below incident irradiances were repeated with a substratum initially sparsely populated with phototrophic biofilm (summarised in Table \ref{tab:biofilm_cases}). 
 
-
-
-
-
-\subsection{Operating parameters}
-
-
-\begin{table}[tp]
+\begin{table}[H]
     \centering
     \small
     \renewcommand{\arraystretch}{1.4}
-    \caption{Initial conditions for the biofilm simulations}
+    \caption{Suite of differing operating conditions for the biofilm simulations for both 2D and 3D cases.}
     \tabcolsep=0.11cm
-    \begin{tabular}{@{}p{3cm} p{1.4cm} p{1.5cm} p{1.7cm} p{1.4cm} p{1.4cm} p{1.4cm} p{1.4cm} p{1.4cm}@{}} \toprule
-State Variable & Initial conditions & Biofilm diffusivity (m\textsuperscript{2}s\textsuperscript{-1}) & Bulk diffusivity (m\textsuperscript{2}s\textsuperscript{-1})  \\
+    \begin{tabular}{@{}p{1cm} p{2cm} p{3cm} p{5cm} p{5cm}@{}} \toprule
+Case & Irradiance  & S\textsubscript{AC\textsubscript{0}}  & \{$\alpha$\textsubscript{PB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
+1    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}^*_{y<0.03mm}$  & Incident below\\
+2     &  30 Wm\textsuperscript{-2}  &    0.2 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$ & Incident below\\
+3    &  5 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident below\\
+4    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident above\\
+5    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}  & Sparse biofilm, incident below\\
+6    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}  & Sparse biofilm, incident above\\ \hline
     \end{tabular}
-    \label{tab:biofilm_ics}
+  \scriptsize{
+     * $\mathds{1}$ is the characteristic function where the stated initial biofilm concentration applies if the condition is true, or is zero if false.} 
+    \label{tab:biofilm_cases}
 \end{table}
+
+For all other state variables, initial and boundary conditions were maintained constant across all simulations.\\
+In the case of boundary conditions, the velocity field is treated as the no-slip at the boundaries whereas the fixed-flux-pressure is considered for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarized as,  
+
+\begin{equation}
+    \label{eq:boundaryU}
+    U_x = U_y = U_z = 0, \quad \mathrm{at \, walls\, and\, outlet},
+\end{equation}
+
+\begin{equation}
+    \label{eq:boundaryPrgh}
+    \nabla P_{rgh} = \bigg[\frac{\phi \frac{H(U)}{a_p} - \phi}{|S_f|a_p} \bigg], \quad \mathrm{at \, walls\, and\, outlet},
+\end{equation}
+
+\begin{equation}
+    \label{eq:boundaryAlpha}
+    \frac{\partial \alpha}{\partial n} = 0 \quad \mathrm{and} \quad \alpha = \alpha_i \quad \mathrm{at \, walls\, and\, outlet}.
+\end{equation}
+Here, $\mathrm{P_{rgh}}$ is the pressure, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as U, flux, and surface area vector, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. In the case of phase fractions, the alpha field is initialized as non-zero at the locations of the species as well as of the bio-film, whereas the zero value is imposed at the bulk of the water phase.         
+
+
+
+\subsection{Operating parameters and model assumptions}
+
+
+
 %%%%%%%%%%%%% Numerical Treatment
 \section{Numerical Treatment}
-
-
 
 
 
@@ -270,15 +292,20 @@ State Variable & Initial conditions & Biofilm diffusivity (m\textsuperscript{2}s
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[scale=0.5]{Chap4/results/}
-    \caption{Two-dimensional representation of the simulation domain for the case of a bottom-irradiated biofilm. Boundaries \si{\Gamma_4} and \si{\Gamma_5} are out of, and into the page respectively, and take the same boundary conditions as boundaries \si{\Gamma_1} and \si{\Gamma_2}. The irradiance source (\si{h \nu}) is in fact uniform and diffuse across the whole boundary. Subscripts relating to \si{\alpha}, namely \textbf{l} and \textbf{B} correspond to liquid phase fraction, and biofilm phase fraction respectively.} 
-    \label{fig:2d_above}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/xpb_alpha_volumeRender.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:3d_below_ppb}
 \end{figure}
 
 
 
 
-
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/E850_below_3d.png}
+    \caption{Three dimensional render of the radiative field as biomass grows in time. The incident irradiance is set from the substratum at 30 W m\textsuperscript{-2}. } 
+    \label{fig:3d_below_rad}
+\end{figure}
 
 
 
