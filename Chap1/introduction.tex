@@ -119,20 +119,20 @@ This work is based the recommendations presented by \cite{Posten2009}, and will 
 
 The solution for the flow of a fluid is obtained by numerical solution of the Navier-Stokes equations, along with addition models, as required, to account for multiple phases, turbulence, etc. Most often, the equations are discretised using a finite volume method (FVM), but can also be discretised using other methods such as the finite element, finite difference, or spectral methods.  The most common CFD packages for PBR studies are ANSYS Fluent and ANSYS CFX, both of which are based on FVM.  Although it has not been used extensively for CFD analysis of PBRs, OpenFOAM is another FVM-based CFD code which is open source.
 
-\subsubsection{Turbulence Modelling}
+%\subsubsection{Turbulence Modelling}
 
-\begin{itemize}
-\item RANS modelling
-\item Wall functions
-\end{itemize}
+%\begin{itemize}
+%\item RANS modelling
+%\item Wall functions
+%\end{itemize}
 
 
-\subsubsection{Modelling of gas phases}
-\begin{itemize}
-\item DNS
-\item Eulerian
-\item VOF
-\end{itemize}
+%\subsubsection{Modelling of gas phases}
+%\begin{itemize}
+%\item DNS
+%\item Eulerian
+%\item VOF
+%\end{itemize}
 
 \subsubsection{Modelling of dispersed biosolid phases}
 \label{S:21}
@@ -159,7 +159,7 @@ Equation based on \cite{Zhang2007}; check other sources to ensure it's general.
 
 \subsubsection{Comparison of Eulerian and Lagrangian Methodologies}
 
-The Eulerian and Lagrangian approaches have been compared previously for particle transport in enclosed air spaces \cite{Zhang2007} (others?). Here the comparison is considered specifically in the context of PBR systems.
+The Eulerian and Lagrangian approaches have been compared previously for particle transport in enclosed air spaces \cite{Zhang2007}. Here the comparison is considered specifically in the context of PBR systems.
 
 
 %---------------------------------------------------------------------------------------------------
@@ -247,9 +247,9 @@ The probability distribution of wavelength has not been considered, and Fourier 
 An extensive review has already been undertaken looking at efforts to couple radiative transfer with biomass growth and substrate uptake \cite{Bechet2013}. The focus on this work was for the outdoor cultivation of algae. The concepts however can be adapted to the cultivation and growth of other biomass species for a wide range of PBR configurations. The review looked at three major approaches to the modelling of algal growth: Type I models consisted of solving biokinetic models based on an incident irradiance, or average internal fluence rate. These models proved to be quite limiting in their ability to provide insight into the operation of outdoor photobioreactors. Type II models aim to solve the radiative field using the Beer-Lambert law, and type III models looked at solving the \textit{light history} of the photosynthetic particles.
 
 \skippingparagraph
-Modelling of the biological response to fluence rate can be achieved with either discrete or continuous models. The Eilers and Peeters model \cite{Eilers1988}, considers the photosynthetic unit interacting with photons to occupy one of three states. The biomass $X \,= \{x_1, x_2, x_3\}$, where the transition $x_1 \xrightarrow{\alpha I} x_2$ corresponds to the sufficient capture of photons at the required frequency to initiate the phototrophic biochemical reactions. The transition $x_2 \xrightarrow{\gamma} x_1$ corresponds to the change to the dark cycle reactions. When the photosynthetic particle receives excessive irradiance, a transition occurs from an excited state to a photoinhibited state ($x_2 \xrightarrow{\beta I} x_3$). The transition from a photoinhibited state to the resting state ($x_3 \xrightarrow{\delta} x_1$). Figure REFFIGURENUMBER represents these processes schematically DRAW SOMETHING SIMILAR TO A PRECEDENCE DIAGRAM. Include the examples of where CFD studies have been done with the biomass being represented as a three state system.
+Modelling of the biological response to fluence rate can be achieved with either discrete or continuous models. The Eilers and Peeters model \cite{Eilers1988}, considers the photosynthetic unit interacting with photons to occupy one of three states. The biomass $X \,= \{x_1, x_2, x_3\}$, where the transition $x_1 \xrightarrow{\alpha I} x_2$ corresponds to the sufficient capture of photons at the required frequency to initiate the phototrophic biochemical reactions. The transition $x_2 \xrightarrow{\gamma} x_1$ corresponds to the change to the dark cycle reactions. When the photosynthetic particle receives excessive irradiance, a transition occurs from an excited state to a photoinhibited state ($x_2 \xrightarrow{\beta I} x_3$). The transition from a photoinhibited state to the resting state ($x_3 \xrightarrow{\delta} x_1$). %Figure REFFIGURENUMBER represents these processes schematically DRAW SOMETHING SIMILAR TO A PRECEDENCE DIAGRAM. Include the examples of where CFD studies have been done with the biomass being represented as a three state system.
 \skippingparagraph
-Considering the biomass as a single state, with growth processes acting upon it, is another method. This single state can be coupled to important states, and solved over the flow field. Examples of states to which the biomass can be coupled are nutrients, radiation as a substrate, and other non phototrophic microorganisms. This method is based on the IWA family of models for wastewater treatment (ADM1, ASMx). There have not been many examples of a single state of phototrophic biomass, based on the the modelling approaches found in the IWA family of models. \textbf{Include some models nonetheless - Bechet mentions a few of these models in a non CFD framework.}
+Considering the biomass as a single state, with growth processes acting upon it, is another method. This single state can be coupled to important states, and solved over the flow field. Examples of states to which the biomass can be coupled are nutrients, radiation as a substrate, and other non phototrophic microorganisms. This method is based on the IWA family of models for wastewater treatment (ADM1, ASMx). There have not been many examples of a single state of phototrophic biomass, based on the the modelling approaches found in the IWA family of models. %\textbf{Include some models nonetheless - Bechet mentions a few of these models in a non CFD framework.}
 
 %---------------------------------------------------------------------------------------------------
 %%%%%%%%%% Coupled Solutions
@@ -257,14 +257,14 @@ Considering the biomass as a single state, with growth processes acting upon it,
 
 \subsection{Coupling of Physical Processes}
 \label{S:2.6}
-In recent years, the access to computer power has increased significantly due to a number of reasons. Firstly, with the introduction of cloud services, one is able to pay per core-hour for access high performance computing (HPC) infrastructure. Secondly, with the introduction of single processor boards which can easily be placed in arrays to carry out parallel computational tasks, the price per FLOPS is decreasing. This means that in the field of PBR modelling, one can develop models which encompass more of the physical phenomena, leading to greater insight into the workings of PBRs, therefore better prediction power. However, as the miniaturisation of transistors approaches its limit, one will need to search for other methods to continue improving on turn around times for CFD simulations while increasing the \textbf{complexity (in the sense of more physics)} of PBR solutions. 
+In recent years, the access to computer power has increased significantly due to a number of reasons. Firstly, with the introduction of cloud services, one is able to pay per core-hour for access high performance computing (HPC) infrastructure. Secondly, with the introduction of single processor boards which can easily be placed in arrays to carry out parallel computational tasks, the price per FLOPS is decreasing. This means that in the field of PBR modelling, one can develop models which encompass more of the physical phenomena, leading to greater insight into the workings of PBRs, therefore better prediction power. However, as the miniaturisation of transistors approaches its limit, one will need to search for other methods to continue improving on turn around times for CFD simulations while increasing the the physical complexity of PBR solutions. 
 
 \skippingparagraph
 The early PSU models looked at simulating algal PBRs by considering an irradiative field varying in space, and the resolution of biokinetic equations were coupled to this field \cite{Wu2001,Wu2002,Merchuk2003a,Merchuk2007}. The treatment of fluid dynamics in these models was implicitly tied to the time constants of the biochemical reactions \cite{Merchuk2007}. A more complete investigation involved the coupling of the two-flux photon approach with the Lagrangian determination of cell trajectories and biomass concentrations \cite{Pruvost2008}
 
 \input{Equations/two_flux}
 
-As can be seen from Equations \ref{eq:two_flux_pos} and \ref{eq:two_flux_neg}, the irradiance has a dependency on the biomass concentration within the PBR. This approach only works under the assumption that at each level of depth $\delta z$, the biomass concentration is uniform. A more rigorous approach to solving the RTE is required if that is not the case \cite{Pruvost2008}. The authors then go on to develop the model by solving the Reynolds averaged Navier-Stokes equations, with a stochastic fluctuation term included. The solution of the Eulerian flow field was then used as a basis for the Lagrangian-radiation coupling. The algal concentrations were assumed to be low enough, with an overall density similar to that of water, such that they could be considered as passive tracers in the PBR. The paths of algal cells were tracked and the overall irradiance profile was solved for each point in $z$. It is with the history of the algal cells, along with the irradiance profile within the PBR that conclusions could be drawn about the radiation history of the cells, and biokinetic expressions could be used to model growth over an appropriate period. Biokinetic simulations were carried out, and assumed that the growth behaved according to Monod kinetics. The expression for biomass concentration was updated with the time step used in the Lagrangian simulations. The computational power required for the two-flux model and biomass concentration was unfeasible, and simplifications were made. An astute observation found that for any number of cells, a similar radiation history and growth rate was observed. This led to an expression for averaging the growth rate. This meant that the system could be solved numerically in a matter of seconds. There are examples of other pieces of work which follow roughly the same methodology \cite{Marshall2011} \textbf{cite more examples}. In some previous studies \cite{Marshall2011}, \cite{Marschall2012}, a Lagrangian approach was used to simulate the growth of algae in a PBR using stochastic fluctuations based on \cite{Thomson1987}. This approach was similar to the previously discussed example. The radiative transfer equation however was simplified to the Beer-Lambert law, and the PSU model \cite{Eilers1988} was used. As discussed in Section \ref{S:radiation}, the Beer-Lambert approximation is not appropriate when the effects of in-scattering are important for the description of the system. 
+As can be seen from Equations \ref{eq:two_flux_pos} and \ref{eq:two_flux_neg}, the irradiance has a dependency on the biomass concentration within the PBR. This approach only works under the assumption that at each level of depth $\delta z$, the biomass concentration is uniform. A more rigorous approach to solving the RTE is required if that is not the case \cite{Pruvost2008}. The authors then go on to develop the model by solving the Reynolds averaged Navier-Stokes equations, with a stochastic fluctuation term included. The solution of the Eulerian flow field was then used as a basis for the Lagrangian-radiation coupling. The algal concentrations were assumed to be low enough, with an overall density similar to that of water, such that they could be considered as passive tracers in the PBR. The paths of algal cells were tracked and the overall irradiance profile was solved for each point in $z$. It is with the history of the algal cells, along with the irradiance profile within the PBR that conclusions could be drawn about the radiation history of the cells, and biokinetic expressions could be used to model growth over an appropriate period. Biokinetic simulations were carried out, and assumed that the growth behaved according to Monod kinetics. The expression for biomass concentration was updated with the time step used in the Lagrangian simulations. The computational power required for the two-flux model and biomass concentration was unfeasible, and simplifications were made. An astute observation found that for any number of cells, a similar radiation history and growth rate was observed. This led to an expression for averaging the growth rate. This meant that the system could be solved numerically in a matter of seconds. In some previous studies \cite{Marshall2011}, \cite{Marschall2012}, a Lagrangian approach was used to simulate the growth of algae in a PBR using stochastic fluctuations based on \cite{Thomson1987}. This approach was similar to the previously discussed example. The radiative transfer equation however was simplified to the Beer-Lambert law, and the PSU model \cite{Eilers1988} was used. As discussed in Section \ref{S:radiation}, the Beer-Lambert approximation is not appropriate when the effects of in-scattering are important for the description of the system. 
 
 
 % List of papers to cover
@@ -350,7 +350,9 @@ Based on the literature review, photosynthetic and phototrophic systems vary in 
 A modelling framework was therefore developed in OpenFOAM which included the coupling between single or multiphase flows, radiative transfer, and biokinetic behaviour of the phototrophic biomass.
 
 \subsection{Research objective 3: A multidimensional, phototrophic, continuum biofilm model}
+The harvesting of phototrophic biomass presents challenges as separation processes and technologies such as membrane bioreactors can be expensive both in terms of operational and capital expenditure. A potential method to remove biomass from a multiphase system is to grow it attached on surfaces, and mechanically scrape the bacterial community from those surfaces as single solid biomass. Research objectives 1 and 2 which look at the definition of the photo-biological reactions and the corresponding lumped parameter system respectively form a basis for exploring biofilm growth. 
 
+A phototrophic biofilm model was developed which looked at the growth of mixed phototrophic biomass as it grows from an irradiated substratum. 
 
 
 
