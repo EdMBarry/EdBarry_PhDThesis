@@ -212,8 +212,10 @@ Here, $\mathrm{\sigma}$, and $k$ are the surface tension coefficient, and curvat
 \end{equation}
 where, \textbf{n} is the outward unit normal vector at the interface.
 
+\subsection{Operating parameters and model assumptions}
 
 
+\section{Applications}
 \subsection{Boundary and initial conditions}
 A series of six operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery and readily biodegradable soluble organics were the major limitations to reactor performance in a suspended growth context \cite{Hulsen2016, Hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. In addition to the limiting concentrations and intensities of acetate and radiation, different configurations were explored. Firstly, the baseline experiment with both radiative intensity and acetate in sufficient quantities was repeated with the radiation source from above the biofilm. Finally, the above/below incident irradiances were repeated with a substratum initially sparsely populated with phototrophic biofilm (summarised in Table \ref{tab:biofilm_cases}). 
 
@@ -238,7 +240,8 @@ Case & Irradiance  & S\textsubscript{AC\textsubscript{0}}  & \{$\alpha$\textsubs
 \end{table}
 
 For all other state variables, initial and boundary conditions were maintained constant across all simulations.\\
-In the case of boundary conditions, the velocity field is treated as the no-slip at the boundaries whereas the fixed-flux-pressure is considered for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarized as,  
+
+In the case of boundary conditions, the velocity field was treated as the no-slip at the boundaries whereas the fixed-flux-pressure was imposed for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarised as,  
 
 \begin{equation}
     \label{eq:boundaryU}
@@ -254,23 +257,36 @@ In the case of boundary conditions, the velocity field is treated as the no-slip
     \label{eq:boundaryAlpha}
     \frac{\partial \alpha}{\partial n} = 0 \quad \mathrm{and} \quad \alpha = \alpha_i \quad \mathrm{at \, walls\, and\, outlet}.
 \end{equation}
-Here, $\mathrm{P_{rgh}}$ is the pressure, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as U, flux, and surface area vector, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. In the case of phase fractions, the alpha field is initialized as non-zero at the locations of the species as well as of the bio-film, whereas the zero value is imposed at the bulk of the water phase.         
 
-
-
-\subsection{Operating parameters and model assumptions}
-
-
-
-%%%%%%%%%%%%% Numerical Treatment
-\section{Numerical Treatment}
-
-
+Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as U, flux, and surface area vector, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{\mathrm{XPB}}$, $\alpha_{\mathrm{XS}}$, $\alpha_{\mathrm{XS}}$, and $\alpha_{\mathrm{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
 
 
 %%%%%%%%%%%%%%%%% Implementation
 \section{Implementation}
 
+\subsection{Case 5: Sparsely initiated biofilm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_dist.pdf}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_alpha_distro}
+\end{figure}
+
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_ppb.pdf}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_ppb}
+\end{figure}
+
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_rad.pdf}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
 
 
 
