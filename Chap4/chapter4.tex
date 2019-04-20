@@ -67,6 +67,9 @@
 %-------------------------------------------------------------------------------------------------------%
 %-------------------------------------------------------------------------------------------------------%
 \section{Introduction}
+Despite a growing interest in the use of purple phototrophic bacteria (PPB) for wastewater treatment and the production of high valued products, there remain certain engineering challenges which render widespread adoption in full scale installations unfeasible at this moment. The major challenges have already been discussed throughout this thesis, but to reiterate, light delivery, the additional requirement of bioavailable organics, and solid-liquid separation are some of the major barriers \cite{Hulsen201}. Process modelling is an important tool for a better understanding of how phototrophic processes work, and for eventual process design and optimisation. Indeed, this thesis is based on the modelling of these phototrophic processes using the distributed parameter approach of computational fluid dynamics (CFD). This work has built upon the development of a biokinetic model, where the main metabolic processes were defined in a manner that ensured compatibility with the International Water Association family of models (IWA) such as the anaerobic digestion model 1 (ADM1) \cite{Batstone2002} or the ASM models \cite{Henze2000}. The biokinetic process model was extended to include dynamics in multidimensional space in order to demonstrate the spatially varying nature of the radiative field, and by extension, the growth of phototrophic biomass. In addition to organics and radiative field limitations, the third constraining factor is the separation of the solid phototrophic biomass from the liquid phase. Previously, anaerobic membrane bioreactors were proposed as a solution for solid-liquid separation at laboratory-scale implementations \cite{Hulsen2016}, however with elevated capital and operational expenditure when compared to conventional wastewater treatment processes, more separation techniques need to be explored. Growing biomass attached to walls as biofilm can be a method to reduce harvesting costs of phototrophic biomass, and as such, a phototrophic biofilm model in a CFD framework needs to be developed. 
+\skippingparagraph
+Biofilms are 
 
 %As biofilms are spatially heterogeneous structures, both spatial and temporal variations must be considered in order to describe the physical phenomena. Biofilm models can be divided into three main classes: \textit{i)} one-dimensional models capable of including mass transfer, reaction/diffusion, and detachment processes \cite{horn2014}, \textit{ii)} multidimensional discrete biofilm models such as cellular automata and agent based methods \cite{wang2010}, and \textit{iii)} continuum models including computational fluid dynamics (CFD) approaches \cite{alpkvist2007, duddu2009, cunault2015}. Despite the vast suite of modelling approaches and examples existing within the literature, there have been few studies which defining biofilm behaviour in phototrophic systems, where the spatially varying nature of the radiative field could be an important factor in the heterogeneous formation of biofilms. \\
 
@@ -226,8 +229,8 @@ A series of six operating conditions were simulated in order to highlight the im
     \caption{Suite of differing operating conditions for the biofilm simulations for both 2D and 3D cases.}
     \tabcolsep=0.11cm
     \begin{tabular}{@{}p{1cm} p{2cm} p{3cm} p{5cm} p{5cm}@{}} \toprule
-Case & Irradiance  & S\textsubscript{AC\textsubscript{0}}  & \{$\alpha$\textsubscript{PB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
-1    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}^*_{y<0.03mm}$  & Incident below\\
+Case & Irradiance  & k\textsubscript{M,ch}  & \{$\alpha$\textsubscript{XPB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
+1    &  30 Wm\textsuperscript{-2}  &    0.07 d\textsuperscript{-1}    &  \{0.5, 0.4, 0.1\}$\mathds{1}^*_{y<0.03mm}$  & Incident below\\
 2     &  30 Wm\textsuperscript{-2}  &    0.2 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$ & Incident below\\
 3    &  5 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident below\\
 4    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident above\\
@@ -264,53 +267,96 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
 %%%%%%%%%%%%%%%%% Implementation
 \section{Implementation}
 
-\subsection{Case 5: Sparsely initiated biofilm irradiated from substratum}
+\subsection{Case 1: Sparsely initiated biofilm irradiated from substratum}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_dist.pdf}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case1_ppb.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
     \label{fig:case5_alpha_distro}
 \end{figure}
 
 
-\begin{figure}[tp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_ppb.pdf}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case1_rad.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
     \label{fig:case5_3D_ppb}
 \end{figure}
 
-
-\begin{figure}[tp]
+\subsection{Case 2: Limiting acetic acid concentration in bulk}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case5_3D/case5_3D_rad.pdf}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case2_ppb.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case2_rad.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
     \label{fig:case5_3D_rad}
 \end{figure}
 
 
-
-\subsection{Case 6: Sparsely distributed biofilm irradiated from above}
-
-\begin{figure}[tp]
+\subsection{Case 3: Reduced substratum irradiance at 3 W m\textsuperscript{-2}}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_3D_dist.pdf}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case3_ppb.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case6_3D_dist}
+    \label{fig:case5_3D_rad}
 \end{figure}
 
-\begin{figure}[tp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_3D_rad.pdf}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case3_rad.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case6_3D_rad}
+    \label{fig:case5_3D_rad}
 \end{figure}
 
-\begin{figure}[tp]
+\subsection{Case 4: Overhead irradiance at 30 W m\textsuperscript{-2}}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_ppb_3D.png}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case4_ppb.png}
     \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case6_3D_ppb}
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case4_rad.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\subsection{Case 5: Sparsely initialised biofilm with substratum irradiance at 30 W m\textsuperscript{-2}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case5_ppb.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case5_rad.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\subsection{Case 6: Sparsely distributed biofilm irradiated from above at 30 W m\textsuperscript{-2}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case6_ppb.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case6_rad.png}
+    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+    \label{fig:case5_3D_rad}
 \end{figure}
 
 
@@ -324,23 +370,40 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
 
 %%%%%%%%%%%%%%%%%%%%%%%% DISCUSSION
 \section{Discussion}
-
-\begin{figure}[tp]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/xpb_alpha_volumeRender.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:3d_below_ppb}
-\end{figure}
-
-
-
-
-\begin{figure}[tp]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/E850_below_3d.png}
-    \caption{Three dimensional render of the radiative field as biomass grows in time. The incident irradiance is set from the substratum at 30 W m\textsuperscript{-2}. } 
-    \label{fig:3d_below_rad}
-\end{figure}
+%\begin{figure}[tp]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_3D_dist.pdf}
+%    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+%    \label{fig:case6_3D_dist}
+%\end{figure}
+%
+%\begin{figure}[tp]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_3D_rad.pdf}
+%    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+%    \label{fig:case6_3D_rad}
+%\end{figure}
+%
+%\begin{figure}[tp]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/renders/case6_3D/case6_ppb_3D.png}
+%    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+%    \label{fig:case6_3D_ppb}
+%\end{figure}
+%
+%\begin{figure}[tp]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/xpb_alpha_volumeRender.png}
+%    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
+%    \label{fig:3d_below_ppb}
+%\end{figure}
+%
+%\begin{figure}[tp]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/E850_below_3d.png}
+%    \caption{Three dimensional render of the radiative field as biomass grows in time. The incident irradiance is set from the substratum at 30 W m\textsuperscript{-2}. } 
+%    \label{fig:3d_below_rad}
+%\end{figure}
 
 
 
