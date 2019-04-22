@@ -79,12 +79,14 @@ Growing biomass attached to walls as biofilm can be a method to reduce harvestin
 \skippingparagraph
 Phototrophic biofilms are communities of phototrophic biomass, other organisms, and other organic and inorganic substances such as extracellular polymeric substances \cite{vanloosdrecht2002}. 
 Much work has been dedicated to understanding the behaviour of biofilms in order to limit the harm they cause, such as in medical settings, sewer networks \cite{pikaar2014}, and in membrane separation processes, commonly referred to as fouling \cite{radaei2018}. Biofilm formation can also be favoured and encouraged depending on the application. 
-Trickling filters are an example of beneficial biofilms which consist of wastes being sprayed over fixed granular beds. Thick biofilms develop therein and remove pollutants and toxicants from the filter's biofilm \cite{donlan2002}. Other examples of beneficial biofilms include 
-Other examples include the bioremediation of contaminated soils \cite{singh2006}. 
+Trickling filters are an example of beneficial biofilms which consist of wastes being sprayed over fixed granular beds. Thick biofilms develop therein and remove pollutants and toxicants from the filter's biofilm \cite{donlan2002}. Other examples of beneficial biofilms include the bioremediation of contaminated soils \cite{singh2006}, which claim an advantage over biological treatment with planktonic cells in that microorganisms in biofilms are more resilient to extreme conditions, and therefore have a better chance at adapting to their particular environment. 
 \skippingparagraph
 In order to successfully model biofilm formation and behaviour, the governing processes need to be identified. The major processes are the initial attachment, biofilm growth, biofilm decay, and detachment processes \cite{alpkvist2007}. 
-In addition to these standard processes, it is also important to consider the interactions between biofilm and radiative field when defining a phototrophic biofilm model \cite{polizzi2017}. 
-
+These processes have been represented by several modelling approaches. The approaches are divided into first, second and third generation models as defined by the IWA task group on biofilm modelling \cite{wanner2006}. The progress from first to third generation has seen the modelling approach evolving from mass transfer to the inclusion of complex microbial interactions and an update to two and three dimensional descriptions. Third generation models can incorporate either discrete or continuum modelling approaches, or a combination of both. Discrete biofilm models include cellular automata and agent based models \cite{skoneczny2015}. With discrete techniques, cells are subjected to a set of rules that govern their behaviour in terms of attachment, substrate uptake and cell multiplication, and decay and detachment processes \cite{skoneczny2015}. These models are relatively simple to develop, however simulation cycles require statistical rigour and multiple simulation runs, as the results given by a single simulation are not necessarily deterministic \cite{dacunto2017}. In contrast to discrete third generation biofilm models, continuum-based models involve a full spatio-temporal and mechanistic description of biofilm processes \cite{eberl2001}. An advantage of continuum-based biofilm models over discrete approaches is that a mechanistic description of growth processes can be developed into the model in a modular manner. Biokinetic models such as the Eilers-Peeters model for algal growth \cite{eilers1988} or the PAnM1 model \cite{puyol2017} can therefore be used directly within a phototrophic biofilm modelling framework, albeit with some manipulations to convert the model from a COD or equivalent basis, to a volumetric growth basis. 
+\skippingparagraph
+Despite the increasing interest in phototrophic bioreactors, and the motivation to better control photobiofilm development, there are only a couple of examples of associated models. The first continuum-based biofilm model \cite{clarelli2013} identified the non-conservative nature of interface evolution tracking methods such as the level-set method \cite{alpkvist2007} and proposed a mixture model. The mixture model treats each point in space as an information holder, in which multiple physical properties and states can exist. This mixture model provided a mathematical description of a specific case of a cyanobacterial biofilm which could be extended to all phototrophic biofilm systems. This study presented an exponential decay function for the radiative field, which has a tendency to under predict the radiative distribution optically thick media such as biofilms \cite{jarosz2008}. In optically thick media, strong forward scattering effects are observed \cite{jarosz2008}. This phototrophic biofilm mixture model was advanced in subsequent studies \cite{polizzi2017}, wherein a greater number of species was defined, the mass transfer between phases were updated to include diffusion terms, and mass transfer between phases were defined in terms of biological mechanisms such as photosynthesis, cell maintenance, EPS excretion and cell decay. The radiative field was also modelled as an exponential decay function in terms of path length and the concentrations of participating species.
+\skippingparagraph
+This study aims to extend the previous work done on the development of a lumped parameter model in chapter 2, and of a phototrophic CFD model in which a coupled photo-biological radiative transfer model and planktonic growth model were defined in chapter 3. A combination of the volume of fluid (VoF) and mixture methods are used in this work: the VoF method to segregate the biofilm from the liquid phase, and the mixture method within the biofilm to differentiate between active phototrophic biomass (PPB  in this case), biodegradable particulates (X\textsubscript{S}) and inert particulates (X\textsubscript{I}). This method allows for conservation to be maintained while more accurately capturing the interface between the liquid and biofilm phases. 
 
 
 %As biofilms are spatially heterogeneous structures, both spatial and temporal variations must be considered in order to describe the physical phenomena. Biofilm models can be divided into three main classes: \textit{i)} one-dimensional models capable of including mass transfer, reaction/diffusion, and detachment processes \cite{horn2014}, \textit{ii)} multidimensional discrete biofilm models such as cellular automata and agent based methods \cite{wang2010}, and \textit{iii)} continuum models including computational fluid dynamics (CFD) approaches \cite{alpkvist2007, duddu2009, cunault2015}. Despite the vast suite of modelling approaches and examples existing within the literature, there have been few studies which defining biofilm behaviour in phototrophic systems, where the spatially varying nature of the radiative field could be an important factor in the heterogeneous formation of biofilms. \\
@@ -104,15 +106,6 @@ In addition to these standard processes, it is also important to consider the in
 % \item reactor geometry and operating conditions (implicitly)
 % \end{itemize}
 % \end{itemize}
-
-
-%Whether biofilms are desired or not, a continuum based photobiofilm model has been created in order to encapsulate the important physical conditions of systems to achieve the desired ends. 
-
-
-
-%\begin{instructional}
-%Add your text here. Use \verb|\cite| to add citation labels. Reference sections, tables, and figures using \verb|\ref|. Use \verb|\eqref| for equations. The `section' symbol $\S$ is obtained using \verb|$\S$|. Figures and other floats are added using their respective environments. Use \verb|\longtable| to split tables over page.
-%\end{instructional}
 
 
 %%%% PROBLEM DESCRIPTION
@@ -260,24 +253,24 @@ Case & Irradiance  & k\textsubscript{M,ch}  & \{$\alpha$\textsubscript{XPB\texts
 
 For all other state variables, initial and boundary conditions were maintained constant across all simulations.\\
 
-In the case of boundary conditions, the velocity field was treated as the no-slip at the boundaries whereas the fixed-flux-pressure was imposed for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarised as,  
+In the case of boundary conditions, the velocity field was treated as the no-slip at the boundaries whereas the fixed-flux-pressure was imposed for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarised on all boundaries as,  
 
 \begin{equation}
     \label{eq:boundaryU}
-    U_x = U_y = U_z = 0, \quad \mathrm{at \, walls\, and\, outlet},
+    U_x = U_y = U_z = 0,
 \end{equation}
 
 \begin{equation}
     \label{eq:boundaryPrgh}
-    \nabla P_{rgh} = \bigg[\frac{\phi \frac{H(U)}{a_p} - \phi}{|S_f|a_p} \bigg], \quad \mathrm{at \, walls\, and\, outlet},
+    \nabla P_{rgh} = \bigg[\frac{\phi \frac{H(U)}{a_p} - \phi}{|S_f|a_p} \bigg],
 \end{equation}
 
 \begin{equation}
     \label{eq:boundaryAlpha}
-    \frac{\partial \alpha}{\partial n} = 0 \quad \mathrm{and} \quad \alpha = \alpha_i \quad \mathrm{at \, walls\, and\, outlet}.
+    \frac{\partial \alpha}{\partial n} = 0 \quad \mathrm{and} \quad \alpha = \alpha_i.
 \end{equation}
 
-Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as U, flux, and surface area vector, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{\mathrm{XPB}}$, $\alpha_{\mathrm{XS}}$, $\alpha_{\mathrm{XS}}$, and $\alpha_{\mathrm{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
+Here, $\mathrm{P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{\mathrm{XPB}}$, $\alpha_{\mathrm{XS}}$, $\alpha_{\mathrm{XS}}$, and $\alpha_{\mathrm{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
 
 
 %%%%%%%%%%%%%%%%% Implementation
@@ -314,8 +307,8 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
     \label{fig:case5_3D_rad}
 \end{figure}
 
-
-\subsection{Case 3: Reduced substratum irradiance at 3 W m\textsuperscript{-2}}
+/
+\subsection{Case 3: Reduced substratum irradiance at reduced irradiance}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case3_ppb.png}
@@ -330,7 +323,7 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
     \label{fig:case5_3D_rad}
 \end{figure}
 
-\subsection{Case 4: Overhead irradiance at 30 W m\textsuperscript{-2}}
+\subsection{Case 4: Overhead irradiance}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case4_ppb.png}
@@ -345,7 +338,7 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
     \label{fig:case5_3D_rad}
 \end{figure}
 
-\subsection{Case 5: Sparsely initialised biofilm with substratum irradiance at 30 W m\textsuperscript{-2}}
+\subsection{Case 5: Sparsely initialised biofilm with substratum irradiance}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case5_ppb.png}
@@ -360,7 +353,7 @@ Here, $\mathrm{P_{rgh}}$ is the pressure less the hydrostatic head, and H(U), $\
     \label{fig:case5_3D_rad}
 \end{figure}
 
-\subsection{Case 6: Sparsely distributed biofilm irradiated from above at 30 W m\textsuperscript{-2}}
+\subsection{Case 6: Sparsely distributed biofilm irradiated from above}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case6_ppb.png}
