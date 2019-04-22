@@ -192,7 +192,12 @@ The initial conditions for the hydrodynamic model were zero gauge pressure and z
 \subsubsection{Governing equations}
 Radiation delivery remains one of the major process bottlenecks to the design and effective operation of photobioreactors. There are many PBR CFD studies which treat the radiative field as a Beer-Lambert approximation, however this approach does not account for in-scattering phenomena. Failure to incorporate in-scattering in the CFD solution can lead to errors of as much as 20\% \cite{berberoglu2007}. The general form of the radiative transfer equation (RTE) accounts for the in-scattering effects, and is defined as
 
-\input{Equations/rte}
+\begin{align}
+\frac{dI_\lambda (\mathbf{r}, \mathbf{s}) }{ds} &=  \kappa_{\lambda}I_{b\lambda} \, - \, (\kappa_\lambda + \sigma_{\lambda, s}) \ I_\lambda (\mathbf{r}, \mathbf{s}) \nonumber \\
+&+ \frac{\sigma_{\lambda, s}}{4 \pi} \int_{4 \pi} I_\lambda (\mathbf{r}, \mathbf{s'}) \Phi_\lambda(\mathbf{s}, \mathbf{s'}) d\Omega'
+\label{eq:RTE}
+\end{align}
+
 
 \noindent where $I_\lambda$ is the spectral radiation intensity for wavelength $\lambda$, $\mathbf{r}$ is the position vector, $d\Omega$ is a differential solid angle that is centred along the vector $\mathbf{s}$, $s$ is the distance along $\mathbf{s}$, $\kappa_\lambda$ is the spectral absorption coefficient, and $\sigma_{\lambda,s}$ is the spectral scattering coefficient. The first term on the right accounts for black-body radiation. As we are accounting for either solar or artificial optical radiation, and relatively low temperatures of operation ranging between 4 \degree C and 40 \degree C, this term has been omitted from the solution. The second term on the right hand side accounts for absorption and scattering,  which combine to create the extinction term. For each participating species within the liquid phase, we can include an extinction term, which sum to that shown in Eq.\ \ref{eq:RTE}. The third term accounts for in-scattering through the phase function $\Phi_\lambda$. 
 \skippingparagraph
