@@ -108,14 +108,14 @@ Two test cases were assessed, both being infrared photobioreactors (PPB systems)
 \label{fig:geoms}
 \end{figure}
 
-Both geometries were developed in the CAD package Salom\'{e} M\'{e}ca \cite{salome}. The surfaces were meshed as 2-dimensional triangular meshes. A fine triangular surface mesh ($\mathtt{\sim}$ 1 million discrete surfaces) was applied such that the geometries were watertight (\emph{i.e} there were no gaps in the tesselated surfaces) when used in the meshing process. The resulting meshes were exported as stereolithographic files as a basis for the volume meshes. Meshing was done using the \texttt{cartesianMesh} application, a hexehedral dominant meshing utility belonging to the \texttt{cfMesh} library \cite{cfmesh} which is built upon the OpenFOAM framework \cite{of50}. The meshes are presented in the supplementary material (S.1).
+Both geometries were developed in the CAD package Salom\'{e} M\'{e}ca \cite{electricitedefrance1989}. The surfaces were meshed as 2-dimensional triangular meshes. A fine triangular surface mesh ($\mathtt{\sim}$ 1 million discrete surfaces) was applied such that the geometries were watertight (\emph{i.e} there were no gaps in the tesselated surfaces) when used in the meshing process. The resulting meshes were exported as stereolithographic files as a basis for the volume meshes. Meshing was done using the \texttt{cartesianMesh} application, a hexehedral dominant meshing utility belonging to the \texttt{cfMesh} library \cite{creativefields2015} which is built upon the OpenFOAM framework \cite{theopenfoamfoundation2017}. The meshes are presented in the supplementary material (S.1).
 
 \subsection{Fluid flow}
 \label{ssec:flow}
 
 \subsubsection{Governing equations}
 
-It is assumed that the flow consists of an incompressible, Newtonian fluid under steady-state, isothermal conditions. The flow is considered to be turbulent and is modelled using the Reynolds-Averaged Navier-Stokes (RANS) equations with an appropriate turbulence model. The RANS equations are derived by decomposing the fluctuating velocity and pressure fields into their time-average plus an instantaneous fluctuation from the mean, i.e.
+It is assumed that the flow consist of an incompressible, Newtonian fluid under steady-state, isothermal conditions. The flow is considered to be turbulent and is modelled using the Reynolds-Averaged Navier-Stokes (RANS) equations with an appropriate turbulence model. The RANS equations are derived by decomposing the fluctuating velocity and pressure fields into their time-average plus an instantaneous fluctuation from the mean, i.e.
 
 \begin{align}
 \mathbf{u}(\mathbf{x}, t) &= \mathbf{U}(\mathbf{x}) + \mathbf{u}^\prime(\mathbf{x}, t)

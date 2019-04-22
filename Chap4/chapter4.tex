@@ -68,22 +68,22 @@
 %-------------------------------------------------------------------------------------------------------%
 \section{Introduction}
 Despite a growing interest in the use of purple phototrophic bacteria (PPB) for wastewater treatment and the production of high valued products, there remain certain engineering challenges which render widespread adoption in full scale installations unfeasible at this moment.
-The major challenges have already been discussed throughout this thesis, but to reiterate, light delivery, the additional requirement of bioavailable organics, and solid-liquid separation are some of the major barriers \cite{Hulsen201}. 
+The major challenges have already been discussed throughout this thesis, but to reiterate, light delivery, the additional requirement of bioavailable organics, and solid-liquid separation are some of the major barriers \cite{hulsen2016}. 
 Process modelling is an important tool for a better understanding of how phototrophic processes work, and for eventual process design and optimisation. 
 Indeed, this thesis is based on the modelling of these phototrophic processes using the distributed parameter approach of computational fluid dynamics (CFD). 
-This work has built upon the development of a biokinetic model, where the main metabolic processes were defined in a manner that ensured compatibility with the International Water Association family of models (IWA) such as the anaerobic digestion model 1 (ADM1) \cite{Batstone2002} or the ASM models \cite{Henze2000}. 
+This work has built upon the development of a biokinetic model, where the main metabolic processes were defined in a manner that ensured compatibility with the International Water Association family of models (IWA) such as the anaerobic digestion model 1 (ADM1) \cite{batstone2002} or the ASM models \cite{henze2000}. 
 The biokinetic process model was extended to include dynamics in multidimensional space in order to demonstrate the spatially varying nature of the radiative field, and by extension, the growth of phototrophic biomass. 
 In addition to organics and radiative field limitations, the third constraining factor is the separation of the solid phototrophic biomass from the liquid phase. 
-Previously, anaerobic membrane bioreactors were proposed as a solution for solid-liquid separation at laboratory-scale implementations \cite{Hulsen2016}, however with elevated capital and operational expenditure when compared to conventional wastewater treatment processes, more separation techniques need to be explored. 
+Previously, anaerobic membrane bioreactors were proposed as a solution for solid-liquid separation at laboratory-scale implementations \cite{hulsen2016}, however with elevated capital and operational expenditure when compared to conventional wastewater treatment processes, more separation techniques need to be explored. 
 Growing biomass attached to walls as biofilm can be a method to reduce harvesting costs of phototrophic biomass, and as such, a phototrophic biofilm model in a CFD framework needs to be developed. 
 \skippingparagraph
-Phototrophic biofilms are communities of phototrophic biomass, other organisms, and other organic and inorganic substances such as extracellular polymeric substances \cite{VanLoosdrecht2002}. 
-Much work has been dedicated to understanding the behaviour of biofilms in order to limit the harm they cause, such as in medical settings, sewer networks \cite{Pikaar2014}, and in membrane separation processes, commonly referred to as fouling \cite{Radaei2018}. Biofilm formation can also be favoured and encouraged depending on the application. 
-Trickling filters are an example of beneficial biofilms which consist of wastes being sprayed over fixed granular beds. Thick biofilms develop therein and remove pollutants and toxicants from the filter's biofilm \cite{Donlan2002}. Other examples of beneficial biofilms include 
-Other examples include the bioremediation of contaminated soils \cite{Singh2006}. 
+Phototrophic biofilms are communities of phototrophic biomass, other organisms, and other organic and inorganic substances such as extracellular polymeric substances \cite{vanloosdrecht2002}. 
+Much work has been dedicated to understanding the behaviour of biofilms in order to limit the harm they cause, such as in medical settings, sewer networks \cite{pikaar2014}, and in membrane separation processes, commonly referred to as fouling \cite{radaei2018}. Biofilm formation can also be favoured and encouraged depending on the application. 
+Trickling filters are an example of beneficial biofilms which consist of wastes being sprayed over fixed granular beds. Thick biofilms develop therein and remove pollutants and toxicants from the filter's biofilm \cite{donlan2002}. Other examples of beneficial biofilms include 
+Other examples include the bioremediation of contaminated soils \cite{singh2006}. 
 \skippingparagraph
-In order to successfully model biofilm formation and behaviour, the governing processes need to be identified. The major processes are the initial attachment, biofilm growth, biofilm decay, and detachment processes \cite{Alpkvist2007}. 
-In addition to these standard processes, it is also important to consider the interactions between biofilm and radiative field when defining a phototrophic biofilm model \cite{Pollizi2017}. 
+In order to successfully model biofilm formation and behaviour, the governing processes need to be identified. The major processes are the initial attachment, biofilm growth, biofilm decay, and detachment processes \cite{alpkvist2007}. 
+In addition to these standard processes, it is also important to consider the interactions between biofilm and radiative field when defining a phototrophic biofilm model \cite{pollizi2017}. 
 
 
 
@@ -119,10 +119,10 @@ In addition to these standard processes, it is also important to consider the in
 \newpage
 \section{Problem description}
 \label{S:problem_description}
-The modelling approach is concerned with the description of a phototrophic biofilm system consisting of purple phototrophic bacteria (PPB). The model description for this system has been previously described \cite{Puyol2017}, however this did not account for spatial variations, and by extension, biofilm formation was not considered. The phototrophic biofilm grows attached to a surface substratum. Above the biofilm is a body of nutrient-rich liquid. Incident photons of wavelength 850 \si{\nano \metre} are irradiated from either \si{\Gamma_0} or \si{\Gamma_3} into the domain \si{\Omega}, as shown in Fig. \ref{fig:2d_above}. The initial thickness of the biofilm is \SI{50}{\micro \metre} with uniformly distributed solid species. The factor of incident irradiance is also explored, with three different irradiance levels of \SI{10}{\watt \metre ^2}, \SI{30}{\watt \metre ^2}, and \SI{100}{\watt \metre ^2} being simulated from the surface substratum. Incident irradiance in all cases is assumed uniform and diffuse across the whole boundary.
+The modelling approach is concerned with the description of a phototrophic biofilm system consisting of purple phototrophic bacteria (PPB). The model description for this system has been previously described \cite{puyol2017}, however this did not account for spatial variations, and by extension, biofilm formation was not considered. The phototrophic biofilm grows attached to a surface substratum. Above the biofilm is a body of nutrient-rich liquid. Incident photons of wavelength 850 \si{\nano \metre} are irradiated from either \si{\Gamma_0} or \si{\Gamma_3} into the domain \si{\Omega}, as shown in Fig. \ref{fig:2d_above}. The initial thickness of the biofilm is \SI{50}{\micro \metre} with uniformly distributed solid species. The factor of incident irradiance is also explored, with three different irradiance levels of \SI{10}{\watt \metre ^2}, \SI{30}{\watt \metre ^2}, and \SI{100}{\watt \metre ^2} being simulated from the surface substratum. Incident irradiance in all cases is assumed uniform and diffuse across the whole boundary.
 
 
-% The phototrophic biofilm (PBF) model based on purple phototrophic bacteria is an extension of the models presented previously \cite{Puyol2017} (\textbf{include my model}). Biofilm treatment extends work previously carried out by \cite{alpkvist2007}, \cite{alpkvist2007}. The important physical processes identified are as follows:
+% The phototrophic biofilm (PBF) model based on purple phototrophic bacteria is an extension of the models presented previously \cite{puyol2017} (\textbf{include my model}). Biofilm treatment extends work previously carried out by \cite{alpkvist2007}, \cite{alpkvist2007}. The important physical processes identified are as follows:
 % \begin{itemize}
 %     \item Coupled volume of fluid and level set for capturing of the biofilm/liquid interface.
 %     \item Radiative transfer coupled to the growth of the biokinetics.
@@ -147,13 +147,13 @@ The modelling approach is concerned with the description of a phototrophic biofi
 \section{Mathematical formulation}
 \label{S:formulation}
 \subsection{Radiative transfer}
-The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{Kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to minimal influence on the system energy balance (Eq. \ref{eq:rteSimplified}). 
+The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to minimal influence on the system energy balance (Eq. \ref{eq:rteSimplified}). 
 
 \begin{equation}
 \frac{dI_\lambda (\textbf{r}, \textbf{s})}{ds} \, = \, - \sum_{j} [E_{\lambda,j} X_j] I_\lambda (\textbf{r}, \textbf{s})\, +\, \frac{\sigma_{\lambda, s, j}}{4 \pi} \int_{4 \pi} I_\lambda (\textbf{r}, \textbf{s}^\prime) \Phi_\lambda(\textbf{s}, \textbf{s}^\prime) d\Omega^\prime
     \end{equation}
 
-where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} is the position vector of a radiative ray, \textbf{s} is the direction vector of the ray, and s is the path length. The first term on the right hand side is the extinction term, with $E_{\lambda, j}$ being the specific extinction coefficient (the combination of scattering and absorption components) for participating species $X_j$. The second term on the right hand side is associated with in-scattering, where $\sigma_{\lambda, s, j}$ is the scattering coefficient, and $\Phi_\lambda$ is the wavelength scattering function from path \textbf{s} to scattered direction $\textbf{s}^\prime$ through solid angle $d\Omega$. The phase scattering function, $\Phi_\lambda$ for this model is the Schlick function (Eq. \ref{eq:schlick}), which is appropriate for optically thick media \cite{Jarosz2008}. 
+where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} is the position vector of a radiative ray, \textbf{s} is the direction vector of the ray, and s is the path length. The first term on the right hand side is the extinction term, with $E_{\lambda, j}$ being the specific extinction coefficient (the combination of scattering and absorption components) for participating species $X_j$. The second term on the right hand side is associated with in-scattering, where $\sigma_{\lambda, s, j}$ is the scattering coefficient, and $\Phi_\lambda$ is the wavelength scattering function from path \textbf{s} to scattered direction $\textbf{s}^\prime$ through solid angle $d\Omega$. The phase scattering function, $\Phi_\lambda$ for this model is the Schlick function (Eq. \ref{eq:schlick}), which is appropriate for optically thick media \cite{jarosz2008}. 
 
 \begin{equation}
 \Phi_s(k, \theta) = \frac{1 \, -\,  k^2}{4\pi (1\, +\,k\, cos(\theta))^2 }
@@ -162,14 +162,14 @@ where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} 
 where parameter $k$ takes values between -1.0 and 1.0 included, with negative or positive values corresponding to back-scattering and forward scattering respectively. A value of 0 means scattering is isotropic. The parameter $k$ represents the average cosine of the scattered angles. The angle $\theta$ is that made by the previous path and scattered path of a ray.
 
 \subsection{Consumption and release of soluble substrates}
-Soluble substrates exist in both the volume of liquid, and the biofilm volume. Their growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{Puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solubles}.
+Soluble substrates exist in both the volume of liquid, and the biofilm volume. Their growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solubles}.
 
 \begin{equation}
 \label{eq:solubles}
 \frac{\partial S_i}{\partial t} = \mathcal{D}_i\nabla^2 S_i + r_{i}
 \end{equation}
 
-where $S_i$ is the soluble species $i$, $\mathcal{D}_i$ is the diffusion coefficient of species $i$, and $r_i$ is the corresponding consumption/release equation \cite{Puyol2017}.
+where $S_i$ is the soluble species $i$, $\mathcal{D}_i$ is the diffusion coefficient of species $i$, and $r_i$ is the corresponding consumption/release equation \cite{puyol2017}.
 
 The transport equations for the soluble and particulate species may be written as follows,
 \begin{equation}
@@ -184,7 +184,7 @@ where, S is the soluble species and $\mathrm{\Phi}$ = SI, SH$\mathrm{_2}$, SIC, 
 
 
 \subsection{Growth of particulate matter}
-The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulates}) have been previously defined \cite{Puyol2017}.
+The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulates}) have been previously defined \cite{puyol2017}.
 
 
 \begin{equation}
@@ -236,7 +236,7 @@ where, \textbf{n} is the outward unit normal vector at the interface.
 
 \section{Applications}
 \subsection{Boundary and initial conditions}
-A series of six operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery and readily biodegradable soluble organics were the major limitations to reactor performance in a suspended growth context \cite{Hulsen2016, Hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. In addition to the limiting concentrations and intensities of acetate and radiation, different configurations were explored. Firstly, the baseline experiment with both radiative intensity and acetate in sufficient quantities was repeated with the radiation source from above the biofilm. Finally, the above/below incident irradiances were repeated with a substratum initially sparsely populated with phototrophic biofilm (summarised in Table \ref{tab:biofilm_cases}). 
+A series of six operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery and readily biodegradable soluble organics were the major limitations to reactor performance in a suspended growth context \cite{hulsen2016, hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. In addition to the limiting concentrations and intensities of acetate and radiation, different configurations were explored. Firstly, the baseline experiment with both radiative intensity and acetate in sufficient quantities was repeated with the radiation source from above the biofilm. Finally, the above/below incident irradiances were repeated with a substratum initially sparsely populated with phototrophic biofilm (summarised in Table \ref{tab:biofilm_cases}). 
 
 \begin{table}[H]
     \centering
