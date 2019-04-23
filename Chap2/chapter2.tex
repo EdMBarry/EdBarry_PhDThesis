@@ -47,7 +47,7 @@
 %-------------------------------------------------------------------------------------------------------%
 %This is an internal chapter of the thesis.
 %If you have a long title, you can supply an abbreviated version to print in the Table of Contents using the optional argument to the \chapter command.
-\chapter[A description of the process biokinetics of phototrophic systems]{A description of the process biokinetics of phototrophic systems}
+\chapter[Process biokinetics of phototrophic systems]{A description of the process biokinetics of phototrophic systems}
 \label{Chap:chap2}	%CREATE YOUR OWN LABEL.
 \pagestyle{headings}
 
@@ -103,10 +103,10 @@ The model has been developed to be compatible with the IWA, ASM and ADM families
 
 \begin{equation}
     \label{eq:base_ode}
-    \frac{d\phi_i}{dt} \, = \, \mathfrak{R}_i
+    \frac{d\phi_i}{dt} \, = \, {R}_i
 \end{equation}
 
-where $\mathfrak{R}_i$ is the rate of formation (positive) or consumption (negative) of species $\mathrm{\phi_i}$. The presentation and explanation of all species and their formation or consumption terms are best summarised in a Petersen matrix (Table~\ref{tab:petersen}).
+where ${R}_i$ is the rate of formation (positive) or consumption (negative) of species $\mathrm{\phi_i}$. The presentation and explanation of all species and their formation or consumption terms are best summarised in a Petersen matrix (Table~\ref{tab:petersen}).
 
  \begin{sidewaystable}[tp]
     \caption{Petersen matrix for the PAM-1 model for domestic wastewater treatment by purple phototrophic bacteria.}
@@ -209,8 +209,8 @@ The case was simulated for 609 days with 3 stages of differing SCOD concentratio
 \end{table}
 
 \begin{align}
-    V \frac{dS_i}{dt} \, &= \, Q_f (S_{fi} - S_i) + V \mathfrak{R}_i  \nonumber \\
-    V \frac{dX_i}{dt}\, &= \, Q_f (X_{fi} - X_i) + Q_o X_i + V \mathfrak{R}_i
+    V \frac{dS_i}{dt} \, &= \, Q_f (S_{fi} - S_i) + V {R}_i  \nonumber \\
+    V \frac{dX_i}{dt}\, &= \, Q_f (X_{fi} - X_i) + Q_o X_i + V {R}_i
     \label{eq:cont}
 \end{align}
 
@@ -230,7 +230,7 @@ The case was simulated for 609 days with 3 stages of differing SCOD concentratio
         S\textsubscript{fi}: feed concentration of soluble species i & Dynamic data & \{gCOD, gN, gP, mol C\} m\textsuperscript{-3}\\
         X\textsubscript{fi}: feed concentration of particulate species i & Dynamic data & gCOD m\textsuperscript{-3}: \\
         Q\textsubscript{o}: liquid flow rate out & Dynamic data&  $\mathrm{m^3\, d^{-1}}$\\
-        $\mathfrak{R}$\textsubscript{i}: rate of reaction of species i & [-] & \{g COD, gN, gP, mol C\} m\textsuperscript{-3} d\textsuperscript{-1} \\
+        ${R}$\textsubscript{i}: rate of reaction of species i & [-] & \{g COD, gN, gP, mol C\} m\textsuperscript{-3} d\textsuperscript{-1} \\
         \bottomrule
     \end{tabular}
     \label{tab:cont_op_conditions}
