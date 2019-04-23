@@ -109,10 +109,10 @@ This study aims to extend the previous work done on the development of a lumped 
 
 
 %%%% PROBLEM DESCRIPTION
-\newpage
-\section{Problem description}
-\label{S:problem_description}
-The modelling approach is concerned with the description of a phototrophic biofilm system consisting of purple phototrophic bacteria (PPB). The model description for this system has been previously described \cite{puyol2017}, however this did not account for spatial variations, and by extension, biofilm formation was not considered. The phototrophic biofilm grows attached to a surface substratum. Above the biofilm is a body of nutrient-rich liquid. Incident photons of wavelength 850 \si{\nano \metre} are irradiated from either \si{\Gamma_0} or \si{\Gamma_3} into the domain \si{\Omega}, as shown in Fig. \ref{fig:2d_above}. The initial thickness of the biofilm is \SI{50}{\micro \metre} with uniformly distributed solid species. The factor of incident irradiance is also explored, with three different irradiance levels of \SI{10}{\watt \metre ^2}, \SI{30}{\watt \metre ^2}, and \SI{100}{\watt \metre ^2} being simulated from the surface substratum. Incident irradiance in all cases is assumed uniform and diffuse across the whole boundary.
+%\newpage
+%\section{Problem description}
+%\label{S:problem_description}
+%The modelling approach is concerned with the description of a phototrophic biofilm system consisting of purple phototrophic bacteria (PPB). The model description for this system has been previously described \cite{puyol2017}, however this did not account for spatial variations, and by extension, biofilm formation was not considered. The phototrophic biofilm grows attached to a surface substratum. Above the biofilm is a body of nutrient-rich liquid. Incident photons of wavelength 850 \si{\nano \metre} are irradiated from either \si{\Gamma_0} or \si{\Gamma_3} into the domain \si{\Omega}, as shown in Fig. \ref{fig:2d_above}. The initial thickness of the biofilm is \SI{50}{\micro \metre} with uniformly distributed solid species. The factor of incident irradiance is also explored, with three different irradiance levels of \SI{10}{\watt \metre ^2}, \SI{30}{\watt \metre ^2}, and \SI{100}{\watt \metre ^2} being simulated from the surface substratum. Incident irradiance in all cases is assumed uniform and diffuse across the whole boundary.
 
 
 % The phototrophic biofilm (PBF) model based on purple phototrophic bacteria is an extension of the models presented previously \cite{puyol2017} (\textbf{include my model}). Biofilm treatment extends work previously carried out by \cite{alpkvist2007}, \cite{alpkvist2007}. The important physical processes identified are as follows:
@@ -126,12 +126,12 @@ The modelling approach is concerned with the description of a phototrophic biofi
 
 
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[scale=0.5]{Images/Chap4/prob_diagram_below.pdf}
-    \caption{Two-dimensional representation of the simulation domain for the case of a bottom-irradiated biofilm. Boundaries \si{\Gamma_4} and \si{\Gamma_5} are out of, and into the page respectively, and take the same boundary conditions as boundaries \si{\Gamma_1} and \si{\Gamma_2}. The irradiance source (\si{h \nu}) is in fact uniform and diffuse across the whole boundary. Subscripts relating to \si{\alpha}, namely \textbf{l} and \textbf{B} correspond to liquid phase fraction, and biofilm phase fraction respectively.} 
-    \label{fig:2d_above}
-\end{figure}
+%\begin{figure}[htpb]
+%    \centering
+%    \includegraphics[scale=0.5]{Images/Chap4/prob_diagram_below.pdf}
+%    \caption{Two-dimensional representation of the simulation domain for the case of a bottom-irradiated biofilm. Boundaries \si{\Gamma_4} and \si{\Gamma_5} are out of, and into the page respectively, and take the same boundary conditions as boundaries \si{\Gamma_1} and \si{\Gamma_2}. The irradiance source (\si{h \nu}) is in fact uniform and diffuse across the whole boundary. Subscripts relating to \si{\alpha}, namely \textbf{l} and \textbf{B} correspond to liquid phase fraction, and biofilm phase fraction respectively.} 
+%    \label{fig:2d_above}
+%\end{figure}
 
 
 %%%%%%%%%%%%% MATHEMATICAL FORMULATION
@@ -140,10 +140,11 @@ The modelling approach is concerned with the description of a phototrophic biofi
 \section{Mathematical formulation}
 \label{S:formulation}
 \subsection{Radiative transfer}
-The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to minimal influence on the system energy balance (Eq. \ref{eq:rteSimplified}). 
+The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to minimal influence on the system energy balance, presented in Eq. \eqref{eq:rteSimplifiedCh4}. 
 
 \begin{equation}
-\frac{dI_\lambda (\textbf{r}, \textbf{s})}{ds} \, = \, - \sum_{j} [E_{\lambda,j} X_j] I_\lambda (\textbf{r}, \textbf{s})\, +\, \frac{\sigma_{\lambda, s, j}}{4 \pi} \int_{4 \pi} I_\lambda (\textbf{r}, \textbf{s}^\prime) \Phi_\lambda(\textbf{s}, \textbf{s}^\prime) d\Omega^\prime
+\frac{dI_\lambda (\textbf{r}, \textbf{s})}{ds} \, = \, - \sum_{j} [E_{\lambda,j} X_j] I_\lambda (\textbf{r}, \textbf{s})\, +\, \frac{\sigma_{\lambda, s, j}}{4 \pi} \int_{4 \pi} I_\lambda (\textbf{r}, \textbf{s}^\prime) \phi_\lambda(\textbf{s}, \textbf{s}^\prime) d\Omega^\prime
+\label{eq:rteSimplifiedCh4}
     \end{equation}
 
 where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} is the position vector of a radiative ray, \textbf{s} is the direction vector of the ray, and s is the path length. The first term on the right hand side is the extinction term, with $E_{\lambda, j}$ being the specific extinction coefficient (the combination of scattering and absorption components) for participating species $X_j$. The second term on the right hand side is associated with in-scattering, where $\sigma_{\lambda, s, j}$ is the scattering coefficient, and $\Phi_\lambda$ is the wavelength scattering function from path \textbf{s} to scattered direction $\textbf{s}^\prime$ through solid angle $d\Omega$. The phase scattering function, $\Phi_\lambda$ for this model is the Schlick function (Eq. \ref{eq:schlick}), which is appropriate for optically thick media \cite{jarosz2008}. 
@@ -155,37 +156,46 @@ where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} 
 where parameter $k$ takes values between -1.0 and 1.0 included, with negative or positive values corresponding to back-scattering and forward scattering respectively. A value of 0 means scattering is isotropic. The parameter $k$ represents the average cosine of the scattered angles. The angle $\theta$ is that made by the previous path and scattered path of a ray.
 
 \subsection{Consumption and release of soluble substrates}
-Soluble substrates exist in both the volume of liquid, and the biofilm volume. Their growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solubles}.
+Soluble substrates exist in both the volume of liquid, and the biofilm volume. Their growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solublesD}.
 
-\begin{equation}
-\label{eq:solubles}
-\frac{\partial S_i}{\partial t} = \mathcal{D}_i\nabla^2 S_i + r_{i}
-\end{equation}
-
-where $S_i$ is the soluble species $i$, $\mathcal{D}_i$ is the diffusion coefficient of species $i$, and $r_i$ is the corresponding consumption/release equation \cite{puyol2017}.
-
-The transport equations for the soluble and particulate species may be written as follows,
 \begin{equation}
 \label{eq:solublesD}
-\frac{\partial S_{\Phi}}{\partial t} + \nabla (\phi S_{\Phi}) - \nabla \cdot (D_{\Phi} \nabla S_{\Phi}) = \Gamma_{\Phi}, 
+\frac{\partial S_{\phi}}{\partial t} + \nabla (\mathbf{U} S_{\phi}) - \nabla \cdot (D_{\phi} \nabla S_{\phi}) = \Gamma_{\phi}, 
 \end{equation}
-\begin{equation}
-\label{eq:particulate}
-\frac{\partial X_{\Phi}}{\partial t} + \nabla (\phi X_{\Phi}) - \nabla \cdot (D_{\Phi} \nabla X_{\Phi}) = \Gamma_{\Phi}, 
-\end{equation}
-where, S is the soluble species and $\mathrm{\Phi}$ = SI, SH$\mathrm{_2}$, SIC, SAC, SIN, SIP and SS; X is the particulate species and $\mathrm{\Phi}$ = XPB, XS and XI; $\mathrm{D_{\Phi}}$, and $\mathrm{\Gamma_{\Phi}}$ are the diffusivity, and growth rate of species $\mathrm{\Phi}$, respectively.  
+
+where, S is the soluble species and ${\phi}$ = SI, SH${_2}$, SIC, SAC, SIN, SIP and SS. ${D_{\phi}}$, and ${\Gamma_{\phi}}$ are the diffusivity, and growth rate of species ${\phi}$, respectively. The units in which the soluble species are expressed are the same as in previous chapters, that is, kg\{COD, N, P\} m\textsuperscript{-3}, depending on the soluble component. 
 
 
 \subsection{Growth of particulate matter}
-The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulates}) have been previously defined \cite{puyol2017}.
+The previously defined equations, Eq. \eqref{eq:solublesD}, express their respective uptakes and growth in terms of COD. 
+This representation is valid for the soluble state variables if we assume that they do not directly contribute to the phase fractions. 
+However, particulate species must be expressed in terms of volume fractions, $\alpha_{XPB}$, $\alpha_{XS}$ and $\alpha_{XI}$. 
+This can be achieved by introducing a conversion term $\rho^*$ which is similar to the assumption in previous studies where its value was assumed to be roughly 60-70 kg TS m\textsuperscript{-3} \cite{alpkvist2007,polizzi2017}. 
+In this case, we have taken a more systematic approach in converting the COD quantities of the particulate species to volume fractions. 
+Let $\rho^*_{C\alpha}$ be the term which links the COD to the volume fraction $\alpha$ of the particulate of interest. The values for biofilm bulk density ($\rho_{BF}$), cell water fraction (w\textsubscript{C}), biofilm porosity ($\epsilon_{BF}$, and particulate COD:VS ratio ($\kappa_{CV}$) need to be specified. Biofilm bulk density and cell water fraction values were sourced from literature \cite{zhangBishop1994} as 1010 kg m\textsuperscript{-3} and 90\% respectively for PPB. For the other particulates, the cell water fractions were assumed to be less, as these particulates are not living and do not require water for maintenance processes. Their water fraction was therefore assumed to be 83\%. The biofilm void fraction was expressed by a linear relationship in terms of biofilm bulk density, which for a bulk density of 1010 kg m\textsuperscript{-3}, gave a void fraction ($\epsilon$) of 0.56. Eq. \eqref{eq:void_frac} shows this relationship which is linear for densities between 1000 kg m\textsuperscript{-3} and 1100 kg m\textsuperscript{-3} \cite{humeng2013}. 
+\begin{equation}
+    \label{eq:void_frac}
+    \epsilon \, = \, 8.16 - \num{0.0075}\rho_{BF}
+\end{equation}
+To convert COD content to VS, the values were sourced from previous studies, where the COD:VS ratio for PPB was assumed to be 1.78 kgCOD/kgVS \cite{puyol2017} and those for particulates X\textsubscript{I} and X\textsubscript{S} were assumed to be that of glucose at 1.07 kgCOD/kgVS. The expression to convert from COD to volume fraction is therefore as defined in Eq. \eqref{eq:cod2alpha}
+
+\begin{equation}
+    \label{eq:cod2alpha}
+    \rho^*_{C\alpha} \, = \, \rho_{BF} \cdot \kappa_{CV} \cdot (1.0 - \epsilon_{BF}) \cdot (1.0 - w_C)
+\end{equation}
+
+For all particulates in the system, the conversion factor remained constant at 80 kgCOD m\textsuperscript{-3}, however the variation of any of these components could be varied for sensibility analysis. This value was about 15\% greater than that proposed in previous photobiofilm studies \cite{polizzi2017}, and remains a source of uncertainty which could be resolved with good experimental procedures, which have been well discussed in the literature \cite{azeredo2017}. 
+
+
+The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulate}) have been previously defined \cite{puyol2017}.
 
 
 \begin{equation}
-    \label{eq:particulates}
-    \frac{\partial \theta_i}{\partial t} = \lambda \nabla p \cdot \nabla \theta_i + \frac{g_i}{\rho^*} - \theta_i \sum_{i=1}^{N_{\theta_i}}\frac{g_i}{\rho^*}
+\label{eq:particulate}
+\frac{\partial \alpha_{\phi}}{\partial t} + \nabla (\mathbf{U} \alpha_{\phi}) - \nabla \cdot (D_{\phi} \nabla \alpha_{\phi}) = \frac{\Gamma_{\phi}}{\rho^*_{C\alpha}}, 
 \end{equation}
 
-where 
+where $\alpha$ is the volume fraction of the particulate species and ${\phi}$ = \{XPB, XS and XI\}. The diffusivities for soluble species in both the bulk and biofilm were sourced from literature \cite{stewart2003, stewart1998}. For the particulate species, an artificial Henry's constant was imposed in the laplacian term such that spurious diffusion of solids across the biofilm/liquid interface did not occur. This approach has also been applied in the literature \cite{haroun2010}. The diffusivity of particulates in the bulk phase was set arbitrarily low such that no solid species could exist there. Within the biofilm, the diffusivity was set to \num{0.000000000089} m\textsuperscript{2}s\textsuperscript{-1}, the cell motility within the biofilm structure \cite{ali2018}.  
 
 \subsection{Hydrodynamics}
 \label{Hydro}
@@ -193,38 +203,36 @@ The multiphase flow may be calculated employing the mixture mass, momentum and c
 
 \begin{equation}
     \label{eq:continuity}
-    \nabla \cdot U = \Gamma,
+    \nabla \cdot \mathbf{U} = \Gamma,
 \end{equation}
 
 \begin{equation}
     \label{eq:mass}
-    \frac{\partial \alpha}{\partial t} + \nabla\cdot (\phi \alpha) = \Dot{m},
+    \frac{\partial \alpha_w}{\partial t} + \nabla\cdot (\phi \alpha_w) = \Dot{m},
 \end{equation}
 
 \begin{equation}
     \label{eq:momentum}
-    \frac{\partial (\rho U)}{\partial t} + \nabla\cdot (\rho U U) = -\nabla P + \rho g+\nabla \cdot (\tau+\tau_t)+f_{\sigma},
+    \frac{\partial (\rho \mathbf{U})}{\partial t} + \nabla\cdot (\rho \mathbf{U U}) = -\nabla P + \rho \mathbf{g} +\nabla \cdot (\vec{\tau}+\vec{\tau}_t)+f_{\sigma},
 \end{equation}
-where, U is the velocity, $\mathrm{\Gamma}$ is the growth term, $\mathrm{\alpha}$ is the phase fraction, $\mathrm{\phi}$ is the mass flux, $\mathrm{\Dot{m}}$ is the mass transfer, $\mathrm{\rho}$ is the density, g is the gravitational acceleration, P is the pressure, $\mathrm{\tau}$ is the viscous stress, $\mathrm{\tau_t}$ is the turbulent stress, and $\mathrm{f_{\sigma}}$ is the surface tension force. As the mixture method, the density $\mathrm{\rho}$ is expressed as the mixture density as,  
+where, $\mathbf{U}$ is the velocity, $\Gamma$ is the growth term, $\alpha$ is the phase fraction, ${\phi}$ is the mass flux, ${\Dot{m}}$ is the mass transfer, ${\rho}$ is the density, \textbf{g} is the gravitational acceleration, P is the pressure, $\vec{\tau}$ is the viscous stress, $\vec{\tau_t}$ is the turbulent stress, and ${f_{\sigma}}$ is the surface tension force. As the mixture method, the density ${\rho}$ is expressed as the mixture density as,  
 
 \begin{equation}
     \label{eq:mixtureDensity}
-    \rho = \rho_1 \alpha + \rho_2 (1-\alpha),
+    \rho = \rho_1 \alpha_w + \rho_2 (1-\alpha_w),
 \end{equation}
-where, $\mathrm{\rho_1}$ and $\mathrm{\rho_2}$ are the densities of the phase one and phase two, respectively. The surface tension force $\mathrm{f_{\sigma}}$ may be calculated as follows,
+where, ${\rho_1}$ and ${\rho_2}$ are the densities of the phase one and phase two, respectively. The surface tension force ${f_{\sigma}}$ may be calculated as follows,
 \begin{equation}
     \label{eq:surfaceTension}
-    f_{\sigma} = \sigma k \nabla\alpha.
+    f_{\sigma} = \sigma k \nabla\alpha_w.
 \end{equation}
-Here, $\mathrm{\sigma}$, and $k$ are the surface tension coefficient, and curvature, respectively. The curvature $k$ may be written as, 
+Here, ${\sigma}$, and $k$ are the surface tension coefficient, and curvature, respectively. The curvature $k$ may be written as, 
 
 \begin{equation}
     \label{eq:curvature}
-    k = -\nabla \mathbf{n} = -\nabla \Bigg(\frac{\nabla \alpha}{\big| \nabla \alpha\big|} \Bigg),
+    k = -\nabla \mathbf{n} = -\nabla \Bigg(\frac{\nabla \alpha_w}{\big| \nabla \alpha_w\big|} \Bigg),
 \end{equation}
 where, \textbf{n} is the outward unit normal vector at the interface.
-
-\subsection{Operating parameters and model assumptions}
 
 
 \section{Applications}
@@ -237,23 +245,22 @@ A series of six operating conditions were simulated in order to highlight the im
     \renewcommand{\arraystretch}{1.4}
     \caption{Suite of differing operating conditions for the biofilm simulations for both 2D and 3D cases.}
     \tabcolsep=0.11cm
-    \begin{tabular}{@{}p{1cm} p{2cm} p{3cm} p{5cm} p{5cm}@{}} \toprule
-Case & Irradiance  & k\textsubscript{M,ch}  & \{$\alpha$\textsubscript{XPB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
-1    &  30 Wm\textsuperscript{-2}  &    0.07 d\textsuperscript{-1}    &  \{0.5, 0.4, 0.1\}$\mathds{1}^*_{y<0.03mm}$  & Incident below\\
-2     &  30 Wm\textsuperscript{-2}  &    0.2 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$ & Incident below\\
-3    &  5 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident below\\
-4    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}$\mathds{1}_{y<0.03mm}$  & Incident above\\
-5    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}  & Sparse biofilm, incident below\\
-6    &  30 Wm\textsuperscript{-2}  &    0.8 kg COD m\textsuperscript{-3}    &  \{0.5, 0.4, 0.1\}  & Sparse biofilm, incident above\\ \hline
+    \begin{tabular}{@{}p{2cm} p{4cm} p{5cm} p{5.5cm}@{}} \toprule
+Case & Irradiance  &  \{$\alpha$\textsubscript{XPB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
+1    &  30 Wm\textsuperscript{-2}   &  \{0.7, 0.0, 0.2\}$\mathbb{1}^*_{y<0.03mm}$  & Incident below\\
+2     &  80 Wm\textsuperscript{-2}  &  \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$ & Incident below\\
+3    &  5 Wm\textsuperscript{-2}  &    \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$  & Incident below\\
+4    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$  & Incident above\\
+5    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident below\\
+6    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident above\\ \hline
     \end{tabular}
-  \scriptsize{
-     * $\mathds{1}$ is the characteristic function where the stated initial biofilm concentration applies if the condition is true, or is zero if false.} 
+  \scriptsize{* $\mathbb{1}$ is the characteristic function where the stated initial biofilm concentration applies if the condition is true, or is zero if false.} 
     \label{tab:biofilm_cases}
 \end{table}
 
 For all other state variables, initial and boundary conditions were maintained constant across all simulations.\\
 
-In the case of boundary conditions, the velocity field was treated as the no-slip at the boundaries whereas the fixed-flux-pressure was imposed for the pressure field. Conversely, in the case of phase fractions, i.e. $\mathrm{\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarised on all boundaries as,  
+In the case of boundary conditions, the velocity field was treated as the no-slip at the boundaries whereas the fixed-flux-pressure was imposed for the pressure field. Conversely, in the case of phase fractions, i.e. ${\alpha}$, the inlet-outlet boundary condition, which is a mixture of zero-gradient and fixed-value boundary conditions, is considered at the outlet, and the walls are treated as zero-gradient. The boundary conditions may be summarised on all boundaries as,  
 
 \begin{equation}
     \label{eq:boundaryU}
@@ -262,110 +269,181 @@ In the case of boundary conditions, the velocity field was treated as the no-sli
 
 \begin{equation}
     \label{eq:boundaryPrgh}
-    \nabla P_{rgh} = \bigg[\frac{\phi \frac{H(U)}{a_p} - \phi}{|S_f|a_p} \bigg],
+    \nabla P_{rgh} = \bigg[\frac{\phi \frac{H(\mathbf{U})}{a_p} - \phi}{|S_f|a_p} \bigg],
 \end{equation}
 
 \begin{equation}
     \label{eq:boundaryAlpha}
-    \frac{\partial \alpha}{\partial n} = 0 \quad \mathrm{and} \quad \alpha = \alpha_i.
+    \frac{\partial \alpha}{\partial \mathbf{n}} = 0 \quad {and} \quad \alpha = \alpha_i.
 \end{equation}
-
-Here, $\mathrm{P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(U), $\mathrm{a_P}$, $\mathrm{\phi}$, and $\mathrm{S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and $\mathrm{\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{\mathrm{XPB}}$, $\alpha_{\mathrm{XS}}$, $\alpha_{\mathrm{XS}}$, and $\alpha_{\mathrm{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
+Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{U}), ${a_P}$, ${\phi}$, and ${S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and ${\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{{XPB}}$, $\alpha_{{XS}}$, $\alpha_{{XS}}$, and $\alpha_{{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
 
 
 %%%%%%%%%%%%%%%%% Implementation
 \section{Implementation}
 
-\subsection{Case 1: Sparsely initiated biofilm irradiated from substratum}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case1_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_alpha_distro}
-\end{figure}
-
+\subsection{Case 1: Uniformly initiated biofilm irradiated from substratum}
+% ! DO Biomass first
+% ! DO distributions second
+% ! DO Growth rates last
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case1_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_ppb}
-\end{figure}
-
-\subsection{Case 2: Limiting acetic acid concentration in bulk}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case2_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_ppb_frac.png}
+    \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case1_ppb_frac}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case2_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case1_growth_frac}
 \end{figure}
 
-/
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case1.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case1_dist_frac}
+\end{figure}
+
+
+
+
+\subsection{Case 2: Uniformly initiated biofilm with increased irradiance}
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case2_ppb_frac.png}
+%    \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
+%    \label{fig:case2_ppb_frac}
+%\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case2_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case2_growth_frac}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case2.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case2_dist_frac}
+\end{figure}
+
+
+
+
+
 \subsection{Case 3: Reduced substratum irradiance at reduced irradiance}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case3_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case3_ppb_frac.png}
+    \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 3 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case3_ppb_frac}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case3_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case3_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 3 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case3_growth_frac}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case3.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 3 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case3_dist_frac}
+\end{figure}
+
+
+
+
+
+
+
 
 \subsection{Case 4: Overhead irradiance}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case4_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case4_ppb_frac.png}
+    \caption{Two dimensional view of PPB as uniformly initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case4_ppb_frac}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case4_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case4_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case4_growth_frac}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case4.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case4_dist_frac}
+\end{figure}
+
+
+
+
+
 
 \subsection{Case 5: Sparsely initialised biofilm with substratum irradiance}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case5_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case5_ppb_frac.png}
+    \caption{Two dimensional view of PPB as sparsely initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case5_ppb_frac}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case5_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case5_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as sparsely initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case5_growth_frac}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case5.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case5_dist_frac}
+\end{figure}
+
+
+
+
+
+
+
+
 
 \subsection{Case 6: Sparsely distributed biofilm irradiated from above}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case6_ppb.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case6_ppb_frac.png}
+    \caption{Two dimensional view of PPB as sparsely initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case6_ppb_frac}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/results/post_processing/2D_cases/case6_rad.png}
-    \caption{Three dimensional render of PPB growth as biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm. } 
-    \label{fig:case5_3D_rad}
+    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case6_growth_frac.png}
+    \caption{Two dimensional view of PPB growth rate as sparsely initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case6_growth_frac}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case6.png}
+    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
+    \label{fig:case6_dist_frac}
 \end{figure}
 
 
