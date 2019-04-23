@@ -29,6 +29,7 @@ def plot_subplot(dataset0, dataset1, dataset2, dataset3):
     
     # Set the font parameters and linewidths
     mpl.rcParams['lines.linewidth'] = 3
+  #  mpl.rcParams.update({'figure.autolayout': True})
     set_color="#444444"
     plt.style.use("seaborn-whitegrid")
     font = {'family':'DejaVu Sans','weight':'bold','size':16}
