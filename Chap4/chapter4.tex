@@ -236,7 +236,7 @@ where, \textbf{n} is the outward unit normal vector at the interface.
 
 \section{Applications}
 \subsection{Boundary and initial conditions}
-A series of six operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery and readily biodegradable soluble organics were the major limitations to reactor performance in a suspended growth context \cite{hulsen2016, hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. In addition to the limiting concentrations and intensities of acetate and radiation, different configurations were explored. Firstly, the baseline experiment with both radiative intensity and acetate in sufficient quantities was repeated with the radiation source from above the biofilm. Finally, the above/below incident irradiances were repeated with a substratum initially sparsely populated with phototrophic biofilm (summarised in Table \ref{tab:biofilm_cases}). 
+A series of five operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery was one of the major limitations to reactor performance in a suspended growth context \cite{hulsen2016, hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. The second case considered a limiting case of irradiance at 10\% of what has been reported in the literature \cite{hulsen2018}. Additionally, the baseline experiment was modified such that the radiative field was initialised from above the biofilm. The last two simulations considered sparsely initiated biofilm with the radiative field being initialised from below and above the biofilm (summarised in Table \ref{tab:biofilm_cases}). 
 
 \begin{table}[H]
     \centering
@@ -246,12 +246,12 @@ A series of six operating conditions were simulated in order to highlight the im
     \tabcolsep=0.11cm
     \begin{tabular}{@{}p{2cm} p{4cm} p{5cm} p{5.5cm}@{}} \toprule
 Case & Irradiance  &  \{$\alpha$\textsubscript{XPB\textsubscript{0}}, $\alpha$\textsubscript{S\textsubscript{0}}, $\alpha$\textsubscript{I\textsubscript{0}}\}  &  Configuration \\ \hline
-1    &  30 Wm\textsuperscript{-2}   &  \{0.7, 0.0, 0.2\}$\mathbb{1}^*_{y<0.03mm}$  & Incident below\\
-2     &  80 Wm\textsuperscript{-2}  &  \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$ & Incident below\\
-3    &  5 Wm\textsuperscript{-2}  &    \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$  & Incident below\\
-4    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03mm}$  & Incident above\\
-5    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident below\\
-6    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident above\\ \hline
+1    &  30 Wm\textsuperscript{-2}   &  \{0.7, 0.0, 0.2\}$\mathbb{1}^*_{y<0.03\mathrm{mm}}$  & Incident below\\
+%2     &  80 Wm\textsuperscript{-2}  &  \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03\mathrm{mm}}$ & Incident below\\
+2    &  5 Wm\textsuperscript{-2}  &    \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03\mathrm{mm}}$  & Incident below\\
+3    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}$\mathbb{1}_{y<0.03\mathrm{mm}}$  & Incident above\\
+4    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident below\\
+5    &  30 Wm\textsuperscript{-2}  &   \{0.7, 0.0, 0.2\}  & Sparse biofilm, incident above\\ \hline
     \end{tabular}
   \scriptsize{* $\mathbb{1}$ is the characteristic function where the stated initial biofilm concentration applies if the condition is true, or is zero if false.} 
     \label{tab:biofilm_cases}
@@ -285,20 +285,24 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
 % ! DO Biomass first
 % ! DO distributions second
 % ! DO Growth rates last
-
+Case 1 has been treated as the base case for the simulations. The irradiance was initiated below the sustratum, and the biofilm was initiated with values as per Table \ref{tab:biofilm_cases}. Figures \ref{fig:case1_ppb_frac}, \ref{fig:case1_growth_frac} and \ref{fig:case1_dist_frac} show the volume fraction of PPB, its apparent growth rate, and the spatial distribution of particulates and water at four points in time: 1.0 d, 4.0 d, 7.0 d, and 10.0 d. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_ppb_frac.png}
+    \includegraphics[width=\textwidth,height=0.35\textheight]{Chap4/methods/data/figures/case1_ppb_frac.png}
     \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case1_ppb_frac}
 \end{figure}
 
+Figure \ref{fig:case1_ppb_frac} shows the growth of PPB biomass at several steps in time. With soluble substrates in excess, PPB grows phototrophically from close to the substratum. New biomass effectively pushes the present biofilm away from the irradiated substratum, which is governed by the cell motility coefficient of \num{8.9E-11} m\textsuperscript{2}s\textsuperscript{-1}. In the absence of an external flow field, the biofilm continues to expand without shear stresses controlling any sloughing mechanism. Substrate is still able to be delivered to the highly irradiated regions, however this delivery rate decreases as the biofilm expands. 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_growth_frac.png}
+    \includegraphics[width=\textwidth,height=0.35\textheight]{Chap4/methods/data/figures/case1_growth_frac.png}
     \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case1_growth_frac}
 \end{figure}
+
+Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over time. There is a 33\% decrease in maximum growth rate over this period as diffusion begins to limit the growth and the initial water volume fraction begins to vacate the biofilm region as particulates start to dominate. Between 4.0 d and the end of the simulation, there is no longer any water in the biofilm region, so the attenuation of the radiative field cannot explain the reduction in maximum apparent growth rate of PPB. This reduction in growth rate can be attributed to the reduction in delivery of substrate as the solubles need to diffuse through a thicker biofilm to reach the highly irradiated zone of the biofilm.
 
 \begin{figure}[H]
     \centering
@@ -306,43 +310,46 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
     \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 30 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case1_dist_frac}
 \end{figure}
+ 
+ Figure \ref{fig:case1_dist_frac} shows the distribution of particulate species along the height of the biofilm. In the absence of other heterotrophic biomass, the spatial distribution of the particulate species has minimal change. As PPB decays, it produces biodegradable particulates, and in turn, inert particulates. Over the period of 10 days, the biofilm front progresses to more than 12 times that of the initial biofilm level. As these cases have not included the shear stresses associated with an externally flowing field, nor the description of a set of detachment rules, the control of the biofilm front has not fully been specified, and extension of this model is required in order to capture this information. 
 
 
 
-
-\subsection{Case 2: Uniformly initiated biofilm with increased irradiance}
+%\subsection{Case 2: Uniformly initiated biofilm with increased irradiance}
 %\begin{figure}[H]
 %    \centering
 %    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case2_ppb_frac.png}
 %    \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
 %    \label{fig:case2_ppb_frac}
 %\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case2_growth_frac.png}
-    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
-    \label{fig:case2_growth_frac}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case2.png}
-    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
-    \label{fig:case2_dist_frac}
-\end{figure}
-
-
-
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case2_growth_frac.png}
+%    \caption{Two dimensional view of PPB growth rate as uniformly initiated biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
+%    \label{fig:case2_growth_frac}
+%\end{figure}
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=\textwidth,height=0.45\textheight]{Chap4/methods/output/case2.png}
+%    \caption{Spatial distribution of particulates and water over domain height. Biofilm was initiated as a uniform biofilm over a substratum irradiated at 80 W m\textsuperscript{-2} at 850 nm.} 
+%    \label{fig:case2_dist_frac}
+%\end{figure}\mathrm{mm}
+%
 
 
-\subsection{Case 3: Reduced substratum irradiance at reduced irradiance}
+
+
+\subsection{Case 2: Reduced substratum irradiance}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case3_ppb_frac.png}
     \caption{Two dimensional view of PPB as uniformly initiated biofilm over a substratum irradiated at 3 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case3_ppb_frac}
 \end{figure}
+
+In the case of reduced irradiance from below the biofilm, the absolute growth of biofilm, as well as the apparent growth rate of biofilm are affected. The value of the applied irradiance is 3 W m\textsuperscript{-2} at 850 nm, which is much less than the half-saturation constant of 8.76 W m\textsuperscript{-2} at the same frequency \cite{eltsova2016}. The maximum apparent growth rate is 0.40 d\textsuperscript{-1}. The maximum growth rate stays constant throughout the simulation, most likely due to the low biofilm growth during this time, however we see in the latter stages of the simulation a clear instance of decay, where the irradiance is insufficient to sustain phototrophic activity, and the PPB that initially grew on the substratum begin to decay  as they are pushed further from the radiative field. We see through Fig. \ref{fig:case3_dist_frac} that the biofilm front increases threefold over the 10 day period. The proportion of other particulate matter increases slightly over this time period, and the volume fraction of PPB initially increases from 70\% to 75\%, but then steadies at 70\% as time progresses. 
 
 \begin{figure}[H]
     \centering
@@ -365,13 +372,15 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
 
 
 
-\subsection{Case 4: Overhead irradiance}
+\subsection{Case 3: Overhead irradiance}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case4_ppb_frac.png}
     \caption{Two dimensional view of PPB as uniformly initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case4_ppb_frac}
 \end{figure}
+
+In this simulation, the radiative field was initialised from above the biofilm with an irradiance of 30 W m\textsuperscript{-2}. The biofilm does not reach the same level as that in Case 1, as the radiative field is partly attenuated before it reaches the biofilm. This means that growth is initially steady when compared to Case 1, but it accelerates the the biofilm forms and its front progresses. The initial apparent growth rate is 0.7 d\textsuperscript{-1} and this increases to 1.0 d\textsuperscript{-1} as the biofilm grows. With the in-scattered nature of the radiative field, the intensity is highest at the central point of the boundary. This is due to this point having the most number of neighbours potentially contributing to the radiative field. This results in the biofilm in the early stages of the simulation extending towards this point of highest irradiance. As the simulation progresses and growth is less limited by the irradiance, this biofilm shape becomes less pronounced.
 
 \begin{figure}[H]
     \centering
@@ -392,7 +401,7 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
 
 
 
-\subsection{Case 5: Sparsely initialised biofilm with substratum irradiance}
+\subsection{Case 4: Sparsely initialised biofilm with substratum irradiance}
 
 \begin{figure}[H]
     \centering
@@ -423,7 +432,7 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
 
 
 
-\subsection{Case 6: Sparsely distributed biofilm irradiated from above}
+\subsection{Case 5: Sparsely distributed biofilm irradiated from above}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case6_ppb_frac.png}
