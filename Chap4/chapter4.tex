@@ -149,7 +149,7 @@ This study aims to extend the previous work done on the development of a lumped 
 \section{Mathematical formulation}
 \label{S:formulation}
 \subsection{Radiative transfer}
-The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to minimal influence on the system energy balance, presented in Eq. \eqref{eq:rteSimplifiedCh4}. 
+The general form of the radiative transfer equation (RTE) has been adapted to phototrophic systems \textbf{cite me} \cite{kong2014}, and includes the dependency on the concentration of solid species and water. The black body radiation term has been omitted from this equation due to its minimal influence. The electromagnetic field energy balance is presented in Eq. \eqref{eq:rteSimplifiedCh4}. 
 
 \begin{equation}
 \frac{dI_\lambda (\textbf{r}, \textbf{s})}{ds} \, = \, - \sum_{j} [E_{\lambda,j} X_j] I_\lambda (\textbf{r}, \textbf{s})\, +\, \frac{\sigma_{\lambda, s, j}}{4 \pi} \int_{4 \pi} I_\lambda (\textbf{r}, \textbf{s}^\prime) \phi_\lambda(\textbf{s}, \textbf{s}^\prime) d\Omega^\prime
@@ -165,7 +165,7 @@ where $I_\lambda$ is the spectral irradiance for a given wavelength, \textbf{r} 
 where parameter $k$ takes values between -1.0 and 1.0 included, with negative or positive values corresponding to back-scattering and forward scattering respectively. A value of 0 means scattering is isotropic. The parameter $k$ represents the average cosine of the scattered angles. The angle $\theta$ is that made by the previous path and scattered path of a ray.
 
 \subsection{Consumption and release of soluble substrates}
-Soluble substrates exist in both the volume of liquid, and the biofilm volume. Their growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solublesD}.
+Soluble substrates exist in both the volume of liquid, and the porous part of the biofilm volume. Growth and release expressions (hydrolysis of biodegradable particulate organic matter) have been previously described \cite{puyol2017}. The soluble substrates considered in this study are readily biodegradable soluble organics expressed in chemical oxygen demand (COD), acetic acid (COD), hydrogen (COD), inorganic carbon (C), inorganic nitrogen (N), inorganic phosphorus (P) and soluble inert material (COD). The general form for the soluble balance equation is expressed in Eq. \ref{eq:solublesD}.
 
 \begin{equation}
 \label{eq:solublesD}
@@ -193,10 +193,10 @@ To convert COD content to VS, the values were sourced from previous studies, whe
     \rho^*_{C\alpha} \, = \, \rho_{BF} \cdot \kappa_{CV} \cdot (1.0 - \epsilon_{BF}) \cdot (1.0 - w_C)
 \end{equation}
 
-For all particulates in the system, the conversion factor remained constant at 80 kgCOD m\textsuperscript{-3}, however the variation of any of these components could be varied for sensibility analysis. This value was about 15\% greater than that proposed in previous photobiofilm studies \cite{polizzi2017}, and remains a source of uncertainty which could be resolved with good experimental procedures, which have been well discussed in the literature \cite{azeredo2017}. 
+For all particulates in the system, the conversion factor remained constant at 80 kgCOD m\textsuperscript{-3}, however the variation of any of these components could be varied for sensitivity analysis. This value was about 15\% greater than that proposed in previous photobiofilm studies \cite{polizzi2017}, and remains a source of uncertainty which could be resolved with experiments, which have been well discussed in the literature \cite{azeredo2017}. 
 
 
-The growth of particulate matter forms the biofilm structure and influences the pressure equation which influences advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, replace $X_i$, the concentration of particulate species $i$ with $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulate}) have been previously defined \cite{puyol2017}.
+The growth of particulate matter increases the mass of the biofilm and influences the pressure equation which induces advection of the biofilm front. The particulate species included in this study are PPB, slowly biodegradable particulate organics, and inert particulate organic matter. Similarly to \cite{alpkvist2007}, $X_i$, the concentration of particulate species $i$ is expressed by $\rho^*\theta_i$ where $\rho^*$ is the density of particulate species, assumed constant for each species, and $\theta_i$ is the volume fraction of species $i$. The growth terms for the particulate balance equations (Eq.~\ref{eq:particulate}) have been previously defined \cite{puyol2017}.
 
 
 \begin{equation}
@@ -204,11 +204,11 @@ The growth of particulate matter forms the biofilm structure and influences the 
 \frac{\partial \alpha_{\phi}}{\partial t} + \nabla (\mathbf{U} \alpha_{\phi}) - \nabla \cdot (D_{\phi} \nabla \alpha_{\phi}) = \frac{\Gamma_{\phi}}{\rho^*_{C\alpha}}, 
 \end{equation}
 
-where $\alpha$ is the volume fraction of the particulate species and ${\phi}$ = \{XPB, XS and XI\}. The diffusivities for soluble species in both the bulk and biofilm were sourced from literature \cite{stewart2003, stewart1998}. For the particulate species, an artificial diffusion constant was used in the laplacian term such that spurious diffusion of solids across the biofilm/liquid interface did not occur. This approach has also been applied in the literature \cite{haroun2010}. The diffusivity of particulates in the bulk phase was set arbitrarily low such that no solid species could exist there. Within the biofilm, the diffusivity was set to \num{0.000000000089} m\textsuperscript{2}s\textsuperscript{-1}, the cell motility within the biofilm structure \cite{ali2018}.  
+where $\alpha$ is the volume fraction of the particulate species and ${\phi}$ = \{XPB, XS and XI\}. The diffusivities for soluble species in both the bulk and biofilm were sourced from literature \cite{stewart2003, stewart1998}. For the particulate species, an artificial diffusion constant was used in the laplacian term such that spurious diffusion of solids across the biofilm/liquid interface did not occur. This approach has also been applied in the literature \cite{haroun2010}. The diffusivity of particulates in the bulk phase was set arbitrarily low such that no solid species could exist there. Within the biofilm, the diffusivity was set to \num{0.000000000089} m\textsuperscript{2}s\textsuperscript{-1}, representing the cell motility within the biofilm structure \cite{ali2018}.  
 
 \subsection{Hydrodynamics}
 \label{Hydro}
-The multiphase volume of fluid flow may be calculated employing the mixture mass, momentum and continuity equations as follows,
+The multiphase volume of fluid flow may be calculated using the mixture mass, momentum and continuity equations as follows,
 
 \begin{equation}
     \label{eq:continuity}
@@ -224,7 +224,7 @@ The multiphase volume of fluid flow may be calculated employing the mixture mass
     \label{eq:momentum}
     \frac{\partial (\rho \mathbf{U})}{\partial t} + \nabla\cdot (\rho \mathbf{U U}) = -\nabla P + \rho \mathbf{g} +\nabla \cdot (\vec{\tau}+\vec{\tau}_t)+f_{\sigma},
 \end{equation}
-where, $\mathbf{U}$ is the velocity, $\Gamma$ is the growth term, $\alpha$ is the phase fraction, ${\phi}$ is the mass flux, ${\Dot{m}}$ is the mass transfer, ${\rho}$ is the density, \textbf{g} is the gravitational acceleration, P is the pressure, $\vec{\tau}$ is the viscous stress, $\vec{\tau_t}$ is the turbulent stress, and ${f_{\sigma}}$ is the surface tension force. As the mixture method, the density ${\rho}$ is expressed as the mixture density as,  
+where, $\mathbf{U}$ is the velocity, $\Gamma$ is the growth term, $\alpha$ is the phase fraction, ${\phi}$ is the mass flux, ${\Dot{m}}$ is the mass transfer, ${\rho}$ is the density, \textbf{g} is the gravitational acceleration, P is the pressure, $\vec{\tau}$ is the viscous stress, $\vec{\tau_t}$ is the turbulent stress, and ${f_{\sigma}}$ is the surface tension force. The mixture density is expressed as:
 
 \begin{equation}
     \label{eq:mixtureDensity}
@@ -246,7 +246,7 @@ where, \textbf{n} is the outward unit normal vector at the interface.
 
 \section{Applications}
 \subsection{Boundary and initial conditions}
-A series of five operating conditions were simulated in order to highlight the important aspects of the model. These cases were selected because previous studies had noted that radiation delivery was one of the major limitations to reactor performance in a suspended growth context \cite{hulsen2016, hulsen2016a}. The rationale was thus that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. The second case considered a limiting case of irradiance at 10\% of what has been reported in the literature \cite{hulsen2018}. Additionally, the baseline experiment was modified such that the radiative field was initialised from above the biofilm. The last two simulations considered sparsely initiated biofilm with the radiative field being initialised from below and above the biofilm (summarised in Table \ref{tab:biofilm_cases}). 
+A series of five scenarios were simulated in order to highlight the important aspects of the model. These are summarised in Table \ref{tab:biofilm_cases}. These cases were selected because previous studies had noted that radiation delivery was one of the major limitations to reactor performance in a suspended growth context \cite{hulsen2016, hulsen2016a}. The rationale was that simulations exploring these limitations would aid in understanding the dynamics of phototrophic biofilm growth. In the base cases, the radiative intensity was delivered from below an assumed transparent substratum. The second case considered a limiting case of irradiance at 10\% of that reported in the literature \cite{hulsen2018}. Additionally, the baseline experiment was modified such that the radiative field was initialised from above the biofilm. The last two simulations considered sparsely initiated biofilm with the radiative field being initialised from below and above the biofilm (summarised in Table \ref{tab:biofilm_cases}). 
 
 \begin{table}[H]
     \centering
@@ -289,13 +289,13 @@ Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{
 
 
 %%%%%%%%%%%%%%%%% Implementation
-\section{Implementation}
+\section{Results}
 
 \subsection{Case 1: Uniformly initiated biofilm irradiated from substratum}
 % ! DO Biomass first
 % ! DO distributions second
 % ! DO Growth rates last
-Case 1 has been treated as the base case for the simulations. The irradiance was initiated below the sustratum, and the biofilm was initiated with values as per Table \ref{tab:biofilm_cases}. Figures \ref{fig:case1_ppb_frac}, \ref{fig:case1_growth_frac} and \ref{fig:case1_dist_frac} show the volume fraction of PPB, its apparent growth rate, and the spatial distribution of particulates and water at four points in time: 1.0 d, 4.0 d, 7.0 d, and 10.0 d. 
+Case 1 has been treated as the base case for the simulations. The irradiance was initiated below the sustratum, and the biofilm was initiated as a uniform layer on the substratum with values as per Table \ref{tab:biofilm_cases}. Figures \ref{fig:case1_ppb_frac}, \ref{fig:case1_growth_frac} and \ref{fig:case1_dist_frac} show the volume fraction of PPB, its apparent growth rate, and the spatial distribution of particulates and water at four points in time: 1.0 d, 4.0 d, 7.0 d, and 10.0 d. 
 \begin{figure}[H]
     \centering
      \hspace*{-1cm}\includegraphics[width=1.1\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_ppb_frac.png}
@@ -303,7 +303,7 @@ Case 1 has been treated as the base case for the simulations. The irradiance was
     \label{fig:case1_ppb_frac}
 \end{figure}
 
-Figure \ref{fig:case1_ppb_frac} shows the growth of PPB biomass at several steps in time. With soluble substrates in excess, PPB grows phototrophically from close to the substratum. New biomass effectively pushes the present biofilm away from the irradiated substratum, which is governed by the cell motility coefficient of \num{8.9E-11} m\textsuperscript{2}s\textsuperscript{-1}. In the absence of an external flow field, the biofilm continues to expand without shear stresses controlling any sloughing mechanism. Substrate is still able to be delivered to the highly irradiated regions, however this delivery rate decreases as the biofilm expands. 
+Figure \ref{fig:case1_ppb_frac} shows the growth of PPB biomass at several steps in time. With soluble substrates in excess, PPB grows phototrophically from close to the substratum. New biomass effectively pushes the present biofilm away from the irradiated substratum, with uniformity in the biofilm composition governed by cell motility. In the absence of an external flow field, the biofilm continues to expand without shear stresses controlling any sloughing mechanism. Substrate is still able to be delivered to the highly irradiated regions, however this delivery rate decreases as the biofilm expands. 
 
 \begin{figure}[H]
     \centering
@@ -312,7 +312,7 @@ Figure \ref{fig:case1_ppb_frac} shows the growth of PPB biomass at several steps
     \label{fig:case1_growth_frac}
 \end{figure}
 
-Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over time. There is a 33\% decrease in maximum growth rate over this period as diffusion begins to limit the growth and the initial water volume fraction begins to vacate the biofilm region as particulates start to dominate. Between 4.0 d and the end of the simulation, there is no longer any water in the biofilm region, so the attenuation of the radiative field cannot explain the reduction in maximum apparent growth rate of PPB. This reduction in growth rate can be attributed to the reduction in delivery of substrate as the solubles need to diffuse through a thicker biofilm to reach the highly irradiated zone of the biofilm.
+Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over time. There is a 33\% decrease in maximum growth rate over this period as diffusion begins to limit the growth and the initial water volume fraction begins to vacate the biofilm region as particulates start to dominate. Between 4.0 d and the end of the simulation, there is no longer any of the initial water in the biofilm domain, so the attenuation of the radiative field cannot explain the reduction in maximum apparent growth rate of PPB. However, the biofilm still includes water in the biofilm void space which doesn't change the apparent diffusivity for a zone of fully developed biofilm. This reduction in growth rate can be attributed to the reduction in delivery of substrate as the solubles need to diffuse through a thicker biofilm to reach the highly irradiated zone of the biofilm.
 
 \begin{figure}[H]
     \centering
@@ -321,7 +321,7 @@ Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over ti
     \label{fig:case1_dist_frac}
 \end{figure}
  
- Figure \ref{fig:case1_dist_frac} shows the distribution of particulate species along the height of the biofilm. In the absence of other heterotrophic biomass, the spatial distribution of the particulate species has minimal change. As PPB decays, it produces biodegradable particulates, and in turn, inert particulates. Over the period of 10 days, the biofilm front progresses to more than 12 times that of the initial biofilm level. As these cases have not included the shear stresses associated with an externally flowing field, nor the description of a set of detachment rules, the control of the biofilm front has not fully been specified, and extension of this model is required in order to capture this information. 
+ Figure \ref{fig:case1_dist_frac} shows the distribution of particulate species along the height of the biofilm. In the absence of other heterotrophic biomass, the spatial distribution of the particulate species has minimal change. As PPB decays, it produces biodegradable particulates, and in turn, inert particulates. Over the period of 10 days, the biofilm front progresses to more than 12 times that of the initial biofilm level. As these cases have not included the shear stresses associated with an externally flowing field, nor the description of a set of detachment rules, the control of the biofilm front has not fully been specified, and extension of this model is required in order to capture this information.
 
 
 
@@ -389,7 +389,7 @@ In this simulation, the radiative field was initialised from above the biofilm w
 
 \subsection{Case 4: Sparsely initialised biofilm with substratum irradiance}
 
-Figures \ref{fig:case5_ppb_frac}, \ref{fig:case5_growth_frac} and \ref{fig:case5_dist_frac} show the biofilm front in terms of PPB, the distribution of the apparent growth rates for PPB and the spatial distribution of the biofilm components respectively. The system is initialised with 3 partial  spherical (or circular in 2 dimensions) zones of biofilm along the substratum. The two partial  spheres initialised in the corners begin at the origin and have a radius of 0.18 mm. The partial sphere initialised in the centre of the horizontal axis has a radius of 0.25 mm. 
+Figures \ref{fig:case5_ppb_frac}, \ref{fig:case5_growth_frac} and \ref{fig:case5_dist_frac} show the biofilm front in terms of PPB, the distribution of the apparent growth rates for PPB and the spatial distribution of the biofilm components respectively. The system is initialised with 3 hemispherical (or cylindrical in 2 dimensions) zones of biofilm along the substratum. The two partial  spheres initialised in the corners begin at the origin and have a radius of 0.18 mm. The partial sphere initialised in the centre of the horizontal axis has a radius of 0.25 mm. 
 
 \begin{figure}[H]
     \centering
@@ -433,7 +433,7 @@ The initial and boundary conditions for case 5 were identical for those used in 
     \caption{Two dimensional view of PPB as sparsely initiated biofilm irradiated from above at 30 W m\textsuperscript{-2} at 850 nm.} 
     \label{fig:case6_ppb_frac}
 \end{figure}
-There was considerably less biofilm formation over the 10 day period when compared with case 5 where the biofilm was irradiated from below the substratum. This indicates that despite limitations associated with diffusion being overcome, the radiative field limitation affects the growth of phototrophic at thicknesses on the order of 10\textsuperscript{-3} m. The biofilm profile was also slightly different to the previous case. As radiation is a condition for phototrophic growth, the biofilm tended to occupy and grow in the space where the radiative field was most intense. This was in along the x-y line where x was 1.5 mm. The higher intensity was due to the in-scattering phase function in the radiative transfer equation where the point with the most number of neighbours can attain the highest radiative intensity. 
+There was considerably less biofilm formation over the 10 day period when compared with case 5 where the biofilm was irradiated from beneath the substratum. This indicates that despite limitations associated with diffusion being overcome, the radiative field limitation affects the growth of phototrophic at thicknesses on the order of 10\textsuperscript{-3} m, where scattering and absorption effects are more pronounced. The biofilm profile was also slightly different to the previous case, where the biomass was attracted to the light source, elongating the shape of the biofilm. As radiation is a condition for phototrophic growth, the biofilm tended to occupy and grow in the space where the radiative field was most intense. This was in along the x-y line where x was 1.5 mm. The higher intensity was due to the in-scattering phase function in the radiative transfer equation where the point with the most number of neighbours can attain the highest radiative intensity. 
 
 
 
@@ -480,9 +480,9 @@ The final limitation regarding this phototrophic biofilm model is that an extern
 
 %%%%%%%%%%%%%%%%%%% CONCLUSIONS
 \section{Conclusions}
-In this study, a multidimensional continuum-based phototrophic biofilm model was developed. The process of building the model included the translation of process biokinetics to volumetric growth, and the coupling of the radiative field to the volumetric biokinetic model, as was previously demonstrated in chapter 3. The solid and soluble species within the biokinetic model were simulated in a hybrid volume of fluid (VoF) and mixture model, where particulate species formed the mixture model, and the aggregate of these species was fed into the VoF model in order to ensure conservation of momentum. Development was done using the free software CFD library OpenFOAM, as was the case for all distributed parameter modelling throughout this thesis. 
+In this study, a multidimensional continuum-based phototrophic biofilm model was developed. The process of building the model included the translation of process biokinetics to volumetric growth, and the coupling of the radiative field to the volumetric biokinetic model, as was previously demonstrated in chapter 3. The solid and soluble species within the biokinetic model were simulated in a hybrid volume of fluid (VoF) and mixture model.
 \skippingparagraph
-Five different simulations were done in order to explore the potential limiting factors of phototrophic biofilms. The five cases included: 1) sufficient soluble substrates and radiation (30 W m\textsuperscript{-2}) on a uniformly initialised biofilm, 2) limiting irradiance (3 W m\textsuperscript{-2}) with all other factors maintained, 3) sufficient soluble substrate with a radiative field initialised from above the biofilm, 4) a sparsely clustered biofilm with sufficient soluble substrates and radiation, and 5) the same as case 4, but with an overhead irradiance. 
+%Five different simulations were done in order to explore the potential limiting factors of phototrophic biofilms. The five cases included: 1) sufficient soluble substrates and radiation (30 W m\textsuperscript{-2}) on a uniformly initialised biofilm, 2) limiting irradiance (3 W m\textsuperscript{-2}) with all other factors maintained, 3) sufficient soluble substrate with a radiative field initialised from above the biofilm, 4) a sparsely clustered biofilm with sufficient soluble substrates and radiation, and 5) the same as case 4, but with an overhead irradiance. 
 \skippingparagraph
 It was found that both the diffusion limitations of soluble substrate and the radiative field limited biofilm growth, however the radiative field was the main factor in restricted growth rates, due to the sometimes very localised field when biomass concentration was high. Biofilms with radiation above performed less well than those irradiated from below the substratum, most probably due to the non-uniformity and attenuation of the radiative field through water before reaching the biofilm front. 
 The spatial differences of the radiative field led to the conclusion that models with dimensions higher than 1 are necessary in order to capture properly phototrophic growth.

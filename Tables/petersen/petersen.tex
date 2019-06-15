@@ -181,7 +181,7 @@
   \node[name=XPB,above of=0801,halfBox]{$\mathrm{X_{PB}}$}; 
   \node[name=XS,above of=0901,halfBox]{$\mathrm{X_S}$};
   \node[name=XI,above of=1001,halfBox]{$\mathrm{X_I}$}; 
-  \node[name=rate,right of=XI,halfBox,minimum width=15cm, node distance=9cm]{Rate $\mathfrak{R}_j$};   
+  \node[name=rate,right of=XI,halfBox,minimum width=15cm, node distance=9cm]{Rate $r_j$};   
   
 %% Process number
   \node[name=Period1, left of=1, numLabel] {1};
@@ -208,15 +208,15 @@
   
 % Rates
  \node[name=rho1,right of=1001,rateBox]{$k_{hyd}XS$};
- \node[name=rho2,right of=1002,rateBox]{$k_{m,ac}\frac{S_{AC}}{S_{AC}+K_{S,S{AC}}}X_{PB} I_{FA}I_{IN}I_{IP}I_E C_{ph}$};
- \node[name=rho3,right of=1003,rateBox]{$k_{m,ph}\frac{S_S}{S_S+K_{S,SS}}X_{PB} I_{FA}I_{IN}I_{IP}I_E C_{ac}$};
+ \node[name=rho2,right of=1002,rateBox]{$k_{m,ac}\frac{S_{AC}}{S_{AC}+K_{S,S{AC}}}X_{PB} I_{FA}I_{IN}I_{IP}I_E I_{ph}$};
+ \node[name=rho3,right of=1003,rateBox]{$k_{m,ph}\frac{S_S}{S_S+K_{S,SS}}X_{PB} I_{FA}I_{IN}I_{IP}I_E I_{ac}$};
  \node[name=rho4,right of=1004,rateBox]{$k_{m,ch}\frac{S_S}{S_S+K_{S,S_S}}X_{PB} I_{FA}I_{IN}I_{IP}$};
  \node[name=rho5,right of=1005,rateBox]{$k_{m,au}\frac{S_{IC}}{S_{IC}+K_{S,S_{IC}}}X_{PB} I_{FA}I_{IN}I_{IP}I_E$};
  \node[name=rho6,right of=1006,rateBox]{$k_{dec}X_{PB}$};
 
- \node[name=legend,below of=rho6,bigBox]{Competitive inhibition photohet: $C_{ph}=\frac{S_{AC}}{S_S + S_{AC}}$ \\
+ \node[name=legend,below of=rho6,bigBox]{Competitive inhibition photohet: $I_{ph}=\frac{S_{AC}}{S_S + S_{AC}}$ \\
  											\\
- 										  Competitive inhibition acetate: $C_{ac}=\frac{S_S}{S_S + S_{AC}}$ \\
+ 										  Competitive inhibition acetate: $I_{ac}=\frac{S_S}{S_S + S_{AC}}$ \\
  										  	\\
  										  Inhibition free ammonia: $I_{FA}=\frac{K_{I_{FA}}}{S_{IN}+K_{I_{FA}}}$\\
  										  \\
