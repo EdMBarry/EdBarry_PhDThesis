@@ -244,10 +244,10 @@ $\sigma_{X_{i}}$ & 19 & $m^2 kgVS^{-1}$ & scattering for a given \textit{Rb. sph
 Biokinetics were taken from a lumped parameter model \cite{puyol2017}. This considers growth of biomass and consumption of $COD$, $NH_4N$, and $PO_4P$ but does not consider photon delivery. The state space includes three particulate state variables, PPB biomass, particulate composite biomass, and inert solids, as well as seven soluble state variables. All of these are represented as scalar differential variables. The governing equations for the solid and soluble state variables ($\phi_i$) subject to advection, diffusion, and generation or consumption are as follows.
 
 \begin{align}
-\frac{\partial \phi}{\partial t} + \nabla \cdot \left( \mathbf{U}\phi \right) - \nabla^2\mathcal{D}_\phi \phi = r_{\phi}
+\frac{\partial \phi}{\partial t} + \nabla \cdot \left( \mathbf{U}\phi \right) - \nabla^2 D_\phi \phi = r_{\phi}
 \end{align}
 
-\noindent where $\mathbf{U}$ is the frozen velocity field of the fluid phase, $\mathcal{D}_{\phi}$ is the diffusivity coefficient of scalar $\phi$ in water, and $r_{\phi}$ represents the generation or consumption terms, as previously defined in \cite{puyol2017}. The diffusivity of the solid species was set to $10^{-11} \mathrm{m^2 s^{-1}}$ for stability purposes.
+\noindent where $\mathbf{U}$ is the frozen velocity field of the fluid phase, ${D}_{\phi}$ is the diffusivity coefficient of scalar $\phi$ in water, and $r_{\phi}$ represents the generation or consumption terms, as previously defined in \cite{puyol2017}. The diffusivity of the solid species was set to $10^{-11} \mathrm{m^2 s^{-1}}$ for stability purposes.
 \skippingparagraph
 The term $r_\phi$ for each state variables includes a Monod term ($\zeta_I$) with respect to irradiance (I) at any point in space (Eq. \eqref{eq:monodG850}). This means that the radiative field, and the biokinetic expressions have an interdependence which must be considered in the solution procedure.
 
@@ -329,8 +329,8 @@ The full ODE approach (ODE1, ODE2), as stated above, is the most common approach
 \skippingparagraph
 
 \begin{figure}[h]
-\centering
-\includegraphics[scale=0.38]{Images/Chap3/growth_kinetics.pdf}
+\hspace*{-0.75cm}
+\includegraphics[scale=0.5]{Images/Chap3/growth_kinetics.pdf}
 \caption{Biomass growth and substrate uptake for the FPR (a, c, e) and the CR (b, d, f). The first row shows the growth of PPB and the second and third rows show the consumption of acetic acid and other readily biodegradable soluble organics respectively. For all figures, the triangles correspond to ODE1, the diamonds correspond to ODE2, the the crosses represent ODE3, and the solid line is the CFD solution.}
 \label{fig:growth_evol}
 \end{figure}
