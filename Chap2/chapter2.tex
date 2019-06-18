@@ -338,10 +338,34 @@ Analysis of photoautotrophy was done with NaHCO\textsubscript{3} as an inorganic
 \skippingparagraph
 Nutrient limitation experiments for N and P were used to determine respective half saturation coefficients. K\textsubscript{S,IN} and K\textsubscript{S,IP} values were extremely low such that N and P regulation became a switch function. Biomass assimilated nutrients at a COD:N:P ratio of 100:7.1:1.8, which is higher than conventional aerobic bacteria and much higher than other anaerobes \cite{tchobanoglous1991}. These values are in line with previous works \cite{hulsen2014}. However, PPB were able to grow at a lower rate once the nutrients were completely consumed (42\% lower than in full nutrient conditions), likely due to fixation of headspace N2 \cite{hunter2008} which would have been inhibited while ammonium was in the system. Nitrogen fixation is completely inhibited at any concentration of ammonium less than 20 gN m\textsuperscript{-3}), and nitrogenase activation requires a lag phase of low ammonium concentration in order to be reactivated, likely due to activation of the transcription of nitrogenase genes during cell maintenance conditions \cite{masepohl2002}. Additionally, PPB can accumulate polymers such as poly-P \cite{liang2010} as well as PHA \cite{melnicki2009} which can be used during cell maintenance. Since the model developed here is sustained on biomass growth in presence of ammonium, nutrient limitation for growth must be included.
 
+\begin{figure}[H]
+    \hspace*{0cm} 
+    \includegraphics[width=\linewidth]{./Chap2/simulations/batch_tests.jpg}
+    \caption{Experimental (symbols) and modelled (lines) time curse of substrates uptake (left) and parameters determination including 95\% confidence intervals and confidence regions (right) of PPB metabolism in photoheterotrophy (a), chemoheterotrophy (b) and photoautotrophy (c).}
+    \label{fig:ch2_batch_tests}
+\end{figure}
+
+
+
 \subsection{Endogenous processes}
-Hydrolysis and decay are considered as transversal first order biochemical processes in most models \cite{batstone2006, henze2000, szilvester2010}. These are considered separately, since phototrophic growth can be restricted in the absence of irradiance, and decay can be determined directly by measuring phototrophic activity following periods of irradiation without substrate. Biomass activity reduced according to first order kinetics, with a decay coefficient of \num{0.09} $\pm$ \num{0.04} d\textsuperscript{-1} which does not differ from the decay of activated sludge under aerobic conditions at \num{0.06} - \num{0.15} d\textsuperscript{-1} \cite{ezechi2015}. Hydrolysis was determined in dark conditions with sufficient substrate such that phototrophic biomass could not re-assimilate hydrolysis products. The products of hydrolysis (all soluble substrates included in the model) were measured and correlated with the first order kinetics of the hydrolytic process. The hydrolysis coefficient was \num{0.07} $\pm$ \num{0.004} d\textsuperscript{-1}. Hydrolysis is substrate specific, and depends highly on operating conditions \cite{batstone2015}, but the determined value was comparable with those for anaerobic conditions, but much lower than for anaerobic processes \cite{henze2000}. 
+Hydrolysis and decay are considered as transversal first order biochemical processes in most models \cite{batstone2006, henze2000, szilvester2010}. These are considered separately, since phototrophic growth can be restricted in the absence of irradiance, and decay can be determined directly by measuring phototrophic activity following periods of irradiation without substrate. Biomass activity reduced according to first order kinetics, with a decay coefficient of \num{0.09} $\pm$ \num{0.04} d\textsuperscript{-1} (as shown in Fig. \ref{fig:ch2_decay} which does not differ from the decay of activated sludge under aerobic conditions at \num{0.06} - \num{0.15} d\textsuperscript{-1} \cite{ezechi2015}. 
 
+\begin{figure}[H]
+    \hspace*{0cm} 
+    \includegraphics[width=\linewidth]{./Chap2/simulations/decay.jpg}
+    \caption{Specific phototrophic activity over time showing decay rate as PPB was subjected to starvation under full irradiance.}
+    \label{fig:ch2_decay}
+\end{figure}
 
+\skippingparagraph
+Hydrolysis was determined in dark conditions with sufficient substrate such that phototrophic biomass could not re-assimilate hydrolysis products. The products of hydrolysis (all soluble substrates included in the model) were measured and correlated with the first order kinetics of the hydrolytic process and their time evolution is depicted in Fig. \ref{fig:ch2_hydrolysis}. The hydrolysis coefficient was \num{0.07} $\pm$ \num{0.004} d\textsuperscript{-1}. Hydrolysis is substrate specific, and depends highly on operating conditions \cite{batstone2015}, but the determined value was comparable with those for anaerobic conditions, but much lower than for anaerobic processes \cite{henze2000}. 
+
+\begin{figure}[H]
+    \hspace*{0cm} 
+    \includegraphics[width=\linewidth]{./Chap2/simulations/hydrolysis.jpg}
+    \caption{Released products over time upon starvation in the absence of light. This shows hydrolysis for other organics (squares), acetate (diamonds), hydrogen (triangles), inorganic carbon (pluses), NH\textsubscript{4}-N (circles), and PO\textsubscript{4}-P (crosses).}
+    \label{fig:ch2_hydrolysis}
+\end{figure}
 
 
 \section{Model analysis}
@@ -409,7 +433,7 @@ Simulation of biomass behaviour has implications on biomass production upon main
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{./Chap2/simulations/dynamic_biomass.jpg}
+    \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{./Chap2/simulations/dynamic_particulates.jpg}
     \caption{Biomass fractionation including active phototrophic bacteria (dashed line), biodegradable particulate biomass (continuous line) and inert particulates (dotted lines) over time for the PAnMBR continuous simulation. Different operational periods are separated by differently shaded regions.}
     \label{fig:ch2_dyn_bio}
 \end{figure}
