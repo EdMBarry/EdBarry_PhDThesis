@@ -96,7 +96,7 @@ The model has been developed to be compatible with the IWA, ASM and ADM families
 \noindent These processes have been lumped together and labelled as hydrolysis. This process involves biodegradable particulates decomposing into soluble organics, namely $\mathrm{S_S}$ and $\mathrm{S_{AC}}$, key nutrients, hydrogen and organic carbon. This process also includes the release of soluble and particulate inert matter ($\mathrm{S_I}$ and $\mathrm{X_{I}}$ respectively). \\
 
 \noindent\textit{Treatment of acidity and temperature}\par
-\noindent An ideal pH model has been implemented in the model in a similar fashion to the ADM1 model \cite{batstone2002}. The implementation includes phosphate acid-base pairs without ion pairing or activity correction. This is sufficient for domestic wastewater, but for streams with extreme pH, high levels of pollutants, or for implementation in a more generic benchmark simulation framework, this model should be extended to include strong acids and bases. Temperature has not been included as a term in either the pH model or in the PAnM, but van't Hoff and Arrhenius expressions can be implemented for important parameters as previously investigated \cite{hulsen2016a}. \\
+\noindent An ideal pH model has been implemented in the model in a similar fashion to the ADM1 model \cite{batstone2002}. The implementation includes phosphate acid-base pairs without ion pairing or activity correction. This is sufficient for domestic wastewater, but for streams with extreme pH, high levels of pollutants, or for implementation in a more generic benchmark simulation framework, this model should be extended to include non-ideal ionic activity and ion pairing as per the PCM-1 for wastewater treatment \cite{batstone2019}.  Temperature has not been included as a term in either the pH model or in the PAnM, but van't Hoff and Arrhenius expressions can be implemented for important parameters as previously investigated \cite{hulsen2016a}. \\
 
 \noindent\textit{Summary presentation of the model}\par
 \noindent  Soluble species are denoted by an $\mathrm{S}$ and particulate species are denoted by an $\mathrm{X}$. The presentation and explanation of all species and their formation or consumption terms are best summarised in a Petersen matrix (Table~\ref{tab:petersen}).
@@ -170,7 +170,7 @@ All parameters were estimated from triplicate samples by with the minimisation o
 
 \subsection{Simulations of PAM-1}
 
-\subsubsection{Phototrophic batch}
+\subsubsection{Phototrophic batch simulations}
 The model was tested to explore different scenarios in order to understand the limits of the process and to highlight the possible adaptations of he model by biomass shifts on metabolism. 
 The model was implemented using SciPy \cite{jones2001} and NumPy \cite{walt2011} for numerical functionality, and Matplotlib \cite{hunter2007} for visualisation of results. 
 Two simulations were done on the PAnMBR system, which have the general dilute batch form as shown in \eqref{eq:dilute_batch}.
@@ -218,7 +218,7 @@ The third simulation looked at the differences in specific photoautotrophic acti
 
 
 
-\subsubsection{Phototrophic continuous}
+\subsubsection{Phototrophic continuous simulations}
 The kinetic expressions developed in this study were used in the development of a continuous PAnMBR model. The concentration of bioavailable SCOD in the statistically generated medium strength wastewater \cite{gernaey2011} was insufficient for the system to achieve TN and TP discharge limits \cite{hulsen2016}. To achieve full removal, additional SCOD was required. The goals of the simulation were the following: a) to highlight the requirement of additional SCOD to achieve total nutrient removal, and b) to demonstrate that the inclusion of a primary clarifier can lead to an organic sludge enriched in PPB biomass. Dynamic influent data was simulated according to an influent generator model \cite{gernaey2011}, and adapted to the typical concentrations of primary influent previously reported \cite{hulsen2014}. Based on the average influent characteristics and an hydraulic retention time (HRT) of 12 h, volumetric loading rate (VLR) of 400 $\pm$ 12 gCOD m\textsuperscript{-3} d\textsuperscript{-1} and a solids retention time (SRT) of 3 d, a reactor volume of 70 m\textsuperscript{3} was applied. It was assumed an ideal primary clarifier removed generated influent solids with an efficiency of 60\% $\pm$ 3\% \cite{tchobanoglous1991}. The generation of realistic influent and its processing were done in Matlab Simulink (MATLAB R2015a, The MathWorks Inc., Natick, MA) and the continuous phototrophic biokinetic simulations and their post-processing were done using Matlab with the \texttt{ode15s} integrator being used for the ordinary differential equations. 
 \skippingparagraph
 The case was simulated for 609 days with 3 stages of differing SCOD concentrations (Table \ref{tab:cont}). The dynamic influent after settling was applied directly during Stage I until day 300. During Stage II (days 300-450), acetate was added to the optimum COD:N:P ratio of 100:7.1:1.8 based on the limiting nutrient (N or P). During Stage III, acetate addition was ceased. This was to assess process response to a sudden change, and to demonstrate that the system requires wastewater with a specific COD/N/P ratio. State equations were implemented in a fixed volume, completely mixed membrane bioreactor. The results from the simulation were balanced over COD, N, P and C. For the continuous simulations, the balance equations Eq. \eqref{eq:cont} were modified to include flows, and it was assumed that a membrane would retain all particulate matter such that the solids retention time (SRT) was fixed. The explanation of variables used are summarised in Table \ref{tab:cont_op_conditions}. 
@@ -368,7 +368,7 @@ Hydrolysis was determined in dark conditions with sufficient substrate such that
 \end{figure}
 
 
-\section{Model analysis}
+\section{System analysis}
 \subsection{Batch simulations}
 
 \subsubsection{Limiting N, P and SCOD}
@@ -457,6 +457,3 @@ The following limitations of the model have been identified:
 
 
 A key priority for future research should be inclusion of poly-P and PHA accumulation as well as N2 fixation and side H2 production, as these processes (poly-P without carbon, PHA without oxidation or organics, and N2/H2 production) are unique to photoanaerobic organisms. The topic of infrared light delivery has not been addressed in detail in this model, and is generally assumed to be in excess (i.e., not limiting catabolic rate, such that there is no mixed photo-dark fermentation (mixotrophic growth). This could be incorporated by limiting light to enable mixotrophic growth through the existing switch function that considers also spatial separation to dark zones, but as stated above, further work is required to consider accumulation and depletion of storage compounds. 
-%\begin{instructional}
-%Add your text here. Use \verb|\cite| to add citation labels. Reference sections, tables, and figures using \verb|\ref|. Use %\verb|\eqref| for equations. The `section' symbol $\S$ is obtained using \verb|$\S$|. Figures and other floats are added using their %respective environments. Use \verb|\longtable| to split tables over page.
-%\end{instructional}
