@@ -264,6 +264,14 @@ Planktonic organisms secrete chemical signals, however due to the dispersed dist
 \skippingparagraph
 The detachment of biomass occurs largely due to mechanical stresses. Erosion and sloughing occur depending on the nature of the flow field and boundary layer, and the shape and distribution of the biofilm itself. As detachment rates increase and balance growth rates, the biofilm remains in a quasi steady state \cite{Xavier2005, Storck2015}.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Chap4/results/biofilm_processes.pdf}
+    \caption{Graphical presentation of the lifecycle of a biofilm.} 
+    \label{fig:biofilm_processes}
+\end{figure}
+
+
 \subsubsection{Examples of beneficial and harmful biofilms}
 It is important to understand the mechanisms of biofilm formation, whether the biofilm be beneficial or harmful. Examples of beneficial biofilms in process engineering applications include for the bioremediation of contaminated soils \cite{singh2006} and wastewater treatment applications where nutrients and impurities are removed from water streams through trickling filters or other engineered designs. Another application of interest in biotechnology is where biofilms aid in the harvesting of protein-rich bacteria, effectively short-cutting the need for expensive separation equipment associated with biomass thickening and dewatering \cite{hulsen2016a}.
 \skippingparagraph
@@ -293,14 +301,7 @@ With regards to phototrophic biofilm modelling, only two examples exist prior to
 \skippingparagraph
 The second study focused on a 1D application of a PBSR \cite{li2016}. This model extended the previously mentioned study with respect to the substrate gradients perpendicular to the biofilm surface substratum. The radiative transfer equation was used to simulate the light delivery to the biofilm concluded that phase in-scattering and pigment adaptation were important considerations. The advection of the biofilm front was by treating the biomass length as a discrete quantity, either consuming or releasing discrete elements at each simulated time step. \skippingparagraph
 
-The proposed model in this work differs from the previous PBF examples in the following aspects:
-\begin{enumerate}
-\item Biofilm models should be developed for implementation in all spatial dimensions. Decisions to simplify the model should be made by the user at implementation. Presented here is a multidimensional phototrophic biofilm model.
-\item The evolving structure of the biofilm must be captured. The advancement of the biofilm front is coupled to biomass growth and decay processes. The interface between biofilm and liquid is captured by a conservative, coupled volume-of-fluid (VoF) and level-set method.
-\item Biofilms are heterogeneous in nature. Scope must be made to model multispecies biofilm evolution. As such, presented here is a multidimensional,  multispecies, dynamically structured phototrophic biofilm model.
-\end{enumerate}
 
-In addition to these three points of novelty, the biofilm model has been implemented in OpenFOAM, a computational fluid dynamics (CFD) finite volume method (FVM) framework. This package is a collection of C++ libraries which allow for the resolution of continuum mechanics problems. The model extends on previous work by the authors \cite{puyol2017}. The global purpose of this study is to explain the physical phenomena occurring within biofilms so that subsequent studies can progress the work for design or prediction purposes.
 %------------------------------------------------------------------------------%
 %------------------------------------------------------------------------------%
 \section{Research objectives and approach}
