@@ -56,7 +56,7 @@
 %-------------------------------------------------------------------------------------------------------%
 %This is an internal chapter of the thesis.
 %If you have a long title, you can supply an abbreviated version to print in the Table of Contents using the optional argument to the \chapter command.
-\chapter[A multidimensional, phototrophic, continuum-based biofilm model]{A multidimensional, phototrophic, continuum-based biofilm model}
+\chapter[A multidimensional phototrophic biofilm model]{A multidimensional, phototrophic, continuum-based biofilm model}
 \label{chap:ch4}	%CREATE YOUR OWN LABEL.
 \pagestyle{headings}
 
@@ -109,7 +109,18 @@ In optically thick media, strong scattering effects are observed, including forw
 This phototrophic/photosynthetic biofilm mixture model was further developed in subsequent studies \cite{polizzi2017}. In this study a single functional microbial group (microalgae), its associated carbon pool, and an extra-cellular polymeric matrix were all defined as biofilm components. CO\textsubscript{2}, O\textsubscript{2} and inorganic nitrogen formed the liquid component of the model. Mass transfer between phases was updated to include diffusion terms, and biofilm expansion was expressed in terms of biological mechanisms such as photosynthesis, cell maintenance, EPS excretion and cell decay. 
 The radiative field was also modelled as an exponential decay function in terms of path length and the concentrations of participating biofilm components.
 \skippingparagraph
-This study aims to extend the previous work done on the development of a lumped parameter model in chapter 2, and of a phototrophic CFD model in which a coupled photo-biological radiative transfer model and planktonic growth model were defined in chapter 3. A combination of the volume of fluid (VoF) and mixture methods are used in this work: the VoF method to segregate the biofilm from the liquid phase, and the mixture method within the biofilm to differentiate between active phototrophic biomass (PPB  in this case), biodegradable particulates (X\textsubscript{S}) and inert particulates (X\textsubscript{I}). This method allows for conservation to be maintained while more accurately capturing the interface between the liquid and biofilm phases. 
+
+The proposed model in this work differs from the previous PBF examples in the following aspects:
+
+\begin{enumerate}
+\item Biofilm models should be developed for implementation in all spatial dimensions. Decisions to simplify the model should be made by the user at implementation. Presented here is a multidimensional phototrophic biofilm model.
+\item The evolving structure of the biofilm must be captured. The advancement of the biofilm front is coupled to biomass growth and decay processes. The interface between biofilm and liquid is captured by a conservative, coupled volume-of-fluid (VoF) and level-set method.
+\item Biofilms are heterogeneous in nature. Scope must be made to model multispecies biofilm evolution. As such, presented here is a multidimensional,  multispecies, dynamically structured phototrophic biofilm model.
+\end{enumerate}
+
+In addition to these three points of novelty, the biofilm model has been implemented in OpenFOAM, a computational fluid dynamics (CFD) finite volume method (FVM) framework. This package is a collection of C++ libraries which allow for the resolution of continuum mechanics problems. The model extends on previous work by the authors \cite{puyol2017}. The global purpose of this study is to explain the physical phenomena occurring within biofilms so that subsequent studies can progress the work for design or prediction purposes.
+
+This study therefore aims to extend the previous work done on the development of a lumped parameter model in chapter 2, and of a phototrophic CFD model in which a coupled photo-biological radiative transfer model and planktonic growth model were defined in chapter 3. A combination of the volume of fluid (VoF) and mixture methods are used in this work: the VoF method to segregate the biofilm from the liquid phase, and the mixture method within the biofilm to differentiate between active phototrophic biomass (PPB  in this case), biodegradable particulates (X\textsubscript{S}) and inert particulates (X\textsubscript{I}). This method allows for conservation to be maintained while more accurately capturing the interface between the liquid and biofilm phases. 
 
 
 %As biofilms are spatially heterogeneous structures, both spatial and temporal variations must be considered in order to describe the physical phenomena. Biofilm models can be divided into three main classes: \textit{i)} one-dimensional models capable of including mass transfer, reaction/diffusion, and detachment processes \cite{horn2014}, \textit{ii)} multidimensional discrete biofilm models such as cellular automata and agent based methods \cite{wang2010}, and \textit{iii)} continuum models including computational fluid dynamics (CFD) approaches \cite{alpkvist2007, duddu2009, cunault2015}. Despite the vast suite of modelling approaches and examples existing within the literature, there have been few studies which defining biofilm behaviour in phototrophic systems, where the spatially varying nature of the radiative field could be an important factor in the heterogeneous formation of biofilms. \\
@@ -301,6 +312,8 @@ In the case of boundary conditions, the velocity field was treated as the no-sli
 \end{equation}
 Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{U}), ${a_P}$, ${\phi}$, and ${S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and ${\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{{XPB}}$, $\alpha_{{XS}}$, $\alpha_{{XS}}$, and $\alpha_{{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
 
+\subsection{CFD workflow}
+The model was developed using OpenFOAM 6 from the OpenFOAM Foundation \cite{openfoamfoundationltd2017}. The solver was adapted from the \texttt{interFoam} and the \texttt{pamFoam} solvers. The new solver was named \texttt{photoBiofilmFoam}. As this study has been concerned with the coupling of biofilm growth, delivery of substrate, and the radiative field, no flow fields were included as their inclusion would have presented some numerical difficulties, detracting from the analysis of the physics of interest. After the initial biofilm was set, the volume fraction of liquid was solved. The growth of biomass was used as a source term for the phase volume fraction of the biofilm field (to satisfy the volume of fluid governing equations). After the growth of biofilm and the changes in phase fractions were calculated, the radiative field was solved at an interval of 300 s. After the biochemical, phase fraction, and radiative transfer equations were solved, the momentum equations were corrected. The time step was governed by the Courant-Friedrich-Lewy condition and was maintained below 0.5 for the entirety of the simulation. A mesh Independence study was  carried out over the orders of \num{10000}, \num{100000}, and \num{1000000} cells, and 160 000 cells were where the solution converged. 
 
 %%%%%%%%%%%%%%%%% Implementation
 \section{Results}
@@ -459,15 +472,19 @@ The biofilm distribution (Fig. \ref{fig:case6_dist_frac}) is relatively uniform 
 
 \subsection{Case comparisons}
 
-\subsubsection{Specific phototrophic activity after 10 days of growth}
+\subsubsection{Specific phototrophic activity}
+After 10 days of growth, there were different specific phototrophic activities across the different test cases as show in Fig. \ref{fig:ch4_spa}. The case of low irradiance was omitted because the growth was essentially zero at the end of the 10 day period. For the two cases where the radiative field was initialised from below the substratum (Fig. \ref{fig:ch4_spa}a uniform initial biofilm and Fig. \ref{fig:ch4_spa}c sparse initial biofilm), the specific growth rate of phototrophic biomass was the same, as the biofilm had grown, spread, and reached a steady state by this point in the simulation. For the cases where the irradiance was initialised from above the domain (Fig. \ref{fig:ch4_spa}b uniform initial biofilm and Fig. \ref{fig:ch4_spa}d sparse initial biofilm), there was a slight difference in specific phototrophic activity at 10 days. The sparse biofilm had a specific phototrophic activity of 2.55 kgCOD m\textsuperscript{-3} d\textsuperscript{-1} whereas the growth of the uniform biofilm at this point in time was 2.45 kgCOD m\textsuperscript{-3} d\textsuperscript{-1}. This is essentially the same growth rate, and it can be concluded that the attenuation of the radiative field through water is minimally affected when compared to the contribution of the biofilm. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/2D_cases/comparative/spa.pdf}
     \caption{Specific phototrophic activity distribution within the two dimensional domain at 10 days between a) case 1 with 30 Wm\textsuperscript{-2} irradiated from the substratum and a uniform initial biofilm, b) case 3 with a uniform initial biofilm and irradiance of 30 Wm\textsuperscript{-2} from above the domain, c) sparsely initialised biofilm with 30 Wm\textsuperscript{-2} irradiated from below the substratum, and d) sparsely initialised biofilm with 30 Wm\textsuperscript{-2} irradiated from above the domain.  } 
-    \label{fig:ch4_spa10}
+    \label{fig:ch4_spa}
 \end{figure}
 
 \subsubsection{Irradiance distribution after 10 days of growth}
+As the growth rate of the biofilm and the radiative field are coupled, the spatial distributions of the radiative field support the conclusions from the specific phototrophic activity. Fig. \ref{ch4_rad10} shows the radiative field distribution for all cases excluding the case of low incident irradiance of 3 W m\textsuperscript{-3}. For the cases where the incident was from below the substratum, the irradiance follows roughly the same profile within the domain, with a small fraction experiencing any irradiance. This is the point from which the growth is driven, as was seen in Fig. \ref{fig:ch4_spa}. For both growth rate and irradiance distribution, the values for the uniformly initiated biofilm and the sparsely initiated biofilm (Fig. \ref{fig:ch4_rad10}a and Fig. \ref{fig:ch4_rad10}b respectively), the profiles are very similar at 10 days of simulated growth. This is due to a steady state being reached. As soluble substrates are supplied infinitely over time, this indicates that the limiting factor for growth in these biofilms is the radiative field. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.5\textheight]{Chap4/results/post_processing/2D_cases/comparative/radiation.pdf}
