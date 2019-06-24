@@ -1,0 +1,123 @@
+113:XS ,,,
+115:KS,,,
+30:XI ,,,
+41:SAC ,,,
+41:SS ,,,
+42:SAC ,,,
+42:SI ,,,
+42:SIN ,,,
+42:SIP ,,,
+42:SS ,,,
+42:XI ,,,
+42:XPB ,,,
+42:XS ,,,
+43:E850,,,
+43:FA,,,
+43:IC ,,,
+43:IE,,,
+43:IE850 ,,,
+43:IF ,,,
+43:IIN ,,,
+43:IIP,,,
+43:IN,,,
+43:IP,,,
+43:KE850,,,
+43:PAM-,,,
+43:PO3−,,,
+43:PPB ,,,
+43:SAC,,,
+43:SAC,,,
+43:SAC ,,,
+43:SH2,,,
+43:SH2 ,,,
+43:SI,,,
+43:SI ,,,
+43:SIC,,,
+43:SIC,,,
+43:SIC ,,,
+43:SIN,,,
+43:SIN,,,
+43:SIN ,,,
+43:SIP,,,
+43:SIP,,,
+43:SIP ,,,
+43:SS,,,
+43:SS,,,
+43:SS ,,,
+43:XI,,,
+43:XI ,,,
+43:XP ,,,
+43:XPB ,,,
+43:XS,,,
+43:XS ,,,
+43:YP ,,,
+50:YPB,,,
+50:YPH,,,
+ABM,&,Agent based models,\\
+ADM,&,Anaerobic digestion model,\\
+AGPL,&,Affero General Public License,\\
+ANSYS,,Simulation software company,\\
+AQUASIM,&,Water modelling software,\\
+ASM,&,Activated sludge model,\\
+ATP,&,Adenosine triphosphate,\\
+BSM,&,Benchmark simulation model,\\
+CA,&,Cellular automata,\\
+CAD,&,Computer aided design,\\
+CFD,&,Computational fluid dynamics,\\
+CFX,,A proprietary CFD code,\\
+COD,&,Chemical oxygen demand,\\
+CR,&,Cyclindrical reactor,\\
+DOM,&,Discrete ordinates method,\\
+DWW,&,Domestic wastewater,\\
+EPS,&,Extra-cellular polymeric substance,\\
+FLOPS,&,Floating point operations per second,\\
+FOSS,&,Free and open source software,\\
+FPR,&,Flat plate reactor,\\
+FvDOM,&,Finite volume discrete ordinates method,\\
+FVM,&,Finite volume method,\\
+HG,&,Henyey-Greenstein phase function,\\
+HPC,&,High performance computing,\\
+HRT,&,Hydraulic retention time,\\
+IR,&,Infra-red radiation,\\
+IWA,&,International Water Association,\\
+LED,&,Light emitting diode,\\
+LH,&,Light harvesting complex,\\
+MC,&,Monte Carlo method,\\
+NH\textsubscript{4}-N,&,Ammonium as N,\\
+NIR,&,Near infra-red radiation,\\
+ODE,&,Ordinary differential equation/s,\\
+OpenFOAM,&,Open Field Operations and Manipulations,\\
+PAM,&,Photo-anaerobic model,\\
+PAnMBR,&,Photo-anaerobic membrane bioreactor,\\
+PAR,&,Photosynthetically active radiation,\\
+PBF,&,Photobiofilm,\\
+PBR,&,Photobioreactor,\\
+PCM,&,Physicochemical model,\\
+PDE,&,Partial differential equation,\\
+PHA,&,Polyhydroxyalkanoates,\\
+PO4\textsubscript{4}-P,&,Phosphate as P,\\
+PPB,&,Purple phototrophic bacteria,\\
+PSBR,&,Porous substrate bioreactor,\\
+PSU,&,Photosynthetic unit,\\
+RANS,&,Reynolds-averaged Navier-Stokes,\\
+RC,&,Reaction centre,\\
+RPM,&,Revolutions per minute,\\
+RTE,&,Radiative transfer equation,\\
+SCOD,&,Soluble chemical oxygen demand,\\
+SIN,&,Inorganic nitrogen,\\
+SIP,&,Inorganic phosphorus,\\
+SM,&,Schlick model,\\
+SRT,&,Sludge retention time,\\
+SST,&,Shear stress transport,\\
+TCA,&,Tri-carboxylic acid cycle,\\
+TIC,&,Total inorganic carbon,\\
+TKN,&,Total Kjeldahl nitrogen,\\
+TN,&,Total nitrogen,\\
+TP,&,Total phosphorus,\\
+TPF,&,Truncated phase function,\\
+TSS,&,Total suspended solids,\\
+UV,,Ultraviolet radiation,\\
+VFA,&,Volatile fatty acids,\\
+VLR,&,Volumetric loading rate,\\
+VoF,&,Volume of fluid,\\
+VSS,&,Volatile suspended solids,\\
