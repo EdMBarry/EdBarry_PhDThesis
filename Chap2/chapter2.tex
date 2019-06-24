@@ -450,10 +450,13 @@ The dynamics under continuous operation conditions indicate that the biological 
 
 The following limitations of the model have been identified:
 \begin{enumerate}
-    \item The model is only valid for anaerobic conditions, and hydrogen production for redox balancing is assumed to be inhibited. This model therefore cannot be implemented for hydrogen production systems in its current state.
-    \item Poly-P and the accumulation of other polymers is not included due to the lack of supporting literature. Nitrogen fixation has also not been included as it is assumed to be limited by ammonium.
-    \item The model presents and includes biological mechanisms only. As a radiative field varies in spatial dimensions, the model should be extended to include scope to simulate spatial variations. For example, computational fluid dynamics could be used to capture the flow field and radiation characteristics, and their coupling to biomass growth. 
+
+\item  The model is only valid for anaerobic conditions, and hydrogen production for redox balancing is assumed to be inhibited. This model therefore cannot be implemented for hydrogen production systems in its current state.
+\item This model includes a lumped mixed culture phototrophic biomass. The inclusion of other heterotrophic biomass would be useful when a radiative field is included in the model as non-phototrophic organisms would attenuate the radiative field in a different manner.
+\item  Poly-P and the accumulation of other polymers is not included due to the lack of supporting literature. Nitrogen fixation has also not been included as it is assumed to be limited by ammonium.
+\item  The model presents and includes biological mechanisms only. As a radiative field varies in spatial dimensions, the model should be extended to include scope to simulate spatial variations. For example, computational fluid dynamics could be used to capture the flow field and radiation characteristics, and their coupling to biomass growth. 
 \end{enumerate}
+
 
 
 A key priority for future research should be inclusion of poly-P and PHA accumulation as well as N2 fixation and side H2 production, as these processes (poly-P without carbon, PHA without oxidation or organics, and N2/H2 production) are unique to photoanaerobic organisms. The topic of infrared light delivery has not been addressed in detail in this model, and is generally assumed to be in excess (i.e., not limiting catabolic rate, such that there is no mixed photo-dark fermentation (mixotrophic growth). This could be incorporated by limiting light to enable mixotrophic growth through the existing switch function that considers also spatial separation to dark zones, but as stated above, further work is required to consider accumulation and depletion of storage compounds. 
