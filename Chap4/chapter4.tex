@@ -2,51 +2,6 @@
 \pagestyle{empty}	%Use this to suppress the header from the preceding chapter.
 
 
-\begin{table}[h]
-	\begin{center}
-	\begin{tabular}{|c|l|l|}
-		\hline
-		Contributor & Statement of contribution & \% \\
-		\hline
-		\textbf{Edward M. Barry}	    & writing of text 			& 80\\
-										& proof-reading				& 60 \\
-										& theoretical derivations 	& 50 \\
-										& numerical calculations 	& 100\\
-										& preparation of figures 	& 100 \\
-										& initial concept			& 30 \\
-		\hline
-		Christopher T. DeGroot			& writing of text 			& 0\\
-										& proof-reading				& 5 \\
-										& supervision, guidance 	& 15\\
-										& theoretical derivations 	& 10\\
-										& preparation of figures 	& 0 \\
-										& initial concept			& 0 \\
-		\hline
-		Shakil Ahmmed       			& writing of text 			& 10\\
-										& proof-reading				& 0 \\
-										& supervision, guidance 	& 25\\
-										& theoretical derivations 	& 40\\
-										& preparation of figures 	& 0 \\
-										& initial concept			& 0 \\
-		\hline
-		Tim H\"{u}lsen		    		& writing of text 			& 0 \\
-										& proof-reading				& 0 \\
-										& supervision, guidance 	& 10 \\
-										& theoretical derivations 	& 0 \\
-										& preparation of figures 	& 0 \\
-										& initial concept			& 35 \\
-		\hline
-		Damien J. Batstone	    		& writing of text 			& 10\\
-										& proof-reading				& 95 \\
-										& supervision, guidance 	& 50 \\
-										& theoretical derivations 	& 0 \\
-										& preparation of figures 	& 0 \\
-										& initial concept			& 35 \\
-		\hline
-	\end{tabular}
-	\end{center}
-\end{table}
-
 
 %-------------------------------------------------------------------------------------------------------%
 %-------------------------------------------------------------------------------------------------------%
@@ -77,7 +32,7 @@ Maximum growth rate was 25\%-30\% slower in the cases where the radiative intens
 %-------------------------------------------------------------------------------------------------------%
 \section{Introduction}
 Despite a growing interest in the use of purple phototrophic bacteria (PPB) for wastewater treatment and the production of high valued products, there remain key engineering challenges which render widespread adoption in full scale installations unfeasible at this moment.
-The major challenges have already been discussed throughout this thesis, but to reiterate, light delivery, the additional requirement of bioavailable organics, and solid-liquid separation are some of the major barriers \cite{hulsen2016}. 
+The major challenges have already been discussed throughout this thesis, but to reiterate, light delivery, the additional requirement of bioavailable organics and solid-liquid separation are some of the major barriers \cite{hulsen2016}. 
 Process modelling is an important tool for a better understanding of how phototrophic processes work, and for eventual process design and optimisation. 
 Indeed, this thesis is based on the modelling of these phototrophic processes using the distributed parameter approach of computational fluid dynamics (CFD). 
 This work has built upon the development of a biokinetic model, where the main metabolic processes were defined in a manner that ensured compatibility with the International Water Association family of models (IWA) such as the anaerobic digestion model 1 (ADM1) \cite{batstone2002} or the ASM models \cite{henze2000}. 
@@ -87,10 +42,10 @@ Previously, anaerobic membrane bioreactors were proposed as a solution for solid
 Growing biomass attached to walls as biofilm can be a method to reduce harvesting costs of phototrophic biomass, as well as reducing inefficient delivery of light due to the self shading associated with biomass growth. As such, a phototrophic biofilm model in a CFD framework needs to be developed. 
 \skippingparagraph
 Phototrophic biofilms are communities of phototrophic biomass, other organisms, and other organic and inorganic substances such as extra-cellular polymeric substances \cite{vanloosdrecht2002}. 
-Much work has been dedicated to understanding the behaviour of biofilms in order to limit the harm they cause, such as in medical settings, sewer networks \cite{pikaar2014}, and in membrane separation processes, commonly referred to as fouling \cite{radaei2018}. Biofilm formation can also be favoured and encouraged depending on the application. 
+Much work has been dedicated to understanding the behaviour of biofilms in order to limit the harm they cause, such as in medical settings, sewer networks \cite{pikaar2014} and in membrane separation processes, commonly referred to as fouling \cite{radaei2018}. Biofilm formation can also be favoured and encouraged depending on the application. 
 Trickling filters are an example of beneficial biofilms which consist of wastes being sprayed over fixed granular beds. Thick biofilms develop therein and remove pollutants and toxicants from the filter's biofilm \cite{donlan2002}. Other examples of beneficial biofilms include the bioremediation of contaminated soils \cite{singh2006}, which claim an advantage over biological treatment with planktonic cells in that microorganisms in biofilms are more resilient to extreme conditions, and therefore have a better chance at adapting to their particular environment. Biofilms may grow on a physical substrate (moving or fixed media), or be self supporting in the form of anaerobic or aerobic granules \cite{baeten2019}. 
 \skippingparagraph
-In order to successfully model biofilm formation and behaviour, the governing processes need to be identified. The major processes are the initial attachment, biofilm growth, biofilm decay, and detachment \cite{alpkvist2007}. 
+In order to successfully model biofilm formation and behaviour, the governing processes need to be identified. The major processes are the initial attachment, biofilm growth, biofilm decay and detachment \cite{alpkvist2007}. 
 These processes have been represented by several modelling approaches. The approaches are divided into first, second and third generation models as defined by the IWA task group on biofilm modelling \cite{wanner2006}. 
 The progress from first to third generation has seen the modelling approach evolving from mass transfer to the inclusion of complex microbial interactions and an update to two and three dimensional descriptions. First generation models involved the description of substrate gradients (mostly a single limiting substrate) within an homogeneous 1-dimensional zone of biomass. Second generation models differed from their predecessors in that they included multiple substrates and microorganisms in a heterogeneous distribution. They were still limited to a 1-dimensional description. 
 Third generation models represent particulates as discrete elements, a continuum field, or a combination of both. Discrete biofilm models include cellular automata and agent based models \cite{skoneczny2015}. 
@@ -106,7 +61,7 @@ The mixture model treats each point in space as an information holder, in which 
 This mixture model provided a mathematical description of a specific case of a cyanobacterial biofilm which according to the authors could be extended to all phototrophic biofilm systems. 
 This study presented an exponential decay function for the radiative field through the biofilm, which has a tendency to under predict the radiative distribution for optically thick media such as biofilms \cite{jarosz2008}. 
 In optically thick media, strong scattering effects are observed, including forward scattering \cite{jarosz2008}. 
-This phototrophic/photosynthetic biofilm mixture model was further developed in subsequent studies \cite{polizzi2017}. In this study a single functional microbial group (microalgae), its associated carbon pool, and an extra-cellular polymeric matrix were all defined as biofilm components. CO\textsubscript{2}, O\textsubscript{2} and inorganic nitrogen formed the liquid component of the model. Mass transfer between phases was updated to include diffusion terms, and biofilm expansion was expressed in terms of biological mechanisms such as photosynthesis, cell maintenance, EPS excretion and cell decay. 
+This phototrophic/photosynthetic biofilm mixture model was further developed in subsequent studies \cite{polizzi2017}. In this study a single functional microbial group (microalgae), its associated carbon pool and an extra-cellular polymeric matrix were all defined as biofilm components. CO\textsubscript{2}, O\textsubscript{2} and inorganic nitrogen formed the liquid component of the model. Mass transfer between phases was updated to include diffusion terms, and biofilm expansion was expressed in terms of biological mechanisms such as photosynthesis, cell maintenance, EPS excretion and cell decay. 
 The radiative field was also modelled as an exponential decay function in terms of path length and the concentrations of participating biofilm components.
 \skippingparagraph
 
@@ -206,7 +161,7 @@ This representation is valid for the soluble state variables if we assume that t
 However, particulate species must be expressed in terms of volume fractions, $\alpha_{XPB}$, $\alpha_{XS}$ and $\alpha_{XI}$. 
 This can be achieved by introducing a conversion term $\rho^*$ which is similar to the assumption in previous studies where its value was assumed to be roughly 60-70 kg TS m\textsuperscript{-3} \cite{alpkvist2007,polizzi2017}. 
 In this case, we have taken a more systematic approach in converting the COD quantities of the particulate species to volume fractions. 
-Let $\rho^*_{C\alpha}$ be the term which links the COD to the volume fraction $\alpha$ of the particulate of interest. The values for biofilm bulk density ($\rho_{BF}$), cell water fraction (w\textsubscript{C}), biofilm porosity ($\epsilon_{BF}$, and particulate COD:VS ratio ($\kappa_{CV}$) need to be specified. Biofilm bulk density and cell water fraction values were sourced from literature \cite{zhangBishop1994} as 1010 kg m\textsuperscript{-3} and 90\% respectively for PPB. For the other particulates, the cell water fractions were assumed to be less, as these particulates are not living and do not require water for maintenance processes. Their water fraction was therefore assumed to be 83\%. The biofilm void fraction was expressed by a linear relationship in terms of biofilm bulk density, which for a bulk density of 1010 kg m\textsuperscript{-3}, gave a void fraction ($\epsilon$) of 0.56. Eq. \eqref{eq:void_frac} shows this relationship which is linear for densities between 1000 kg m\textsuperscript{-3} and 1100 kg m\textsuperscript{-3} \cite{humeng2013}. 
+Let $\rho^*_{C\alpha}$ be the term which links the COD to the volume fraction $\alpha$ of the particulate of interest. The values for biofilm bulk density ($\rho_{BF}$), cell water fraction (w\textsubscript{C}), biofilm porosity ($\epsilon_{BF}$), and particulate COD:VS ratio ($\kappa_{CV}$) need to be specified. Biofilm bulk density and cell water fraction values were sourced from literature \cite{zhangBishop1994} as 1010 kg m\textsuperscript{-3} and 90\% respectively for PPB. For the other particulates, the cell water fractions were assumed to be less, as these particulates are not living and do not require water for maintenance processes. Their water fraction was therefore assumed to be 83\%. The biofilm void fraction was expressed by a linear relationship in terms of biofilm bulk density, which for a bulk density of 1010 kg m\textsuperscript{-3}, gave a void fraction ($\epsilon$) of 0.56. Eq. \eqref{eq:void_frac} shows this relationship which is linear for densities between 1000 kg m\textsuperscript{-3} and 1100 kg m\textsuperscript{-3} \cite{humeng2013}. 
 \begin{equation}
     \label{eq:void_frac}
     \epsilon \, = \, 8.16 - \num{0.0075}\rho_{BF}
@@ -249,13 +204,13 @@ The multiphase volume of fluid (VoF) flow may be calculated using the mixture ma
     \label{eq:momentum}
     \frac{\partial (\rho \mathbf{U})}{\partial t} + \nabla\cdot (\rho \mathbf{U U}) = -\nabla P + \rho \mathbf{g} +\nabla \cdot (\vec{\tau}+\vec{\tau}_t)+f_{\sigma},
 \end{equation}
-where, $\mathbf{U}$ is the velocity, $\Gamma$ is the growth term, $\alpha_w$ is the phase fraction of the water, ${\phi}$ is the mass flux, ${\dot{m}}$ is the mass transfer, ${\rho}$ is the density, \textbf{g} is the gravitational acceleration, P is the pressure, $\vec{\tau}$ is the viscous stress, $\vec{\tau_t}$ is the turbulent stress, and ${f_{\sigma}}$ is the surface tension force. The mixture density is expressed as:
+where $\mathbf{U}$ is the velocity, $\Gamma$ is the growth term, $\alpha_w$ is the phase fraction of the water, ${\phi}$ is the mass flux, ${\dot{m}}$ is the mass transfer, ${\rho}$ is the density, \textbf{g} is the gravitational acceleration, P is the pressure, $\vec{\tau}$ is the viscous stress, $\vec{\tau_t}$ is the turbulent stress, and ${f_{\sigma}}$ is the surface tension force. The mixture density is expressed as:
 
 \begin{equation}
     \label{eq:mixtureDensity}
     \rho = \rho_w \alpha_w + \rho_b (1-\alpha_w),
 \end{equation}
-where, ${\rho_w}$ and ${\rho_b}$ are the densities of the water and biofilm phases respectively. The surface tension force ${f_{\sigma}}$ may be calculated as follows,
+where ${\rho_w}$ and ${\rho_b}$ are the densities of the water and biofilm phases respectively. The surface tension force ${f_{\sigma}}$ may be calculated as follows,
 \begin{equation}
     \label{eq:surfaceTension}
     f_{\sigma} = \sigma k \nabla\alpha_w.
@@ -310,10 +265,10 @@ In the case of boundary conditions, the velocity field was treated as the no-sli
     \label{eq:boundaryAlpha}
     \frac{\partial \alpha}{\partial \mathbf{n}} = 0 \quad {and} \quad \alpha = \alpha_i.
 \end{equation}
-Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{U}), ${a_P}$, ${\phi}$, and ${S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and ${\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set zero. The volume phase fractions are initialised by defining the values for $\alpha_{{XPB}}$, $\alpha_{{XS}}$, $\alpha_{{XS}}$, and $\alpha_{{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
+Here, ${P_{rgh}}$ is the pressure excluding the hydrostatic head, and H(\textbf{U}), ${a_P}$, ${\phi}$, and ${S_f}$ are the transported coefficients, matrix coefficients related to the variables, such as \textbf{U}, flux, and surface area vectors, respectively, of the discretised governing equations; n = x = y = z, and ${\alpha_i}$ is the internal cell centre value close to the boundary face. The initial conditions for the velocity and pressure fields are set to zero. The volume phase fractions are initialised by defining the values for $\alpha_{{XPB}}$, $\alpha_{{XS}}$, $\alpha_{{XS}}$, and $\alpha_{{w}}$. The volume fractions were set such that their sum was unity for all cells within the domain. 
 
 \subsection{CFD workflow}
-The model was developed using OpenFOAM 6 from the OpenFOAM Foundation \cite{openfoamfoundationltd2017}. The solver was adapted from the \texttt{interFoam} and the \texttt{pamFoam} solvers. The new solver was named \texttt{photoBiofilmFoam}. As this study has been concerned with the coupling of biofilm growth, delivery of substrate, and the radiative field, no flow fields were included as their inclusion would have presented some numerical difficulties, detracting from the analysis of the physics of interest. After the initial biofilm was set, the volume fraction of liquid was solved. The growth of biomass was used as a source term for the phase volume fraction of the biofilm field (to satisfy the volume of fluid governing equations). After the growth of biofilm and the changes in phase fractions were calculated, the radiative field was solved at an interval of 300 s. After the biochemical, phase fraction, and radiative transfer equations were solved, the momentum equations were corrected. The time step was governed by the Courant-Friedrich-Lewy condition and was maintained below 0.5 for the entirety of the simulation. A mesh Independence study was  carried out over the orders of \num{10000}, \num{100000}, and \num{1000000} cells, and 160 000 cells were where the solution converged. 
+The model was developed using OpenFOAM 6 from the OpenFOAM Foundation \cite{openfoamfoundationltd2017}. The solver was adapted from the \texttt{interFoam} and the \texttt{pamFoam} solvers. The new solver was named \texttt{photoBiofilmFoam}. As this study has been concerned with the coupling of biofilm growth, delivery of substrate and the radiative field, no flow fields were included as their inclusion would have presented some numerical difficulties, detracting from the analysis of the physics of interest. After the initial biofilm was set, the volume fraction of liquid was solved. The growth of biomass was used as a source term for the phase volume fraction of the biofilm field (to satisfy the volume of fluid governing equations). After the growth of biofilm and the changes in phase fractions were calculated, the radiative field was solved at an interval of 300 s. After the biochemical, phase fraction and radiative transfer equations were solved, the momentum equations were corrected. The time step was governed by the Courant-Friedrich-Lewy condition and was maintained below 0.5 for the entirety of the simulation. A mesh Independence study was  carried out over the orders of \num{10000}, \num{100000}, and \num{1000000} cells, and 160 000 cells were where the solution converged. The post processing files can be found online (DOI 10.6084/m9.figshare.8324477 with summary file CFDPBR\_biofilm.zip) and the solver files and radiation libraries are included in the same repository under the names photoBiofilmFoam-v1.0.zip for the phototrophic biofilm solver and photoBio-v5.1.0.zip for the associated radiation libraries.
 
 %%%%%%%%%%%%%%%%% Implementation
 \section{Results}
@@ -322,7 +277,7 @@ The model was developed using OpenFOAM 6 from the OpenFOAM Foundation \cite{open
 % ! DO Biomass first
 % ! DO distributions second
 % ! DO Growth rates last
-Case 1 has been treated as the base case for the simulations. The irradiance was initiated below the sustratum, and the biofilm was initiated as a uniform layer on the substratum with values as per Table \ref{tab:biofilm_cases}. Figures \ref{fig:case1_ppb_frac}, \ref{fig:case1_growth_frac} and \ref{fig:case1_dist_frac} show the volume fraction of PPB, its apparent growth rate, and the spatial distribution of particulates and water at four points in time: 1.0 d, 4.0 d, 7.0 d, and 10.0 d. 
+Case 1 has been treated as the base case for the simulations. The irradiance was initiated below the substratum, and the biofilm was initiated as a uniform layer on the substratum with values as per Table \ref{tab:biofilm_cases}. Figures \ref{fig:case1_ppb_frac}, \ref{fig:case1_growth_frac} and \ref{fig:case1_dist_frac} show the volume fraction of PPB, its apparent growth rate and the spatial distribution of particulates and water at four points in time: 1.0 d, 4.0 d, 7.0 d, and 10.0 d. 
 \begin{figure}[H]
     \centering
      \hspace*{-1cm}\includegraphics[width=1.1\textwidth,height=0.4\textheight]{Chap4/methods/data/figures/case1_ppb_frac.png}
@@ -339,7 +294,7 @@ Figure \ref{fig:case1_ppb_frac} shows the growth of PPB biomass at several steps
     \label{fig:case1_growth_frac}
 \end{figure}
 
-Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over time. There is a 33\% decrease in maximum growth rate over this period as diffusion begins to limit the growth and the initial water volume fraction begins to vacate the biofilm region as particulates start to dominate. Between 4.0 d and the end of the simulation, there is no longer any of the initial pore water in the biofilm domain, so the attenuation of the radiative field cannot explain the reduction in maximum apparent growth rate of PPB. However, the biofilm still includes water in the biofilm void space which doesn't change the apparent diffusivity for a zone of fully developed biofilm. This reduction in growth rate can be attributed to the reduction in delivery of substrate as the solubles need to diffuse through a thicker biofilm to reach the highly irradiated zone of the biofilm.
+Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over time. There is a 33\% decrease in maximum growth rate over this period as diffusion begins to limit the growth and the initial water volume fraction begins to vacate the biofilm region as particulates start to dominate. Between 4.0 d and the end of the simulation, there is no longer any of the initial pore water in the biofilm domain, so the attenuation of the radiative field cannot explain the reduction in maximum apparent growth rate of PPB. However, the biofilm still includes water in the biofilm void space which does not change the apparent diffusivity for a zone of fully developed biofilm. This reduction in growth rate can be attributed to the reduction in delivery of substrate as the solubles need to diffuse through a thicker biofilm to reach the highly irradiated zone of the biofilm.
 
 \begin{figure}[H]
     \centering
@@ -362,7 +317,7 @@ Figure \ref{fig:case1_growth_frac} shows the apparent growth rate of PPB over ti
     \label{fig:case3_ppb_frac}
 \end{figure}
 
-In the case of reduced irradiance from below the biofilm, the absolute growth of biofilm, as well as the apparent growth rate of biofilm are affected. The value of the applied irradiance is 3 W m\textsuperscript{-2} at 850 nm, which is much less than the half-saturation constant of 8.76 W m\textsuperscript{-2} at the same frequency \cite{eltsova2016}. The maximum apparent growth rate is 0.40 d\textsuperscript{-1}. The maximum growth rate stays constant throughout the simulation, most likely due to the low biofilm growth during this time, however we see in the latter stages of the simulation a clear instance of decay, where the irradiance is insufficient to sustain phototrophic activity, and the PPB that initially grew on the substratum begin to decay  as they are pushed further from the radiative field. We see through Fig. \ref{fig:case3_dist_frac} that the biofilm front increases threefold over the 10 day period. The proportion of other particulate matter increases slightly over this time period, and the volume fraction of PPB initially increases from 70\% to 75\%, but then steadies at 70\% as time progresses. 
+In the case of reduced irradiance from below the biofilm, the absolute growth of biofilm, as well as the apparent growth rate of biofilm are affected. The value of the applied irradiance is 3 W m\textsuperscript{-2} at 850 nm, which is much less than the half-saturation constant of 8.76 W m\textsuperscript{-2} at the same frequency \cite{eltsova2016}. The maximum apparent growth rate is 0.40 d\textsuperscript{-1}. The maximum growth rate stays constant throughout the simulation, most likely due to the low biofilm growth during this time. However we see in the latter stages of the simulation a clear instance of decay, where the irradiance is insufficient to sustain phototrophic activity, and the PPB that initially grew on the substratum begin to decay  as they are pushed further from the radiative field. We see through Fig. \ref{fig:case3_dist_frac} that the biofilm front increases threefold over the 10 day period. The proportion of other particulate matter increases slightly over this time period, and the volume fraction of PPB initially increases from 70\% to 75\%, but then steadies at 70\% as time progresses. 
 
 \begin{figure}[H]
     \centering
@@ -389,7 +344,7 @@ In the case of reduced irradiance from below the biofilm, the absolute growth of
     \label{fig:case4_ppb_frac}
 \end{figure}
 
-In this simulation, the radiative field was initialised from above the biofilm with an irradiance of 30 W m\textsuperscript{-2}. The biofilm does not reach the same level as that in Case 1, as the radiative field is partly attenuated before it reaches the biofilm. This means that growth is initially steady when compared to Case 1, but it accelerates the the biofilm forms and its front progresses. The initial apparent growth rate is 0.7 d\textsuperscript{-1} and this increases to 1.0 d\textsuperscript{-1} as the biofilm grows. With the in-scattered nature of the radiative field, the intensity is highest at the central point of the boundary. This is due to this point having the most number of neighbours potentially contributing to the radiative field. This results in the biofilm in the early stages of the simulation extending towards this point of highest irradiance. As the simulation progresses and growth is less limited by the irradiance, this biofilm shape becomes less pronounced.
+In this simulation, the radiative field was initialised from above the biofilm with an irradiance of 30 W m\textsuperscript{-2}. The biofilm does not reach the same level as that in Case 1, as the radiative field is partly attenuated before it reaches the biofilm. This means that growth is initially steady when compared to Case 1, but it accelerates the biofilm forms and its front progresses. The initial apparent growth rate is 0.7 d\textsuperscript{-1} and this increases to 1.0 d\textsuperscript{-1} as the biofilm grows. With the in-scattered nature of the radiative field, the intensity is highest at the central point of the boundary. This is due to this point having the most number of neighbours potentially contributing to the radiative field. This results in the biofilm in the early stages of the simulation extending towards this point of highest irradiance. As the simulation progresses and growth is less limited by the irradiance, this biofilm shape becomes less pronounced.
 
 \begin{figure}[H]
     \centering
@@ -512,17 +467,17 @@ With respect to growth processes, it was identified that delivery of substrate (
 
 \subsection{Limitations of the model}
 \skippingparagraph
-A phototrophic biofilm model was developed using computational fluid dynamics methods (CFD). Biomass growth and its coupling to a radiative field has been described, however there still exist some important aspects of the biofilm life-cycle which have not been developed in this work, but which merit discussion. The life-cycle of a biofilm includes the attachment of planktonic organisms to a substratum, growth and decay processes the microbial community, response to external hydrodynamic fields, and biofilm sloughing.
+A phototrophic biofilm model was developed using computational fluid dynamics methods (CFD). Biomass growth and its coupling to a radiative field has been described, however there still exist some important aspects of the biofilm life-cycle which have not been developed in this work, but which merit discussion. The life-cycle of a biofilm includes the attachment of planktonic organisms to a substratum, growth and decay processes of the microbial community, the response to external hydrodynamic fields, and biofilm sloughing.
 \skippingparagraph
 In this study, it has been assumed that microorganisms have already found a point of attachment on a substratum, and there are no external planktonic microorganisms within the domain. Realistically, physical characteristics such as substratum roughness, cell surface, and current biofilm characteristics in relation to a planktonic cell in question all have an effect on the probability of cell attachment \cite{donlan2002}. Before any initialised biofilm, probabilistic functions based on substratum structure can be imposed for planktonic attachment. Some modelling has been done on the initial stages of biofilm formation, where planktonic microorganisms become attracted to sensing molecules of other organisms, and these sensing molecules have source or sink terms based on biofilm growth or attachment of planktonic biomass respectively \cite{moustaid2013}. The model was a continuum-based approach to biofilm modelling, with a biased random walk for the attachment of planktonic organisms to the biofilm. 
 \skippingparagraph
 The model for biofilm growth was accompanied by several assumptions. In order to convert the chemical oxygen demand (COD) quantities of the particulate species to volumetric expressions, cell water content, biofilm void fraction, and biofilm density were assumed. These values were all justified from literature values, but more refinement in selecting or calculating these values could lead to a more accurate biofilm growth model. In addition to the assumptions associated with volumetric biofilm expansion, the biokinetic model was developed using only one participating particulate species. In reality, and even more so in biofilm communities, there are myriad microorganisms each playing an important role within the biofilm matrix \cite{donlan2002}. Parameters such as substrate diffusion limitations or radiative field attenuation mean that phototrophic bacteria are most likely not the only living species within phototrophic biofilms. There are currently no phototrophic biofilm implementations which include non-phototrophic biomass as a state within the model, yet this would be a more precise representation of reality. Biofilm morphology has been shown to be influenced by other organisms in mixed-culture biofilms \cite{wang2010}. 
 \skippingparagraph
-In cases where the substrate diffusion limits biofilm growth, the morphology take on different forms \cite{xavier2005a} where finger-like structures, porous substrate channels, and highly variable biofilm density occur. This could be the case where different non-phototrophic organism are included in the model description. In cases where the substrate is abundant, the biofilm takes on a more packed, uniformly distributed form. This was demonstrated in this work where the limiting substrate was the radiative field, which was deployed in a uniform manner and the phototrophic biofilm grew in a uniform manner when the irradiance was initialised from below the substratum. A less pronounced substrate limited morphology was seen when the radiant energy was set from above the domain, and the biofilm was attracted to the point of highest irradiance. 
+In cases where the substrate diffusion limits biofilm growth, the morphology take on different forms \cite{xavier2005a} where finger-like structures, porous substrate channels and highly variable biofilm density occur. This could be the case where different non-phototrophic organism are included in the model description. In cases where the substrate is abundant, the biofilm takes on a more packed, uniformly distributed form. This was demonstrated in this work where the limiting substrate was the radiative field, which was deployed in a uniform manner and the phototrophic biofilm grew in a uniform manner when the irradiance was initialised from below the substratum. A less pronounced substrate limited morphology was seen when the radiant energy was set from above the domain, and the biofilm was attracted to the point of highest irradiance. 
 \skippingparagraph
 The biokinetic model developed in Chapter 2 was for planktonic biomass, and due to the proximity and chemical signalling between other cells, biofilm organisms can display vastly different behaviour in the biofilm compared with their planktonic state. An experimental approach would therefore be required to calibrate and validate the biokinetic model. For the moment, the bounds of validity are assumed to hold for phototrophic biomass within a biofilm. 
 \skippingparagraph
-The final limitation regarding this phototrophic biofilm model is that an external flow field was not considered. Shear stress can have a significant influence on the structure and shape of biofilm \cite{donlan2002}, however with the efforts required to couple the volumetric growth to a radiative field, the influence of an external flow field has been left as an extension exercise. The inclusion of the coupled biofilm and flow field would not only paint a clear picture of the structure of the biofilm under stress, but would also present us with and understanding of how growth can be limited or minimised in cases where phototrophic biofilms are not desirable. 
+The final limitation regarding this phototrophic biofilm model is that an external flow field was not considered. Shear stress can have a significant influence on the structure and shape of biofilm \cite{donlan2002}, however with the efforts required to couple the volumetric growth to a radiative field, the influence of an external flow field has been left as an extension exercise. The inclusion of the coupled biofilm and flow field would not only paint a clear picture of the structure of the biofilm under stress, but would also present us with an understanding of how growth can be limited or minimised in cases where phototrophic biofilms are not desirable. 
 
 
 
